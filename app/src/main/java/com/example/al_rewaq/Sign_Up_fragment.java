@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class Sing_Up_fragment extends Fragment {
+public class Sign_Up_fragment extends Fragment {
 
 
 
@@ -24,6 +24,6 @@ public class Sing_Up_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sing__up_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_sign__up_fragment, container, false);
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:id="@+id/ID_singUp_fragment"
-    tools:context=".Sing_Up_fragment">
+    tools:context=".Sign_Up_fragment">
 
 
     <androidx.cardview.widget.CardView

@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gray_white_background"
-    tools:context=".Sing">
+    tools:context=".Sign">
 
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerSignInForSign"
-        android:name="com.example.al_rewaq.Sing_In_fragment"
+        android:name="com.example.al_rewaq.Sign_In_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>

@@ -19,7 +19,7 @@
             android:name=".Interests"
             android:exported="false" />
         <activity
-            android:name=".Sing"
+            android:name=".Sign"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

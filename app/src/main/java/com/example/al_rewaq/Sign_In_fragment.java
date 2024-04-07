@@ -7,9 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-public class Sing_In_fragment extends Fragment {
+public class Sign_In_fragment extends Fragment {
 
 //TextView txt;
 
@@ -17,7 +16,7 @@ public class Sing_In_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_sing__in_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_sign__in_fragment, container, false);
     }
 }
 

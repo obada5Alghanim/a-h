@@ -4,15 +4,13 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-public class Sing extends AppCompatActivity {
+public class Sign extends AppCompatActivity {
 TextView txt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sing);
+        setContentView(R.layout.activity_sign);
 
        
     }
