@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,75 +8,33 @@
     android:background="@drawable/black_background"
     >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="407dp"
-        android:layout_height="101dp"
-        android:layout_marginBottom="144dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+    <Button
+        android:id="@+id/bu_Back"
+        android:layout_width="66dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#000000"
+        android:textColor="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:icon="@drawable/baseline_arrow_back_ios_24"
+        app:iconGravity="textEnd"
+        app:iconSize="40dp"
+        app:iconTintMode="src_in"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_AboutTheBook">
-
-        <Button
-            android:id="@+id/bu_reader"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#6E6D6D"
-            android:gravity="center"
-            android:text="قراءة"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <Button
-            android:id="@+id/bu_menu"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#6E6D6D"
-            android:textColor="#FFFFFF"
-            android:textColorLink="#FFFFFF"
-            android:textSize="48sp"
-            android:textStyle="bold"
-            app:icon="@drawable/baseline_menu_24"
-            app:iconGravity="textEnd"
-            app:iconSize="40dp"
-            app:iconTintMode="src_in"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <Button
-            android:id="@+id/bu_browse"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#6E6D6D"
-            android:gravity="center"
-            android:text="تصفح"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/bu_reader"
-            app:layout_constraintHorizontal_bias="0.441"
-            app:layout_constraintStart_toEndOf="@+id/bu_menu" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="407dp"
+        android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="530dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -220,7 +179,7 @@
 
         <ImageView
             android:id="@+id/image_Book"
-            android:layout_width="132dp"
+            android:layout_width="127dp"
             android:layout_height="150dp"
             android:layout_gravity="fill"
             android:baselineAligned="false"
@@ -230,8 +189,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout_AboutTheBook"
-        android:layout_width="406dp"
-        android:layout_height="255dp"
+        android:layout_width="match_parent"
+        android:layout_height="441dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="199dp"
+        android:layout_marginEnd="-4dp"
+        android:layout_marginBottom="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
@@ -257,23 +222,58 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/bu_reader"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#6E6D6D"
+            android:gravity="center"
+            android:text="قراءة"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bu_browse" />
+
+        <Button
+            android:id="@+id/bu_menu"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#6E6D6D"
+            android:textColor="#FFFFFF"
+            android:textColorLink="#FFFFFF"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            app:icon="@drawable/vector_menu_o"
+            app:iconGravity="textEnd"
+            app:iconSize="40dp"
+            app:iconTintMode="src_in"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/bu_browse"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#6E6D6D"
+            android:gravity="center"
+            android:text="تصفح"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bu_reader"
+            app:layout_constraintHorizontal_bias="0.441"
+            app:layout_constraintStart_toEndOf="@+id/bu_menu" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-   <!-- <Button
-        android:id="@+id/bu_Back"
-        android:layout_width="66dp"
-        android:layout_height="48dp"
-        android:backgroundTint="#000000"
-        android:textColor="#FFFFFF"
-        android:textColorLink="#FFFFFF"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:icon="@drawable/baseline_arrow_back_ios_24"
-        app:iconGravity="textEnd"
-        app:iconSize="40dp"
-        app:iconTintMode="src_in"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
--->
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
