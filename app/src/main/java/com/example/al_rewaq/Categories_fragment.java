@@ -14,11 +14,10 @@ import android.widget.TextView;
 
 
 public class Categories_fragment extends Fragment {
-    private TextView Show_Cat1,Show_Cat2,Show_Cat3;
+    private TextView Show_Cat1,Show_Cat2,Show_Cat3,TextColor1,TextColor2,TextColor3;
     private LinearLayout Show_Button1,Show_Button2,Show_Button3;
-    private TextView TextColor1,TextColor2,TextColor3;
-    private ImageView ImageAr1,ImageAr3,ImageAr5;
-    private ImageView ImageBk2,ImageBk4,ImageBk6;
+    private ImageView ImageAr1,ImageAr3,ImageAr5,ImageBk2,ImageBk4,ImageBk6;
+
 
 
     @Override

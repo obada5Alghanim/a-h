@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Categories_fragment"
-    android:background="@drawable/black_background">
+    tools:context=".Categories_fragment">
+
+
 
     <TextView
         android:id="@+id/textView"
@@ -25,7 +26,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="693dp"
         android:layout_marginTop="70dp"
         android:layout_marginBottom="6dp"
         android:orientation="vertical"
@@ -48,12 +49,12 @@
                     android:id="@+id/Linear1"
                     android:layout_width="408dp"
                     android:layout_height="58dp"
-                    android:onClick="Click_1"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="0dp"
                     android:layout_marginEnd="1dp"
                     android:layout_marginBottom="0dp"
                     android:background="@drawable/frame_2"
+                    android:onClick="Click_1"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -92,10 +93,10 @@
                     android:id="@+id/Click_bt1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
                     android:layout_weight="1"
-                    android:visibility="gone"
-                    android:orientation="horizontal">
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <Button
                         android:id="@+id/button1"
@@ -111,8 +112,8 @@
                         android:id="@+id/button2"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginRight="5dp"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
@@ -135,11 +136,11 @@
                     android:id="@+id/Linear2"
                     android:layout_width="408dp"
                     android:layout_height="58dp"
-                    android:onClick="Click_2"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="23dp"
                     android:layout_marginEnd="1dp"
                     android:background="@drawable/frame_2"
+                    android:onClick="Click_2"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -178,10 +179,10 @@
                     android:id="@+id/Click_bt2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
                     android:layout_weight="1"
-                    android:visibility="gone"
-                    android:orientation="horizontal">
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <Button
                         android:id="@+id/button4"
@@ -197,8 +198,8 @@
                         android:id="@+id/button5"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginRight="5dp"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
@@ -261,10 +262,10 @@
                     android:id="@+id/Click_bt3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
                     android:layout_weight="1"
-                    android:visibility="gone"
-                    android:orientation="horizontal">
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <Button
                         android:id="@+id/button7"
@@ -280,8 +281,8 @@
                         android:id="@+id/button8"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginRight="5dp"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
@@ -541,7 +542,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="408dp"
+                    android:layout_width="411dp"
                     android:layout_height="58dp"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="23dp"
@@ -667,4 +668,4 @@
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

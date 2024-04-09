@@ -8,11 +8,13 @@
     android:background="@drawable/black_background"
     tools:context=".menu_main">
 
-<FrameLayout
-    android:id="@+id/containerFrameLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@+id/navigation_menu_id"/>
+
+    <FrameLayout
+        android:id="@+id/containerFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="651dp"
+        android:layout_above="@+id/navigation_menu_id"
+        android:layout_marginBottom="3dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation_menu_id"
@@ -27,5 +29,7 @@
         app:itemIconTint="@color/mix_color"
         app:itemTextColor="@color/mix_color"
         />
+
+
 
 </RelativeLayout>

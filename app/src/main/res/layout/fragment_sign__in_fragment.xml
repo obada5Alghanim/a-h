@@ -9,6 +9,7 @@
     tools:context=".Sign_In_fragment">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardviewIdSingIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
@@ -16,6 +17,7 @@
         app:cardElevation="20dp">
 
     <LinearLayout
+        android:id="@+id/biglinearIdSingIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -24,6 +26,7 @@
         android:padding="24dp">
 
     <TextView
+        android:id="@+id/signIntextId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SIGN IN"
@@ -69,7 +72,7 @@
         android:backgroundTint="@color/gray"
         android:text="Sign IN"
         android:textSize="22sp"
-        app:cornerRadius="30dp" />
+        app:cornerRadius="30dp"/>
     <LinearLayout
         android:id="@+id/signIn_to_singUp_answer"
         android:layout_width="match_parent"
@@ -79,6 +82,7 @@
         android:gravity="center">
 
     <TextView
+        android:id="@+id/donthavanAccountId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Don't Have an account?"
