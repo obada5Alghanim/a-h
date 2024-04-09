@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:id="@+id/ID_singIn_fragment"
+    android:layoutDirection="ltr"
     tools:context=".Sign_In_fragment">
 
     <androidx.cardview.widget.CardView

@@ -20,9 +20,12 @@ BottomNavigationView bottomNavigationView;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_main);
 
+
         bottomNavigationView = findViewById(R.id.navigation_menu_id);
         home_page_fragment homePageFragment = new home_page_fragment();
         Categories_fragment categoriesFragment = new Categories_fragment();
+        search_fragment searchFragment = new search_fragment();
+
 
 
    getSupportFragmentManager().beginTransaction().replace(android.R.id.content,homePageFragment).commit();
@@ -33,8 +36,10 @@ BottomNavigationView bottomNavigationView;
                getSupportFragmentManager().beginTransaction().replace(android.R.id.content,homePageFragment).commit();
            } else if (item.getItemId() == R.id.category_icon) {
                getSupportFragmentManager().beginTransaction().replace(android.R.id.content,categoriesFragment).commit();
-
+           } else if (item.getItemId() == R.id.search_icon) {
+               getSupportFragmentManager().beginTransaction().add(android.R.id.content,searchFragment).commit();
            }
+
             return true;
         }
     });
