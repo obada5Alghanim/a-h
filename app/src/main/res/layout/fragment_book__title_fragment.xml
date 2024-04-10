@@ -229,14 +229,16 @@
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="#6E6D6D"
+            android:backgroundTint="#FFFFFF"
             android:gravity="center"
             android:text="قراءة"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bu_browse" />
+            app:layout_constraintStart_toEndOf="@+id/bu_browse"
+            app:strokeColor="#00A4A4"
+            app:strokeWidth="3dp"/>
 
         <Button
             android:id="@+id/bu_menu"
@@ -244,17 +246,20 @@
             android:layout_height="50dp"
             android:layout_marginStart="40dp"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="#6E6D6D"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/white"
+            android:textColor="#000000"
             android:textColorLink="#FFFFFF"
             android:textSize="48sp"
             android:textStyle="bold"
             app:icon="@drawable/vector_menu_o"
             app:iconGravity="textEnd"
             app:iconSize="40dp"
+            app:iconTint="#000000"
             app:iconTintMode="src_in"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="#00A4A4"
+            app:strokeWidth="3dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
@@ -264,16 +269,18 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="#6E6D6D"
+            android:backgroundTint="#FFFFFF"
             android:gravity="center"
             android:text="تصفح"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/bu_reader"
             app:layout_constraintHorizontal_bias="0.441"
-            app:layout_constraintStart_toEndOf="@+id/bu_menu" />
+            app:layout_constraintStart_toEndOf="@+id/bu_menu"
+            app:strokeColor="#00A4A4"
+            app:strokeWidth="3dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
