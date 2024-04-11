@@ -9,23 +9,6 @@
 
     >
 
-    <Button
-        android:id="@+id/bu_Back"
-        android:layout_width="66dp"
-        android:layout_height="48dp"
-        android:backgroundTint="#000000"
-        android:textColor="#FFFFFF"
-        android:textColorLink="#FFFFFF"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:icon="@drawable/baseline_arrow_back_ios_24"
-        app:iconGravity="textEnd"
-        app:iconSize="40dp"
-        app:iconTintMode="src_in"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -205,23 +188,58 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/TV_AboutTheBook"
-            android:layout_width="316dp"
-            android:layout_height="190dp"
-            android:layout_marginStart="46dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="46dp"
-            android:background="@drawable/radius"
-            android:gravity="center|top"
-            android:text="نبذة عن الكتاب :"
-            android:textColor="#FFFFFF"
+<!--        <TextView-->
+<!--            android:id="@+id/TV_AboutTheBook"-->
+<!--            android:layout_width="316dp"-->
+<!--            android:layout_height="190dp"-->
+<!--            android:layout_marginStart="46dp"-->
+<!--            android:layout_marginTop="60dp"-->
+<!--            android:layout_marginEnd="46dp"-->
+<!--            android:background="@drawable/radius"-->
+<!--            android:gravity="center|top"-->
+<!--            android:text="نبذة عن الكتاب :"-->
+<!--            android:textColor="#FFFFFF"-->
 
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--            android:textSize="20sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/radius">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:ignore="ExtraText">
+
+                <TextView
+                    android:id="@+id/textViewContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lorem_ipsum"
+                    android:textColor="@color/white"
+                    android:padding="13dp"
+                    android:maxLines="3"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/textSee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="#3203FF"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="24sp"
+                    android:text="see more"/>
+            </LinearLayout>
+        </ScrollView>
+
 
         <Button
             android:id="@+id/bu_reader"
@@ -229,7 +247,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="#FFFFFF"
+            android:backgroundTint="#00A4A4"
             android:gravity="center"
             android:text="قراءة"
             android:textColor="#000000"
@@ -237,7 +255,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/bu_browse"
-            app:strokeColor="#00A4A4"
+            app:strokeColor="#FFFFFF"
             app:strokeWidth="3dp"/>
 
         <Button
