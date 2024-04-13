@@ -1,6 +1,7 @@
 package com.example.al_rewaq;
 
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;

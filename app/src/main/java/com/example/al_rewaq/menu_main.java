@@ -33,6 +33,7 @@ BottomNavigationView bottomNavigationView;
         home_page_fragment homePageFragment = new home_page_fragment();
         Categories_fragment categoriesFragment = new Categories_fragment();
         search_fragment searchFragment = new search_fragment();
+        nav_drawer_menu_fragment navDrawerMenuFragment = new nav_drawer_menu_fragment();
         Book_Title_fragment Book_Title_fragment = new Book_Title_fragment();
 
         getSupportFragmentManager().beginTransaction().replace(android.R.id.content,homePageFragment).commit();
@@ -45,8 +46,12 @@ BottomNavigationView bottomNavigationView;
                     getSupportFragmentManager().beginTransaction().replace(android.R.id.content,categoriesFragment).commit();
                 } else if (item.getItemId() == R.id.search_icon) {
                     getSupportFragmentManager().beginTransaction().add(android.R.id.content,searchFragment).commit();
+                    getSupportFragmentManager().beginTransaction().remove(navDrawerMenuFragment).commit();
                 } if (item.getItemId() == R.id.library_icon) {
                     getSupportFragmentManager().beginTransaction().replace(android.R.id.content,Book_Title_fragment ).commit();
+                }if (item.getItemId() == R.id.menu_icon){
+                    getSupportFragmentManager().beginTransaction().add(android.R.id.content,navDrawerMenuFragment).commit();
+                    getSupportFragmentManager().beginTransaction().remove(searchFragment).commit();
                 }
 
                 return true;

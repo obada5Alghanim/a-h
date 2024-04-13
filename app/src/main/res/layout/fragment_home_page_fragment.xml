@@ -7,14 +7,12 @@
     tools:context=".home_page_fragment">
 
 
-    <TextView
+    <ImageView
         android:id="@+id/examples"
         android:layout_width="match_parent"
         android:layout_height="650dp"
         android:gravity="center"
-        android:text="Home_Page\n الرّواق "
-        android:textColor="@color/blue"
-        android:textSize="75sp" />
+        android:src="@drawable/logo" />
 
 
 </RelativeLayout>
