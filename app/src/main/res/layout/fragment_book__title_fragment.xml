@@ -116,7 +116,7 @@
 
             <TextView
                 android:id="@+id/Author"
-                android:layout_width="120dp"
+                android:layout_width="110dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
@@ -132,9 +132,9 @@
                 android:id="@+id/Author_Name"
                 android:layout_width="0dp"
                 android:layout_height="24dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="2dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/radius2"
                 android:gravity="center"
                 android:text="اسم المؤلف"
@@ -148,9 +148,9 @@
                 android:id="@+id/Classification_type"
                 android:layout_width="0dp"
                 android:layout_height="24dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="2dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/radius2"
                 android:gravity="center"
                 android:text="نوع التصنيف"
@@ -162,7 +162,7 @@
 
             <TextView
                 android:id="@+id/Category"
-                android:layout_width="120dp"
+                android:layout_width="110dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
@@ -178,9 +178,9 @@
                 android:id="@+id/Datecreated_data"
                 android:layout_width="0dp"
                 android:layout_height="24dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="2dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/radius2"
                 android:gravity="center"
                 android:text="تاريخ الإنشاء"
@@ -194,9 +194,9 @@
                 android:id="@+id/numberOfPages_data"
                 android:layout_width="0dp"
                 android:layout_height="24dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="2dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/radius2"
                 android:gravity="center"
                 android:text="عدد الصفحات"
@@ -208,7 +208,7 @@
 
             <TextView
                 android:id="@+id/DateCreated"
-                android:layout_width="120dp"
+                android:layout_width="110dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
@@ -222,7 +222,7 @@
 
             <TextView
                 android:id="@+id/numberOfPages"
-                android:layout_width="120dp"
+                android:layout_width="110dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
