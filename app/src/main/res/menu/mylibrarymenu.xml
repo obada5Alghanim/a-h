@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/home_icon1"
+        android:title=" أقرأه حاليا"
+
+
+        />
+
+    <item
+        android:id="@+id/search_icon"
+        android:title="أنوي قراءته "
+
+        />
+
+    <item
+        android:id="@+id/library_icon"
+        android:title=" المفضلة"
+       />
+
+    <item
+        android:id="@+id/category_icon"
+        android:title="قراءته "
+       />
+
+
+
+</menu>
