@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layoutDirection="rtl"
+    android:id="@+id/realtiveLayoutForBottomSheet"
+  android:background="@drawable/shadow_background"
     tools:context=".bottom_sheet_fragment">
 
     <RelativeLayout

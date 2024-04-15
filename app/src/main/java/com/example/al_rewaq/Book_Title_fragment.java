@@ -20,7 +20,7 @@ public class Book_Title_fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_book__title_fragment, container, false);
 
         TextView textViewContent = view.findViewById(R.id.textViewContent);
-//        buttonSeeMore = findViewById(R.id.buttonSeeMore);
+        Button btn = view.findViewById(R.id.bu_menu);
         TextView textSeeLess = view.findViewById(R.id.textSee);
         textSeeLess.setOnClickListener(new View.OnClickListener() {
             int less = 0;
@@ -57,6 +57,13 @@ public class Book_Title_fragment extends Fragment {
                         textSeeLess.setVisibility(View.VISIBLE);
                     }
                 }
+            }
+        });
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottom_sheet_fragment bottom_sheet_fragment1 = new bottom_sheet_fragment();
+                getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,bottom_sheet_fragment1).commit();
             }
         });
 
