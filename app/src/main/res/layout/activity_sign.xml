@@ -8,10 +8,21 @@
     android:background="@drawable/gray_white_background"
     tools:context=".Sign">
 
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerSignInForSign"
         android:name="com.example.al_rewaq.Sign_In_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/imageView25"
+        android:layout_width="111dp"
+        android:layout_height="105dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="150dp"
+        app:srcCompat="@drawable/logo" />
 </RelativeLayout>
