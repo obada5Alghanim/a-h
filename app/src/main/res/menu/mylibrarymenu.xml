@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     <item
-        android:id="@+id/home_icon1"
+        android:id="@+id/readingInProgressID"
         android:title=" أقرأه حاليا"
 
 
         />
 
     <item
-        android:id="@+id/search_icon"
+        android:id="@+id/readingLaterID"
         android:title="أنوي قراءته "
 
         />
 
     <item
-        android:id="@+id/library_icon"
+        android:id="@+id/favoritesBookID"
         android:title=" المفضلة"
        />
 
     <item
-        android:id="@+id/category_icon"
-        android:title="قراءته "
+        android:id="@+id/readItID"
+        android:title="قرأته "
        />
 
 

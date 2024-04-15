@@ -6,20 +6,40 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
     tools:context=".MyLibrary_MainFragment">
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="مكتبتي"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        />
+    <FrameLayout
+        android:id="@+id/containerFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="501dp"
+        android:layout_below="@+id/myLibr1"
+        android:layout_marginTop="1dp" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/MyLibraryMainFragment"
+        android:id="@+id/myLibr1"
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="74dp"
         android:background="@drawable/radius4"
         app:itemIconSize="100dp"
-        app:itemIconTint="@color/white"
-        app:itemRippleColor="@color/white"
-        app:itemTextColor="@color/white"
+        app:itemRippleColor="@color/black"
+        app:itemIconTint="@color/mix_color2"
+        app:itemTextColor="@color/mix_color2"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/mylibrarymenu" />
+
+
+
+
 
 </RelativeLayout>

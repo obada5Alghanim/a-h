@@ -17,12 +17,13 @@ import org.w3c.dom.Text;
 
 public class nav_drawer_menu_fragment extends Fragment {
 
-;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_nav_drawer_menu_fragment, container, false);
+
         TextView textViewSetting = view.findViewById(R.id.settingTextClick);
 
         LinearLayout linearLayout = view.findViewById(R.id.navDrawerMenu2);
