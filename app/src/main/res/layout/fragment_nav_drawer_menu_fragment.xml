@@ -53,6 +53,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/myLib1"
             android:text="مكتبتي"
+            android:drawableRight="@drawable/mylibraryicona2"
+            android:drawablePadding="5dp"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"

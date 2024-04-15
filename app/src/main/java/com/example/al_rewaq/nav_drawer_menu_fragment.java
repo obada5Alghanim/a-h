@@ -25,6 +25,7 @@ public class nav_drawer_menu_fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_nav_drawer_menu_fragment, container, false);
 
         TextView textViewSetting = view.findViewById(R.id.settingTextClick);
+        TextView textViewMyLibrary = view.findViewById(R.id.myLib1);
 
         LinearLayout linearLayout = view.findViewById(R.id.navDrawerMenu2);
 
@@ -35,6 +36,18 @@ public class nav_drawer_menu_fragment extends Fragment {
                 FragmentTransaction ft = fm.beginTransaction();
                 settings_page_fragment settingsPageFragment = new settings_page_fragment();
                 ft.replace(android.R.id.content,settingsPageFragment);
+                ft.commit();
+            }
+        });
+
+
+        textViewMyLibrary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                MyLibrary_MainFragment myLibraryMainFragment = new MyLibrary_MainFragment();
+                ft.replace(android.R.id.content,myLibraryMainFragment);
                 ft.commit();
             }
         });
