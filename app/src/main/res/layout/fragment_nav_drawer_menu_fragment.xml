@@ -81,15 +81,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutForMenu3"
         android:orientation="horizontal">
+
         <TextView
+            android:id="@+id/speedTestID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="اختبار السرعة"
             android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:text="اختبار السرعة"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:padding="15dp"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout

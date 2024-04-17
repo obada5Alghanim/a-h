@@ -33,30 +33,34 @@ public class MyLibrary_MainFragment extends Fragment {
         getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,readingInProgressFragment).commit();
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+
         @Override
         public boolean onNavigationItemSelected( MenuItem item) {
-            if(item.getItemId() == R.id.readingInProgressID){
+            if(item.getItemId() == R.id.readingInProgressID ){
                 getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,readingInProgressFragment).commit();
                 getActivity().getSupportFragmentManager().beginTransaction().remove(readingLaterFragment).commit();
                 getActivity().getSupportFragmentManager().beginTransaction().remove(favoritesFragment).commit();
                 getActivity().getSupportFragmentManager().beginTransaction().remove(readItFragment).commit();
-            } else if (item.getItemId() == R.id.readingLaterID) {
+
+            } else if (item.getItemId() == R.id.readingLaterID ) {
                 getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,readingLaterFragment).commit();
                 getActivity().getSupportFragmentManager().beginTransaction().remove(readingInProgressFragment).commit();
                 getActivity().getSupportFragmentManager().beginTransaction().remove(favoritesFragment).commit();
                 getActivity().getSupportFragmentManager().beginTransaction().remove(readItFragment).commit();
-            } else if (item.getItemId() == R.id.favoritesBookID) {
+
+            } else if (item.getItemId() == R.id.favoritesBookID ) {
                 getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,favoritesFragment).commit();
                 getActivity().getSupportFragmentManager().beginTransaction().remove(readingInProgressFragment).commit();
                 getActivity().getSupportFragmentManager().beginTransaction().remove(readingLaterFragment).commit();
                 getActivity().getSupportFragmentManager().beginTransaction().remove(readItFragment).commit();
-            } else if (item.getItemId() == R.id.readItID) {
+
+            } else if (item.getItemId() == R.id.readItID ) {
                 getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,readItFragment).commit();
                 getActivity().getSupportFragmentManager().beginTransaction().remove(readingInProgressFragment).commit();
                 getActivity().getSupportFragmentManager().beginTransaction().remove(readingLaterFragment).commit();
                 getActivity().getSupportFragmentManager().beginTransaction().remove(favoritesFragment).commit();
-            }
 
+            }
             return true;
         }
     });
