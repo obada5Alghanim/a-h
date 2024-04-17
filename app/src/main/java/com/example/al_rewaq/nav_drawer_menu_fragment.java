@@ -26,7 +26,7 @@ public class nav_drawer_menu_fragment extends Fragment {
 
         TextView textViewSetting = view.findViewById(R.id.settingTextClick);
         TextView textViewMyLibrary = view.findViewById(R.id.myLib1);
-
+        TextView textViewspeedTest = view.findViewById(R.id.speedTestID);
         LinearLayout linearLayout = view.findViewById(R.id.navDrawerMenu2);
 
         textViewSetting.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +51,21 @@ public class nav_drawer_menu_fragment extends Fragment {
                 ft.commit();
             }
         });
+
+        textViewspeedTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                Reading_speed_test_fragment readingSpeedTestFragment = new Reading_speed_test_fragment();
+                ft.replace(android.R.id.content,readingSpeedTestFragment);
+                ft.commit();
+
+
+            }
+        });
+
+
 
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
