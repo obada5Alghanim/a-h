@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/searchRealativelayoutID"
+    android:layout_marginBottom="75dp"
     tools:context=".search_fragment"
     android:background="@drawable/shadow_background">
 
@@ -27,7 +28,7 @@
       android:layout_height="wrap_content"
       android:layout_below="@+id/textView3"
       android:layout_margin="8dp"
-      android:layout_marginTop="30dp"
+      android:layout_marginTop="10dp"
       android:layout_marginBottom="8dp"
       android:background="@drawable/frame_1"
       android:iconifiedByDefault="false"

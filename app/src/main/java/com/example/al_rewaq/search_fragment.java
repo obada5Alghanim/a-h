@@ -23,26 +23,34 @@ public class search_fragment extends Fragment {
         searchView = view.findViewById(R.id.search_bar_fargment);
         relativeLayout = view.findViewById(R.id.searchRealativelayoutID);
         searchView.clearFocus();
-        relativeLayout.setOnClickListener(new View.OnClickListener() {
+
+
+        return view;
+
+    }
+
+
+}
+
+
+
+/*code to remove the fragment when click on screen
+relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 removeFragment();
             }
         });
 
-        return view;
 
-    }
-
-    private void removeFragment() {
+          private void removeFragment() {
         if (requireActivity().getSupportFragmentManager() != null) {
             // Begin a transaction to remove this fragment
             requireActivity().getSupportFragmentManager().beginTransaction()
                     .remove(this)
                     .commit();
-    }
-}}
-
+    }}
+ */
  /* searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
