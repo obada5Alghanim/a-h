@@ -317,6 +317,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layoutDirection="rtl"
                 tools:ignore="ExtraText">
 
                 <TextView
@@ -333,11 +334,10 @@
                     android:id="@+id/textSee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="8dp"
-                    android:text="see more"
-                    android:textColor="#3203FF"
-                    android:textSize="24sp" />
+                    android:layout_marginRight="20dp"
+                    android:text="عرض المزيد"
+                    android:textColor="#25E1E1"
+                    android:textSize="20sp" />
             </LinearLayout>
         </ScrollView>
 

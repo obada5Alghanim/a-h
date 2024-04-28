@@ -34,13 +34,13 @@ public class Book_Title_fragment extends Fragment {
                 if (less == 0) {
                     textViewContent.setMaxLines(Integer.MAX_VALUE);
 //                textSeeLess.setVisibility(View.GONE);
-                    textSeeLess.setText("see less");
+                    textSeeLess.setText("عرض أقل");
                     less++;
                 } else if (less == 1) {
                     textViewContent.setMaxLines(2);
 //                 textViewContent.setMinLines(Integer.MIN_VALUE);
 //                 textSeeLess.setVisibility(View.GONE);
-                    textSeeLess.setText("see more");
+                    textSeeLess.setText("عرض المزيد");
                     less--;
                 }
 
