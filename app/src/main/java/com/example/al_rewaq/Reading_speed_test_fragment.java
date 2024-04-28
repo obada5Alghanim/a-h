@@ -86,6 +86,10 @@ public class Reading_speed_test_fragment extends Fragment {
             public void onClick(View v) {
                 end.setVisibility(View.GONE);
                 start.setVisibility(View.VISIBLE);
+
+                  RST_result_fragment rstResultFragment = new RST_result_fragment();
+                  getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,rstResultFragment).commit();
+
             }
         });
 

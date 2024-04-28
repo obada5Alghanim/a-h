@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layoutDirection="rtl"
-    android:id="@+id/realtiveLayoutForBottomSheet"
+    android:id="@+id/rst_subject_id"
     android:background="@drawable/full_shadow_background"
     tools:context=".bottom_sheet_fragment">
 
