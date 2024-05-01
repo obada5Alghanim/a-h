@@ -14,9 +14,13 @@ import android.widget.TextView;
 
 
 public class Categories_fragment extends Fragment {
-    private TextView Show_Cat1,Show_Cat2,Show_Cat3,TextColor1,TextColor2,TextColor3;
-    private LinearLayout Show_Button1,Show_Button2,Show_Button3;
-    private ImageView ImageAr1,ImageAr3,ImageAr5,ImageBk2,ImageBk4,ImageBk6;
+    private TextView Show_Cat1,Show_Cat2,Show_Cat3,Show_Cat4,Show_Cat5,Show_Cat6,
+            TextColor1,TextColor2,TextColor3,TextColor4,TextColor5,TextColor6;
+
+    private LinearLayout Show_Button1,Show_Button1_2,Show_Button2,Show_Button3,Show_Button4,Show_Button5,Show_Button6;
+
+    private ImageView ImageAr1,ImageAr3,ImageAr5,ImageAr7,ImageAr9,ImageAr11,
+            ImageBk2,ImageBk4,ImageBk6,ImageBk8,ImageBk10,ImageBk12;
 
 
 
@@ -28,22 +32,38 @@ public class Categories_fragment extends Fragment {
         Show_Cat1 = view.findViewById(R.id.Cat1);
         Show_Cat2 = view.findViewById(R.id.Cat2);
         Show_Cat3 = view.findViewById(R.id.Cat3);
+        Show_Cat4 = view.findViewById(R.id.Cat4);
+        Show_Cat5 = view.findViewById(R.id.Cat5);
+        Show_Cat6 = view.findViewById(R.id.Cat6);
 
         Show_Button1 = view.findViewById(R.id.Click_bt1);
         Show_Button2 = view.findViewById(R.id.Click_bt2);
+        Show_Button1_2 = view.findViewById(R.id.Click_bt1_2);
         Show_Button3 = view.findViewById(R.id.Click_bt3);
+        Show_Button4 = view.findViewById(R.id.Click_bt4);
+        Show_Button5 = view.findViewById(R.id.Click_bt5);
+        Show_Button6 = view.findViewById(R.id.Click_bt6);
 
         TextColor1 = view.findViewById(R.id.Cat1);
         TextColor2 = view.findViewById(R.id.Cat2);
         TextColor3 = view.findViewById(R.id.Cat3);
+        TextColor4 = view.findViewById(R.id.Cat4);
+        TextColor5 = view.findViewById(R.id.Cat5);
+        TextColor6 = view.findViewById(R.id.Cat6);
 
         ImageAr1 = view.findViewById(R.id.imageView1);
         ImageAr3 = view.findViewById(R.id.imageView3);
         ImageAr5 = view.findViewById(R.id.imageView5);
+        ImageAr7 = view.findViewById(R.id.imageView7);
+        ImageAr9 = view.findViewById(R.id.imageView9);
+        ImageAr11 = view.findViewById(R.id.imageView11);
 
         ImageBk2 = view.findViewById(R.id.imageView2);
         ImageBk4 = view.findViewById(R.id.imageView4);
         ImageBk6 = view.findViewById(R.id.imageView6);
+        ImageBk8 = view.findViewById(R.id.imageView8);
+        ImageBk10 = view.findViewById(R.id.imageView10);
+        ImageBk12 = view.findViewById(R.id.imageView12);
 
         Show_Cat1.setOnClickListener(new View.OnClickListener() {
             int Clicked1 = 0;
@@ -52,12 +72,14 @@ public class Categories_fragment extends Fragment {
             public void onClick(View v) {
                 if (Clicked1 == 0){
                     Show_Button1.setVisibility(View.VISIBLE);
+                    Show_Button1_2.setVisibility(View.VISIBLE);
                     TextColor1.setTextColor(Color.CYAN);
                     ImageAr1.setImageDrawable(requireContext().getDrawable(R.drawable.arrow_up));
                     ImageBk2.setColorFilter(Color.CYAN);
                     Clicked1++;}
                 else if (Clicked1 == 1) {
                     Show_Button1.setVisibility(View.GONE);
+                    Show_Button1_2.setVisibility(View.GONE);
                     TextColor1.setTextColor(Color.WHITE);
                     ImageAr1.setImageDrawable(requireContext().getDrawable(R.drawable.arrow_down));
                     ImageBk2.setColorFilter(Color.WHITE);
@@ -103,6 +125,66 @@ public class Categories_fragment extends Fragment {
                     ImageBk6.setColorFilter(Color.WHITE);
                     Clicked3--;}
             }
+        });
+
+        Show_Cat4.setOnClickListener(new View.OnClickListener() {
+            int Clicked4 = 0;
+
+            @Override
+            public void onClick(View v) {
+                if (Clicked4 == 0){
+                    Show_Button4.setVisibility(View.VISIBLE);
+                    TextColor4.setTextColor(Color.CYAN);
+                    ImageAr7.setImageDrawable(requireContext().getDrawable(R.drawable.arrow_up));
+                    ImageBk8.setColorFilter(Color.CYAN);
+                    Clicked4++;}
+                else if (Clicked4 == 1) {
+                    Show_Button4.setVisibility(View.GONE);
+                    TextColor4.setTextColor(Color.WHITE);
+                    ImageAr7.setImageDrawable(requireContext().getDrawable(R.drawable.arrow_down));
+                    ImageBk8.setColorFilter(Color.WHITE);
+                    Clicked4--;}
+            }
+        });
+
+        Show_Cat5.setOnClickListener(new View.OnClickListener() {
+            int Clicked5 = 0;
+            @Override
+            public void onClick(View v) {
+                if (Clicked5 == 0){
+                    Show_Button5.setVisibility(View.VISIBLE);
+                    TextColor5.setTextColor(Color.CYAN);
+                    ImageAr9.setImageDrawable(requireContext().getDrawable(R.drawable.arrow_up));
+                    ImageBk10.setColorFilter(Color.CYAN);
+                    Clicked5++;}
+                else if (Clicked5 == 1) {
+                    Show_Button5.setVisibility(View.GONE);
+                    TextColor5.setTextColor(Color.WHITE);
+                    ImageAr9.setImageDrawable(requireContext().getDrawable(R.drawable.arrow_down));
+                    ImageBk10.setColorFilter(Color.WHITE);
+                    Clicked5--;}
+            }
+
+        });
+
+        Show_Cat6.setOnClickListener(new View.OnClickListener() {
+            int Clicked6 = 0;
+            @Override
+            public void onClick(View v) {
+                if (Clicked6 == 0){
+                    Show_Button6.setVisibility(View.VISIBLE);
+                    TextColor6.setTextColor(Color.CYAN);
+                    ImageAr11.setImageDrawable(requireContext().getDrawable(R.drawable.arrow_up));
+                    ImageBk12.setColorFilter(Color.CYAN);
+                    Clicked6++;}
+                else if (Clicked6 == 1) {
+                    Show_Button6.setVisibility(View.GONE);
+                    TextColor6.setTextColor(Color.WHITE);
+                    ImageAr11.setImageDrawable(requireContext().getDrawable(R.drawable.arrow_down));
+                    ImageBk12.setColorFilter(Color.WHITE);
+                    Clicked6--;}
+            }
+
         });
 
         return view;
