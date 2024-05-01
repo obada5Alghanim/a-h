@@ -1,5 +1,6 @@
 package com.example.al_rewaq;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,18 +13,21 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import org.w3c.dom.Text;
 
 
 public class nav_drawer_menu_fragment extends Fragment {
 
-
+FirebaseAuth logOutAuth;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_nav_drawer_menu_fragment, container, false);
-
+        logOutAuth = FirebaseAuth.getInstance();
+        TextView textViewLogOut = view.findViewById(R.id.logOutID);
         TextView textViewSetting = view.findViewById(R.id.settingTextClick);
         TextView textViewMyLibrary = view.findViewById(R.id.myLib1);
         TextView textViewspeedTest = view.findViewById(R.id.speedTestID);
@@ -75,6 +79,16 @@ public class nav_drawer_menu_fragment extends Fragment {
             }
         });
 
+        textViewLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logOutAuth.signOut();
+                Intent intent = new Intent(getActivity(),Sign_In_fragment.class);
+                startActivity(intent);
+
+            }
+        });
+
 
         return view;
     }
@@ -87,4 +101,14 @@ public class nav_drawer_menu_fragment extends Fragment {
                     .commit();
         }
 
-    }}
+    }
+
+
+
+
+
+
+
+
+
+}
