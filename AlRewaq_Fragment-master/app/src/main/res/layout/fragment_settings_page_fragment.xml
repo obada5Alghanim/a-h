@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".settings_page_fragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="الإعدادات"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="56dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  مظهر الواجهة"
+            android:textSize="28sp"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"
+            android:drawableRight="@drawable/dark_light_a1"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="32dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  شروط الإستخدام"
+            android:textSize="28sp"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"
+            android:drawableRight="@drawable/paper_settings" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="32dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  سياسة الخصوصية"
+            android:textSize="28sp"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"
+            android:drawableRight="@drawable/privacy_policy_file" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="32dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  حول التطبيق"
+            android:textSize="28sp"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"
+            android:drawableRight="@drawable/info_file" />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
