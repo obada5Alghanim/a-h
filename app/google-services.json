@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "216584733944",
+    "project_id": "al-rewaq-abmo",
+    "storage_bucket": "al-rewaq-abmo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216584733944:android:82b1184c73168a7191e70d",
+        "android_client_info": {
+          "package_name": "com.example.al_rewaq"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjJRR-O3oqZZppgxh_eMgFiN5hd55-58E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

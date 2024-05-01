@@ -3,20 +3,31 @@ package com.example.al_rewaq;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Sign_In_fragment extends Fragment {
 
-TextView txt;
-Button btn;
+    FirebaseAuth auth;
+    EditText usernameIN,passwordIN;
+    TextView txt;
+    Button btn;
 
 
     @Override
@@ -25,7 +36,9 @@ Button btn;
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_sign__in_fragment, container, false);
-
+        auth = FirebaseAuth.getInstance();
+        usernameIN = rootView.findViewById(R.id.Edt_userName_singIn);
+        passwordIN = rootView.findViewById(R.id.Edt_password_singIn);
         // Find the view by its ID
         txt = rootView.findViewById(R.id.singIn_to_singUp_click);
         btn = rootView.findViewById(R.id.signIn_button);
@@ -44,8 +57,34 @@ Button btn;
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),menu_main.class);
-                startActivity(intent);
+                String userNamelogIn = usernameIN.getText().toString();
+                String passwordlogIn = passwordIN.getText().toString();
+
+                if(!userNamelogIn.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(userNamelogIn).matches()){
+                    if (!passwordlogIn.isEmpty()){
+                        auth.signInWithEmailAndPassword(userNamelogIn , passwordlogIn).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                            @Override
+                            public void onSuccess(AuthResult authResult) {
+                                Intent intent = new Intent(getActivity(),menu_main.class);
+                                startActivity(intent);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getActivity(), "LogIN failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }else {
+                        passwordIN.setError("password cannot be empty");
+                    }
+                } else if (userNamelogIn.isEmpty()) {
+                    usernameIN.setError("user Name cannto be empty");
+
+                }else {
+                    usernameIN.setError("enter valid userName");
+                }
+
+
             }
         });
 
@@ -60,7 +99,8 @@ Button btn;
     }
 }
 
-
+/* Intent intent = new Intent(getActivity(),menu_main.class);
+                startActivity(intent);*/
 
 
 
