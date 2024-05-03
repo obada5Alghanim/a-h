@@ -17,96 +17,93 @@
         app:cardCornerRadius="40dp"
         app:cardElevation="20dp">
 
-    <LinearLayout
-        android:id="@+id/biglinearIdSingIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/frame_1"
-        android:orientation="vertical"
-        android:padding="24dp">
+        <LinearLayout
+            android:id="@+id/biglinearIdSingIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/frame_1aaa"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-    <TextView
-        android:id="@+id/signIntextId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SIGN IN"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="36sp"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/signIntextId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SIGN IN"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/Edt_userName_singIn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/frame_1"
-        android:drawableLeft="@drawable/baseline_person_24"
-        android:drawablePadding="10dp"
-        android:hint="User name"
-        android:padding="10dp"
-        android:textColor="@color/black" />
+            <EditText
+                android:id="@+id/Edt_userName_singIn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/frame_1"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawablePadding="10dp"
+                android:hint="User name"
+                android:padding="10dp"
+                android:textColor="@color/black" />
 
-    <EditText
-        android:id="@+id/Edt_password_singIn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/frame_1"
-        android:drawableLeft="@drawable/outline_lock_24"
-        android:drawableRight="@drawable/hide"
-        android:drawablePadding="10dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:longClickable="false"
-        android:padding="10dp"
-        android:textColor="@color/black" />
-
-
-
-    <Button
-        android:id="@+id/signIn_button"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="35dp"
-        android:backgroundTint="@color/gray"
-        android:text="Sign IN"
-        android:textSize="22sp"
-        app:cornerRadius="30dp"/>
-    <LinearLayout
-        android:id="@+id/signIn_to_singUp_answer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-    <TextView
-        android:id="@+id/donthavanAccountId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Don't Have an account?"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/singIn_to_singUp_click"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:layout_marginLeft="10sp"
-        android:textColor="@color/blue"
-        android:textStyle="italic"/>
+            <EditText
+                android:id="@+id/Edt_password_singIn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/frame_1"
+                android:drawableLeft="@drawable/outline_lock_24"
+                android:drawableRight="@drawable/hide"
+                android:drawablePadding="10dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:longClickable="false"
+                android:padding="10dp"
+                android:textColor="@color/black" />
 
 
+            <Button
+                android:id="@+id/signIn_button"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="35dp"
+                android:backgroundTint="@color/gray"
+                android:text="Sign IN"
+                android:textSize="22sp"
+                app:cornerRadius="30dp" />
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/signIn_to_singUp_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/donthavanAccountId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Don't Have an account?"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/singIn_to_singUp_click"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10sp"
+                    android:text="Sign Up"
+                    android:textColor="@color/blue"
+                    android:textStyle="italic" />
 
 
+            </LinearLayout>
 
 
-    </LinearLayout>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 

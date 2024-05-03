@@ -83,7 +83,7 @@ public class Sign_Up_fragment extends Fragment {
                                 userTable.put("First Name", firstName);
                                 userTable.put("Last Name", lastName);
                                 userTable.put(("User Name"),user);
-
+                                userTable.put(("Password"),pass);
 
                                 Fstore.collection("Users").add(userTable).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                     @Override
