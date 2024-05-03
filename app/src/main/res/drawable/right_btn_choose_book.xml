@@ -1,26 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item>
-
-        <shape
-            android:shape="oval">
-            <solid
-                android:color="#D6D6D6"/>
-            <size
-                android:width="32dp"
-                android:height="32dp"/>
-
-            <stroke android:width="2dp"
-                android:color="#00A4A4"/>
-        </shape>
-
-    </item>
-    <item
-        android:drawable="@drawable/vector_next"
-        android:width="24dp"
-        android:height="18dp"
-        android:gravity="center"
-        />
-
-</layer-list>
+</selector>
