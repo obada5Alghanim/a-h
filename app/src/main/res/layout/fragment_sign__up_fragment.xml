@@ -104,7 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:gravity="center"
+
                 android:orientation="horizontal">
 
                 <EditText
@@ -125,6 +125,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/frame_1"
                     android:drawablePadding="10dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
                     android:hint="Month"
                     android:drawableRight="@drawable/sharp_keyboard_arrow_down_24"
                     android:padding="10dp"
@@ -169,7 +171,7 @@
                 android:drawableLeft="@drawable/outline_lock_24"
                 android:drawableRight="@drawable/hide"
                 android:drawablePadding="10dp"
-                android:hint="Password"
+                android:hint="Confirm Password"
                 android:inputType="textPassword"
                 android:longClickable="false"
                 android:padding="10dp"
