@@ -8,8 +8,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -28,6 +31,7 @@ public class Sign_In_fragment extends Fragment {
     EditText usernameIN,passwordIN;
     TextView txt;
     Button btn;
+    boolean passwordVisiable;
 
 
     @Override
@@ -53,6 +57,33 @@ public class Sign_In_fragment extends Fragment {
                 ft.commit();
             }
         });
+
+        passwordIN.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int Right=2;
+                if (event.getAction()==MotionEvent.ACTION_UP){
+                    if(event.getRawX()>= passwordIN.getRight()-passwordIN.getCompoundDrawables()[Right].getBounds().width()) {
+                        int selection = passwordIN.getSelectionEnd();
+                        if (passwordVisiable) {
+                            //set drawable Image
+                            passwordIN.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.outline_lock_24, 0, R.drawable.hide, 0);
+                            passwordIN.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisiable = false;
+                        } else {
+                            passwordIN.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.outline_lock_24, 0, R.drawable.clarity_eye_show_line, 0);
+                            passwordIN.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisiable = true;
+                        }
+                        passwordIN.setSelection(selection);
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        });
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

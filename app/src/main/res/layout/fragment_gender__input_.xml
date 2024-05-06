@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shadow_to_gender_fragment"
+    android:id="@+id/genderFragment"
+    tools:context=".Gender_Input_Fragment">
+
+    <TextView
+        android:id="@+id/maleId"
+        android:layout_width="310dp"
+        android:layout_height="56dp"
+        android:layout_above="@+id/femaleId"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/frame_2a"
+        android:drawableLeft="@drawable/male_svg"
+        android:drawablePadding="12dp"
+        android:padding="5dp"
+        android:text="Male"
+        android:textColor="@color/black"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/femaleId"
+        android:layout_width="310dp"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="315dp"
+        android:background="@drawable/frame_2aa"
+        android:drawableLeft="@drawable/female_svg"
+        android:drawablePadding="12dp"
+        android:padding="5dp"
+        android:text="Female"
+        android:textColor="@color/black"
+        android:textSize="32sp" />
+
+
+</RelativeLayout>

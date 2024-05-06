@@ -51,7 +51,7 @@ public class RST_result_fragment extends Fragment {
             requireActivity().getSupportFragmentManager().beginTransaction()
                     .remove(this)
                     .commit();
-        };
+        }
 
 
     }
