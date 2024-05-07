@@ -297,8 +297,7 @@ public class Sign_Up_fragment extends Fragment {
                                 userTable.put(("Gender"),gender);
                                 userTable.put(("Date of Birth"),day + "/"+month+"/"+year );
                                 userTable.put(("Password"),pass);
-                                //we will change pass to confirmpassword later
-                                userTable.put(("Confirm Password"),pass);
+
 
                                 Fstore.collection("Users").add(userTable).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                     @Override
