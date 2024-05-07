@@ -1,6 +1,11 @@
 package com.example.al_rewaq;
 
+import static android.content.ContentValues.TAG;
+
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,11 +15,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,16 +33,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Sign_Up_fragment extends Fragment {
     private FirebaseAuth auth;
     private EditText userName, password , FirstName, LastName ,confirmPassword;
-    TextView txt,Gender , Day1 , month1 , year1;
+    TextView txt,Gender , Day1 , month1 , year1,maleTextView,femaleTextView;
     Button btn;
     FirebaseFirestore Fstore;
     boolean passwordVisiable;
+    DatePickerDialog.OnDateSetListener onDateSetListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,6 +59,8 @@ public class Sign_Up_fragment extends Fragment {
         FirstName = rootView.findViewById(R.id.Edt_signUp_firstName);
         LastName = rootView.findViewById(R.id.Edt_signUp_lastName);
         Gender = rootView.findViewById(R.id.Edt_signUP_gender);
+        maleTextView = rootView.findViewById(R.id.male_genderText);
+        femaleTextView = rootView.findViewById(R.id.female_genderText);
         Day1 = rootView.findViewById(R.id.DOB1);
         month1 = rootView.findViewById(R.id.DOB2);
         year1 = rootView.findViewById(R.id.DOB3);
@@ -73,9 +84,26 @@ public class Sign_Up_fragment extends Fragment {
         Gender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Gender_Input_Fragment genderInputFragment = new Gender_Input_Fragment();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction().add(android.R.id.content,genderInputFragment).commit();
+                maleTextView.setVisibility(View.VISIBLE);
+                femaleTextView.setVisibility(View.VISIBLE);
+                maleTextView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Gender.setText("Male");
+                        maleTextView.setVisibility(View.GONE);
+                        femaleTextView.setVisibility(View.GONE);
+
+                    }
+                });
+                femaleTextView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Gender.setText("Female");
+                        maleTextView.setVisibility(View.GONE);
+                        femaleTextView.setVisibility(View.GONE);
+
+                    }
+                });
 
             }
         });
@@ -83,9 +111,25 @@ public class Sign_Up_fragment extends Fragment {
         Day1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Date_age_Fragment dateAgeFragment = new Date_age_Fragment();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction().add(android.R.id.content,dateAgeFragment).commit();
+                Calendar calendar = Calendar.getInstance();
+                int year  = calendar.get(Calendar.YEAR);
+                int month  = calendar.get(Calendar.MONTH);
+                int day  = calendar.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
+                        android.R.style.Theme_Holo_Light_Dialog,onDateSetListener,year,month,day);
+
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+
+                onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        Day1.setText(String.valueOf(dayOfMonth));
+                        month1.setText(String.valueOf(month));
+                        year1.setText(String.valueOf(year));
+                    }
+                };
 
 
             }
@@ -94,18 +138,55 @@ public class Sign_Up_fragment extends Fragment {
         month1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Date_age_Fragment dateAgeFragment = new Date_age_Fragment();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction().add(android.R.id.content,dateAgeFragment).commit();
+                Calendar calendar = Calendar.getInstance();
+                int year  = calendar.get(Calendar.YEAR);
+                int month  = calendar.get(Calendar.MONTH);
+                int day  = calendar.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
+                        android.R.style.Theme_Holo_Light_Dialog,onDateSetListener,year,month,day);
+
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+
+                onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        Day1.setText(String.valueOf(dayOfMonth));
+                        month1.setText(String.valueOf(month));
+                        year1.setText(String.valueOf(year));
+                    }
+                };
+
+
             }
         });
 
         year1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Date_age_Fragment dateAgeFragment = new Date_age_Fragment();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction().add(android.R.id.content,dateAgeFragment).commit();
+                Calendar calendar = Calendar.getInstance();
+                int year  = calendar.get(Calendar.YEAR);
+                int month  = calendar.get(Calendar.MONTH);
+                int day  = calendar.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
+                        android.R.style.Theme_Holo_Light_Dialog,onDateSetListener,year,month,day);
+
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+
+                onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        Day1.setText(String.valueOf(dayOfMonth));
+                        month1.setText(String.valueOf(month));
+                        year1.setText(String.valueOf(year));
+                    }
+                };
+
+
             }
         });
 
@@ -174,7 +255,6 @@ public class Sign_Up_fragment extends Fragment {
                 final String ConfirmPassword = confirmPassword.getText().toString().trim();
                 final String firstName = FirstName.getText().toString();
                 final String lastName = LastName.getText().toString();
-                //the gender will not be empty we should write a code to it later
                 final String gender  = Gender.getText().toString();
                 //the Day will not be empty we should write a code to it later
                 final String day  = Day1.getText().toString();
@@ -195,6 +275,14 @@ public class Sign_Up_fragment extends Fragment {
                     LastName.setError("Last Name cannot be empty ");
                 }if (ConfirmPassword.isEmpty()){
                     LastName.setError("Confirm Password cannot be empty ");
+                }if (gender.isEmpty()){
+                    Gender.setError("Gender cannot be empty");
+                }if (day.isEmpty()){
+                    Day1.setError("day cannot be empty");
+                }if (month.isEmpty()){
+                    month1.setError("day cannot be empty");
+                }if (year.isEmpty()){
+                    year1.setError("day cannot be empty");
                 }
                 else {
                     auth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
