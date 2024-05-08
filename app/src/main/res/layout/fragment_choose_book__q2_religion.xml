@@ -4,7 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="172dp"
     tools:context=".choose_book_Q2_religion">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="26dp"
+        android:text="السؤال(2)"
+        android:textColor="#FFFFFF"
+        android:textSize="10dp" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="316dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="26dp"
+        android:text="ما هو تصنيف الديني الذي تود ان تقرأ ؟"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"/>
 
     <Button
         android:id="@+id/answar2_1_r"
@@ -14,7 +41,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="251dp"
+        android:layout_marginTop="183dp"
         android:layout_marginEnd="60dp"
         android:backgroundTint="#D6D6D6"
         android:text="العلوم الشرعية"
@@ -33,7 +60,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="430dp"
+        android:layout_marginTop="372dp"
         android:layout_marginEnd="60dp"
         android:backgroundTint="#D6D6D6"
         android:text="الرسل والأنبياء"
@@ -51,7 +78,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="341dp"
+        android:layout_marginTop="275dp"
         android:layout_marginEnd="60dp"
         android:backgroundTint="#D6D6D6"
         android:text="السيرة النبوية"
@@ -61,29 +88,8 @@
         app:strokeColor="#00A4A4"
         app:strokeWidth="1dp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="316dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="26dp"
-        android:text="ما هو تصنيف الديني الذي تود ان تقرأ ؟"
-        android:textSize="22dp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"/>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="101dp"
-        android:layout_marginEnd="26dp"
-        android:text="السؤال(2)"
-        android:textColor="#FFFFFF"
-        android:textSize="10dp" />
+
+
 
 </RelativeLayout>

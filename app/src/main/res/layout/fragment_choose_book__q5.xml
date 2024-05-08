@@ -7,6 +7,32 @@
     tools:context=".choose_book_Q5">
 
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="26dp"
+        android:text="السؤال(5)"
+        android:textColor="#FFFFFF"
+        android:textSize="10dp" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="374dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="26dp"
+        android:text="ما هو عدد الصفحات الذي تود ان تقرأ به ؟"
+        android:textColor="#FFFFFF"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+
+
     <Button
         android:id="@+id/answar5_1"
         android:layout_width="177dp"
@@ -15,7 +41,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="268dp"
+        android:layout_marginTop="183dp"
         android:layout_marginEnd="60dp"
         android:backgroundTint="#D6D6D6"
         android:text="أقل من 300 صفحة"
@@ -33,7 +59,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="351dp"
+        android:layout_marginTop="275dp"
         android:layout_marginEnd="60dp"
         android:backgroundTint="#D6D6D6"
         android:text="أكثر من 300 صفحة"
@@ -43,29 +69,5 @@
         app:strokeColor="#00A4A4"
         app:strokeWidth="1dp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="374dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="26dp"
-        android:text="ما هو عدد الصفحات الذي تود ان تقرأ به ؟"
-        android:textColor="#FFFFFF"
-        android:textSize="22dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="101dp"
-        android:layout_marginEnd="26dp"
-        android:text="السؤال(5)"
-        android:textColor="#FFFFFF"
-        android:textSize="10dp" />
 
 </RelativeLayout>

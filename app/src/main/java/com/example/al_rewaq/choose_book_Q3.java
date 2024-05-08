@@ -25,12 +25,12 @@ public class choose_book_Q3 extends Fragment {
         click_answar3_2 = view.findViewById(R.id.answar3_2);
 
         click_answar3_1.setOnClickListener(new View.OnClickListener() {
-            boolean Clicked1 = false;
+
             @Override
             public void onClick(View v) {
 
 
-                if (Clicked1 == false){
+
                     click_answar3_1.setTextColor(Color.WHITE);
                     click_answar3_1.setBackgroundColor(Color.BLACK);
                     int color = ContextCompat.getColor(requireContext(), R.color.white2);
@@ -38,22 +38,17 @@ public class choose_book_Q3 extends Fragment {
                     click_answar3_2.setTextColor(Color.BLACK);
                     click_answar3_2.setBackgroundColor(color);
 
-                    Clicked1 = true;}
-                else if (Clicked1 == true) {
-                    click_answar3_1.setTextColor(Color.BLACK);
-                    int color = ContextCompat.getColor(requireContext(), R.color.white2);
-                    click_answar3_1.setBackgroundColor(color);
-                    Clicked1 = false;}
+
             }
         });
 
         click_answar3_2.setOnClickListener(new View.OnClickListener() {
-            boolean Clicked2 = false;
+
             @Override
             public void onClick(View v) {
 
 
-                if (Clicked2 == false){
+
                     click_answar3_2.setTextColor(Color.WHITE);
                     click_answar3_2.setBackgroundColor(Color.BLACK);
                     int color = ContextCompat.getColor(requireContext(), R.color.white2);
@@ -61,12 +56,7 @@ public class choose_book_Q3 extends Fragment {
                     click_answar3_1.setTextColor(Color.BLACK);
                     click_answar3_1.setBackgroundColor(color);
 
-                    Clicked2 = true;}
-                else if (Clicked2 == true) {
-                    click_answar3_2.setTextColor(Color.BLACK);
-                    int color = ContextCompat.getColor(requireContext(), R.color.white2);
-                    click_answar3_2.setBackgroundColor(color);
-                    Clicked2 = false;}
+
             }
         });
 
