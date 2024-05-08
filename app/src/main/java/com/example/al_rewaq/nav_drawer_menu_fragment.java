@@ -1,6 +1,8 @@
 package com.example.al_rewaq;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -31,6 +33,10 @@ public class nav_drawer_menu_fragment extends Fragment {
 
     TextView textViewUserName;
 
+    SharedPreferences sharedPreferences;
+    private static final String SHARED_PREF_NAME ="remberMeForAlrewaq";
+    private static final String KEY_NAME ="USERNAME";
+    private static final String KEY_PASSWORD ="PASSWORDUSER";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,6 +50,8 @@ public class nav_drawer_menu_fragment extends Fragment {
         TextView textViewchooesBook = view.findViewById(R.id.chooes_book);
         textViewUserName = view.findViewById(R.id.userNameTextViewInMenu);
         LinearLayout linearLayout = view.findViewById(R.id.navDrawerMenu2);
+        sharedPreferences = getActivity().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
 
        /* DocumentReference documentReference = fStore.collection("Users").document(userId);
 
@@ -54,16 +62,6 @@ public class nav_drawer_menu_fragment extends Fragment {
             }
         });*/
 
-        textViewSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                settings_page_fragment settingsPageFragment = new settings_page_fragment();
-                ft.replace(android.R.id.content,settingsPageFragment);
-                ft.commit();
-            }
-        });
 
 
         textViewMyLibrary.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +74,17 @@ public class nav_drawer_menu_fragment extends Fragment {
                 ft.commit();
             }
         });
+        textViewchooesBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                choose_book_next_back_btns_fragment chooseBookNextBackBtnsFragment = new choose_book_next_back_btns_fragment();
+                ft.replace(android.R.id.content,chooseBookNextBackBtnsFragment);
+                ft.commit();
+            }
+        });
+
 
         textViewspeedTest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,26 +108,33 @@ public class nav_drawer_menu_fragment extends Fragment {
 
             }
         });
-
-        textViewLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logOutAuth.signOut();
-                Intent intent = new Intent(getActivity(),Sign_In_fragment.class);
-                startActivity(intent);
-
-            }
-        });
-        textViewchooesBook.setOnClickListener(new View.OnClickListener() {
+        textViewSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                choose_book_next_back_btns_fragment chooseBookNextBackBtnsFragment = new choose_book_next_back_btns_fragment();
-                choose_book_Q1 chooseBookQ1 = new choose_book_Q1();
-                ft.replace(android.R.id.content,chooseBookNextBackBtnsFragment);
-                ft.add(android.R.id.content,chooseBookQ1);
+                settings_page_fragment settingsPageFragment = new settings_page_fragment();
+                ft.replace(android.R.id.content,settingsPageFragment);
                 ft.commit();
+            }
+        });
+        //cheack pref/////////////////////////////////////////////////////////
+        String checkedPref = sharedPreferences.getString(KEY_NAME,null);
+        String checkedPrefPassword = sharedPreferences.getString(KEY_PASSWORD,null);
+        //in this code we will change the name of user
+        if (checkedPref != null || checkedPrefPassword != null){
+
+        }
+        textViewLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+                logOutAuth.signOut();
+                Intent intent = new Intent(getActivity(),Sign_In_fragment.class);
+                startActivity(intent);
+
             }
         });
 

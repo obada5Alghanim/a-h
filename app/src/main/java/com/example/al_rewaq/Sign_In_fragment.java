@@ -1,6 +1,8 @@
 package com.example.al_rewaq;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -33,6 +35,11 @@ public class Sign_In_fragment extends Fragment {
     Button btn;
     boolean passwordVisiable;
 
+    SharedPreferences sharedPreferences;
+    private static final String SHARED_PREF_NAME ="remberMeForAlrewaq";
+    private static final String KEY_NAME ="USERNAME";
+    private static final String KEY_PASSWORD ="PASSWORDUSER";
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,6 +53,7 @@ public class Sign_In_fragment extends Fragment {
         // Find the view by its ID
         txt = rootView.findViewById(R.id.singIn_to_singUp_click);
         btn = rootView.findViewById(R.id.signIn_button);
+        sharedPreferences = getActivity().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         // Set click listener or perform any other operation on the view
         txt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +93,14 @@ public class Sign_In_fragment extends Fragment {
         });
 
 
+        //when open it checked shared prefernce data avilable or not
+        String checkedPref = sharedPreferences.getString(KEY_NAME,null);
+        if (checkedPref != null){
+            Intent intent = new Intent(getActivity(),menu_main.class);
+            startActivity(intent);
+
+        }
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +112,10 @@ public class Sign_In_fragment extends Fragment {
                         auth.signInWithEmailAndPassword(userNamelogIn , passwordlogIn).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString(KEY_NAME,usernameIN.getText().toString());
+                                editor.putString(KEY_PASSWORD,passwordIN.getText().toString());
+                                editor.apply();
                                 Intent intent = new Intent(getActivity(),menu_main.class);
                                 startActivity(intent);
                             }
