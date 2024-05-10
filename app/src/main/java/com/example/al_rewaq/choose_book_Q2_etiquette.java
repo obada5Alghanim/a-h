@@ -10,11 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class choose_book_Q2_etiquette extends Fragment {
 
     Button click_answar2_1_e, click_answar2_2_e ,click_answar2_3_e;
+
+    TextView next_Q_btn, prev_Q_btn;
+    private  int sum =0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,13 +31,17 @@ public class choose_book_Q2_etiquette extends Fragment {
         click_answar2_2_e = view.findViewById(R.id.answar2_2_e);
         click_answar2_3_e = view.findViewById(R.id.answar2_3_e);
 
+        next_Q_btn = view.findViewById(R.id.next_Q);
+        prev_Q_btn = view.findViewById(R.id.previous_Q);
+        choose_book_Q1 choose_book_q1 = new choose_book_Q1();
+        choose_book_Q3 chooseBookQ3 = new choose_book_Q3();
+
         click_answar2_1_e.setOnClickListener(new View.OnClickListener() {
             boolean Clicked1 = false;
             @Override
             public void onClick(View v) {
 
-
-                if (Clicked1 == false){
+                   sum = 1;
                     click_answar2_1_e.setTextColor(Color.WHITE);
                     click_answar2_1_e.setBackgroundColor(Color.BLACK);
                     int color = ContextCompat.getColor(requireContext(), R.color.white2);
@@ -43,7 +52,7 @@ public class choose_book_Q2_etiquette extends Fragment {
                     click_answar2_3_e.setTextColor(Color.BLACK);
                     click_answar2_3_e.setBackgroundColor(color);
 
-                   }
+
 
             }
         });
@@ -52,6 +61,7 @@ public class choose_book_Q2_etiquette extends Fragment {
 
             @Override
             public void onClick(View v) {
+                    sum = 2;
 
                     click_answar2_2_e.setTextColor(Color.WHITE);
                     click_answar2_2_e.setBackgroundColor(Color.BLACK);
@@ -72,7 +82,7 @@ public class choose_book_Q2_etiquette extends Fragment {
 
             @Override
             public void onClick(View v) {
-
+                   sum =3;
 
                     click_answar2_3_e.setTextColor(Color.WHITE);
                     click_answar2_3_e.setBackgroundColor(Color.BLACK);
@@ -88,6 +98,53 @@ public class choose_book_Q2_etiquette extends Fragment {
 
         });
 
+        next_Q_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if(sum == 1){
+                    sum = 0;
+                    getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
+                    removeFragment();
+                } else if (sum == 2) {
+                    sum = 0;
+                    getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
+                    removeFragment();
+                } else if (sum == 3) {
+                    sum = 0;
+                    getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
+                    removeFragment();
+
+                }else{
+                    Toast.makeText(getContext(), "قم بتحديد إحدى الخيارات", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+        prev_Q_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                sum = 0;
+                getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,choose_book_q1).commit();
+                removeFragment();
+            }
+        });
+
         return view;
     }
+
+    private void removeFragment() {
+        if (requireActivity().getSupportFragmentManager() != null) {
+            // Begin a transaction to remove this fragment
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .remove(this)
+                    .commit();
+        }
+
+    }
+
+
+
 }

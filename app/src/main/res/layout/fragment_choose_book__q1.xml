@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="172dp"
+    android:layout_marginBottom="130dp"
     tools:context=".choose_book_Q1">
 
     <TextView
@@ -18,19 +18,20 @@
         android:text="السؤال(1)"
         android:textColor="#FFFFFF"
         android:textSize="10dp" />
+
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="316dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="26dp"
-        android:text="ما هو التصنيف الذي تود أن تقرأ ؟"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="22dp"
+        android:text="ما هو التصنيف الذي تود أن تقرأه ؟"
+        android:textColor="#FFFFFF"
         android:textSize="22dp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"/>
-
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/answar1_1"
@@ -128,7 +129,25 @@
         app:strokeColor="#00A4A4"
         app:strokeWidth="1dp" />
 
-
+    <TextView
+        android:id="@+id/next_Q"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="242dp"
+        android:layout_marginTop="141dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="9dp"
+        android:background="@drawable/left_right_btn_choose_book"
+        android:drawableRight="@drawable/right_btn_choose_book"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:text="  السؤال التالي"
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

@@ -51,6 +51,8 @@ public class nav_drawer_menu_fragment extends Fragment {
         textViewUserName = view.findViewById(R.id.userNameTextViewInMenu);
         LinearLayout linearLayout = view.findViewById(R.id.navDrawerMenu2);
         sharedPreferences = getActivity().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        //READING TABLE FOR TEST THE NEW SPEED TEST READING
+        TextView textViewReadingTable = view.findViewById(R.id.READINGTABLE);
 
 
        /* DocumentReference documentReference = fStore.collection("Users").document(userId);
@@ -79,8 +81,8 @@ public class nav_drawer_menu_fragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                choose_book_next_back_btns_fragment chooseBookNextBackBtnsFragment = new choose_book_next_back_btns_fragment();
-                ft.replace(android.R.id.content,chooseBookNextBackBtnsFragment);
+                choose_book_Q1 choose_book_q1 = new choose_book_Q1();
+                ft.replace(android.R.id.content,choose_book_q1);
                 ft.commit();
             }
         });
@@ -90,11 +92,18 @@ public class nav_drawer_menu_fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                Reading_speed_test_fragment readingSpeedTestFragment = new Reading_speed_test_fragment();
-                ft.replace(android.R.id.content,readingSpeedTestFragment);
+                FragmentTransaction ft  = fm.beginTransaction();
+                reading_speed_test_new readingSpeedTestNew =new reading_speed_test_new();
+                ft.replace(android.R.id.content,readingSpeedTestNew);
                 ft.commit();
 
+
+            }
+        });
+
+        textViewReadingTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
             }
         });

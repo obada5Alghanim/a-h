@@ -10,11 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class choose_book_Q4 extends Fragment {
 
     Button click_answar4_1, click_answar4_2;
+
+
+    TextView next_Q_btn, prev_Q_btn;
+    private  int sum =0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -24,12 +30,17 @@ public class choose_book_Q4 extends Fragment {
         click_answar4_1 = view.findViewById(R.id.answar4_1);
         click_answar4_2 = view.findViewById(R.id.answar4_2);
 
+        next_Q_btn = view.findViewById(R.id.next_Q);
+        prev_Q_btn = view.findViewById(R.id.previous_Q);
+        choose_book_Q3 chooseBookQ3 = new choose_book_Q3();
+        choose_book_Q5 chooseBookQ5 = new choose_book_Q5();
+
         click_answar4_1.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-
+                  sum =1;
 
                     click_answar4_1.setTextColor(Color.WHITE);
                     click_answar4_1.setBackgroundColor(Color.BLACK);
@@ -48,7 +59,7 @@ public class choose_book_Q4 extends Fragment {
             public void onClick(View v) {
 
 
-
+                   sum =2;
                     click_answar4_2.setTextColor(Color.WHITE);
                     click_answar4_2.setBackgroundColor(Color.BLACK);
                     int color = ContextCompat.getColor(requireContext(), R.color.white2);
@@ -60,6 +71,48 @@ public class choose_book_Q4 extends Fragment {
             }
         });
 
+
+        next_Q_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if(sum == 1){
+                    sum = 0;
+                    getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ5).commit();
+                    removeFragment();
+                } else if (sum == 2) {
+                    sum = 0;
+                    getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ5).commit();
+                    removeFragment();
+                } else{
+                    Toast.makeText(getContext(), "قم بتحديد إحدى الخيارات", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+        prev_Q_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                sum = 0 ;
+                getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
+                removeFragment();
+            }
+        });
+
         return view;
+    }
+
+
+
+    private void removeFragment() {
+        if (requireActivity().getSupportFragmentManager() != null) {
+            // Begin a transaction to remove this fragment
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .remove(this)
+                    .commit();
+        }
+
     }
 }
