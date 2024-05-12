@@ -73,35 +73,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
-                    android:button="@android:color/transparent"
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <CheckBox
-                        android:id="@+id/checkBox1"
-                        android:layout_width="170dp"
-                        android:layout_height="50dp"
-                        android:layout_marginEnd="5dp"
-                        android:background="@drawable/checkboxes"
-                        android:button="@android:color/transparent"
-                        android:checked="false"
-                        android:gravity="center"
-                        android:text="الثقافة العامة"
-                        android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
 
-                    <CheckBox
-                        android:id="@+id/checkBox2"
+                    <Button
+                        android:id="@+id/Button1"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:background="@drawable/checkboxes"
-                        android:button="@android:color/transparent"
-                        android:checked="false"
                         android:gravity="center"
                         android:text="التنمية البشرية"
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        android:onClick="change"/>
+
+                    <Button
+                        android:id="@+id/Button2"
+                        android:layout_width="170dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/checkboxes"
+                        android:gravity="center"
+                        android:text="التنمية البشرية"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp"
+                        android:onClick="change"/>
 
                 </LinearLayout>
 
@@ -112,31 +110,29 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <CheckBox
-                        android:id="@+id/checkBox3"
+                    <Button
+                        android:id="@+id/Button3"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
                         android:background="@drawable/checkboxes"
-                        android:button="@android:color/transparent"
-                        android:checked="false"
                         android:gravity="center"
                         android:text="روايات عالمية ومترجمة"
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        android:onClick="change"/>
 
-                    <CheckBox
-                        android:id="@+id/checkBox4"
+                    <Button
+                        android:id="@+id/Button4"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:background="@drawable/checkboxes"
-                        android:button="@android:color/transparent"
-                        android:checked="false"
                         android:gravity="center"
                         android:text="روايات اجنبية مترجمة"
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        android:onClick="change"/>
 
                 </LinearLayout>
 
@@ -147,61 +143,22 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <CheckBox
-                        android:id="@+id/checkBox5"
+                    <Button
+                        android:id="@+id/Button5"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
                         android:background="@drawable/checkboxes"
-                        android:button="@android:color/transparent"
-                        android:checked="false"
                         android:gravity="center"
                         android:text="روايات عالمية ومترجمة"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp" />
-
-                    <CheckBox
-                        android:id="@+id/checkBox6"
+                    <Button
+                        android:id="@+id/Button6"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:background="@drawable/checkboxes"
-                        android:button="@android:color/transparent"
-                        android:checked="false"
-                        android:gravity="center"
-                        android:text="روايات اجنبية مترجمة"
-                        android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/checkBox7"
-                        android:layout_width="170dp"
-                        android:layout_height="50dp"
-                        android:layout_marginEnd="5dp"
-                        android:background="@drawable/checkboxes"
-                        android:button="@android:color/transparent"
-                        android:checked="false"
-                        android:gravity="center"
-                        android:text="روايات عالمية ومترجمة"
-                        android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
-
-                    <CheckBox
-                        android:id="@+id/checkBox8"
-                        android:layout_width="170dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="5dp"
-                        android:background="@drawable/checkboxes"
-                        android:button="@android:color/transparent"
-                        android:checked="false"
                         android:gravity="center"
                         android:text="روايات اجنبية مترجمة"
                         android:textColor="#FFFFFF"
@@ -215,27 +172,23 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <CheckBox
-                        android:id="@+id/checkBox9"
+                    <Button
+                        android:id="@+id/Button7"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
                         android:background="@drawable/checkboxes"
-                        android:button="@android:color/transparent"
-                        android:checked="false"
                         android:gravity="center"
                         android:text="روايات عالمية ومترجمة"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp" />
 
-                    <CheckBox
-                        android:id="@+id/checkBox10"
+                    <Button
+                        android:id="@+id/Button8"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:background="@drawable/checkboxes"
-                        android:button="@android:color/transparent"
-                        android:checked="false"
                         android:gravity="center"
                         android:text="روايات اجنبية مترجمة"
                         android:textColor="#FFFFFF"
@@ -249,27 +202,53 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <CheckBox
-                        android:id="@+id/checkBox11"
+                    <Button
+                        android:id="@+id/Button9"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
                         android:background="@drawable/checkboxes"
-                        android:button="@android:color/transparent"
-                        android:checked="false"
                         android:gravity="center"
                         android:text="روايات عالمية ومترجمة"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp" />
 
-                    <CheckBox
-                        android:id="@+id/checkBox12"
+                    <Button
+                        android:id="@+id/Button10"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:background="@drawable/checkboxes"
-                        android:button="@android:color/transparent"
-                        android:checked="false"
+                        android:gravity="center"
+                        android:text="روايات اجنبية مترجمة"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/Button11"
+                        android:layout_width="170dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/checkboxes"
+                        android:gravity="center"
+                        android:text="روايات عالمية ومترجمة"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp" />
+
+                    <Button
+                        android:id="@+id/Button12"
+                        android:layout_width="170dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/checkboxes"
                         android:gravity="center"
                         android:text="روايات اجنبية مترجمة"
                         android:textColor="#FFFFFF"
