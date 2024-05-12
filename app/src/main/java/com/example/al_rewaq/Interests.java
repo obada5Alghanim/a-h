@@ -1,47 +1,46 @@
 package com.example.al_rewaq;
 
 
-import static androidx.core.content.ContentProviderCompat.requireContext;
 
-import android.annotation.SuppressLint;
+
+
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 
 
 public class Interests extends AppCompatActivity {
 
-    Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9 ,bt10,bt11,bt12,btn1,btn2;
+    Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9 ,bt10,bt11,bt12,bt13,bt14,bt15,bt16,bt17,btn1,btn2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interests);
-        bt1=findViewById(R.id.Button1);
-        bt2=findViewById(R.id.Button2);
-        bt3=findViewById(R.id.Button3);
-        bt4=findViewById(R.id.Button5);
-        bt6=findViewById(R.id.Button6);
-        bt7=findViewById(R.id.Button7);
-        bt8=findViewById(R.id.Button8);
-        bt9=findViewById(R.id.Button9);
-        bt10=findViewById(R.id.Button10);
-        bt11=findViewById(R.id.Button11);
-        bt12=findViewById(R.id.Button12);
-        btn1 =findViewById(R.id.selected_btn);
+        bt1= findViewById(R.id.Button1);
+        bt2= findViewById(R.id.Button2);
+        bt3= findViewById(R.id.Button3);
+        bt4= findViewById(R.id.Button4);
+        bt5 = findViewById(R.id.Button5);
+        bt6= findViewById(R.id.Button6);
+        bt7= findViewById(R.id.Button7);
+        bt8= findViewById(R.id.Button8);
+        bt9= findViewById(R.id.Button9);
+        bt10= findViewById(R.id.Button10);
+        bt11= findViewById(R.id.Button11);
+        bt12= findViewById(R.id.Button12);
+        bt13= findViewById(R.id.Button13);
+        bt14= findViewById(R.id.Button14);
+        bt15= findViewById(R.id.Button15);
+        bt16= findViewById(R.id.Button16);
+        bt17= findViewById(R.id.Button17);
+        btn1 = findViewById(R.id.selected_btn);
         btn2 = findViewById(R.id.cancel_btn);
         bt1.setOnClickListener(new View.OnClickListener() {
 
@@ -50,43 +49,58 @@ public class Interests extends AppCompatActivity {
 
 
 
-                bt1.setTextColor(Color.WHITE);
-                bt1.setBackgroundColor(Color.BLACK);
-                int color = ContextCompat.getColor(Interests.this, R.color.white2);
-
-                bt2.setTextColor(Color.BLACK);
-                bt2.setBackgroundColor(color);
-
-                bt3.setTextColor(Color.BLACK);
-                bt3.setBackgroundColor(color);
-
-                bt4.setTextColor(Color.BLACK);
-                bt4.setBackgroundColor(color);
-
-                bt5.setTextColor(Color.BLACK);
-                bt5.setBackgroundColor(color);
-
-                bt6.setTextColor(Color.BLACK);
-                bt6.setBackgroundColor(color);
+                bt1.setTextColor(Color.BLACK);
+                bt1.setBackgroundColor(Color.WHITE);
 
 
-                bt7.setTextColor(Color.BLACK);
-                bt7.setBackgroundColor(color);
+                bt2.setTextColor(Color.WHITE);
+                bt2.setBackgroundColor(Color.BLACK);
 
-                bt8.setTextColor(Color.BLACK);
-                bt8.setBackgroundColor(color);
+                bt3.setTextColor(Color.WHITE);
+                bt3.setBackgroundColor(Color.BLACK);
 
-                bt9.setTextColor(Color.BLACK);
-                bt9.setBackgroundColor(color);
+                bt4.setTextColor(Color.WHITE);
+                bt4.setBackgroundColor(Color.BLACK);
 
-                bt10.setTextColor(Color.BLACK);
-                bt10.setBackgroundColor(color);
+                bt5.setTextColor(Color.WHITE);
+                bt5.setBackgroundColor(Color.BLACK);
 
-                bt11.setTextColor(Color.BLACK);
-                bt11.setBackgroundColor(color);
+                bt6.setTextColor(Color.WHITE);
+                bt6.setBackgroundColor(Color.BLACK);
 
-                bt12.setTextColor(Color.BLACK);
-                bt12.setBackgroundColor(color);
+
+                bt7.setTextColor(Color.WHITE);
+                bt7.setBackgroundColor(Color.BLACK);
+
+                bt8.setTextColor(Color.WHITE);
+                bt8.setBackgroundColor(Color.BLACK);
+
+                bt9.setTextColor(Color.WHITE);
+                bt9.setBackgroundColor(Color.BLACK);
+
+                bt10.setTextColor(Color.WHITE);
+                bt10.setBackgroundColor(Color.BLACK);
+
+                bt11.setTextColor(Color.WHITE);
+                bt11.setBackgroundColor(Color.BLACK);
+
+                bt12.setTextColor(Color.WHITE);
+                bt12.setBackgroundColor(Color.BLACK);
+
+                bt13.setTextColor(Color.WHITE);
+                bt13.setBackgroundColor(Color.BLACK);
+
+                bt14.setTextColor(Color.WHITE);
+                bt14.setBackgroundColor(Color.BLACK);
+
+                bt15.setTextColor(Color.WHITE);
+                bt15.setBackgroundColor(Color.BLACK);
+
+                bt16.setTextColor(Color.WHITE);
+                bt16.setBackgroundColor(Color.BLACK);
+
+                bt17.setTextColor(Color.WHITE);
+                bt17.setBackgroundColor(Color.BLACK);
 
             }
         });
@@ -99,89 +113,120 @@ public class Interests extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                bt2.setTextColor(Color.WHITE);
-                bt2.setBackgroundColor(Color.BLACK);
-               // int color = ContextCompat.getColor(requireContext(), R.color.white2);
-                int color = ContextCompat.getColor(Interests.this, R.color.white2);
-                bt1.setTextColor(Color.BLACK);
-                bt1.setBackgroundColor(color);
-
-                bt3.setTextColor(Color.BLACK);
-                bt3.setBackgroundColor(color);
-
-                bt4.setTextColor(Color.BLACK);
-                bt4.setBackgroundColor(color);
-
-                bt5.setTextColor(Color.BLACK);
-                bt5.setBackgroundColor(color);
-
-                bt6.setTextColor(Color.BLACK);
-                bt6.setBackgroundColor(color);
+                bt2.setTextColor(Color.BLACK);
+                bt2.setBackgroundColor(Color.WHITE);
 
 
-                bt7.setTextColor(Color.BLACK);
-                bt7.setBackgroundColor(color);
+                bt1.setTextColor(Color.WHITE);
+                bt1.setBackgroundColor(Color.BLACK);
 
-                bt8.setTextColor(Color.BLACK);
-                bt8.setBackgroundColor(color);
+                bt3.setTextColor(Color.WHITE);
+                bt3.setBackgroundColor(Color.BLACK);
 
-                bt9.setTextColor(Color.BLACK);
-                bt9.setBackgroundColor(color);
+                bt4.setTextColor(Color.WHITE);
+                bt4.setBackgroundColor(Color.BLACK);
 
-                bt10.setTextColor(Color.BLACK);
-                bt10.setBackgroundColor(color);
+                bt5.setTextColor(Color.WHITE);
+                bt5.setBackgroundColor(Color.BLACK);
 
-                bt11.setTextColor(Color.BLACK);
-                bt11.setBackgroundColor(color);
+                bt6.setTextColor(Color.WHITE);
+                bt6.setBackgroundColor(Color.BLACK);
 
-                bt12.setTextColor(Color.BLACK);
-                bt12.setBackgroundColor(color);
+
+                bt7.setTextColor(Color.WHITE);
+                bt7.setBackgroundColor(Color.BLACK);
+
+                bt8.setTextColor(Color.WHITE);
+                bt8.setBackgroundColor(Color.BLACK);
+
+                bt9.setTextColor(Color.WHITE);
+                bt9.setBackgroundColor(Color.BLACK);
+
+                bt10.setTextColor(Color.WHITE);
+                bt10.setBackgroundColor(Color.BLACK);
+
+                bt11.setTextColor(Color.WHITE);
+                bt11.setBackgroundColor(Color.BLACK);
+
+                bt12.setTextColor(Color.WHITE);
+                bt12.setBackgroundColor(Color.BLACK);
+
+                bt13.setTextColor(Color.WHITE);
+                bt13.setBackgroundColor(Color.BLACK);
+
+                bt14.setTextColor(Color.WHITE);
+                bt14.setBackgroundColor(Color.BLACK);
+
+                bt15.setTextColor(Color.WHITE);
+                bt15.setBackgroundColor(Color.BLACK);
+
+                bt16.setTextColor(Color.WHITE);
+                bt16.setBackgroundColor(Color.BLACK);
+
+                bt17.setTextColor(Color.WHITE);
+                bt17.setBackgroundColor(Color.BLACK);
+
             }
-        });
+       });
 
         bt3.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                bt3.setTextColor(Color.WHITE);
-                bt3.setBackgroundColor(Color.BLACK);
-
-                int color = ContextCompat.getColor(Interests.this, R.color.white2);
-
-                bt1.setTextColor(Color.BLACK);
-                bt1.setBackgroundColor(color);
-
-                bt2.setTextColor(Color.BLACK);
-                bt2.setBackgroundColor(color);
-
-                bt4.setTextColor(Color.BLACK);
-                bt4.setBackgroundColor(color);
-
-                bt5.setTextColor(Color.BLACK);
-                bt5.setBackgroundColor(color);
-
-                bt6.setTextColor(Color.BLACK);
-                bt6.setBackgroundColor(color);
+                bt3.setTextColor(Color.BLACK);
+                bt3.setBackgroundColor(Color.WHITE);
 
 
-                bt7.setTextColor(Color.BLACK);
-                bt7.setBackgroundColor(color);
 
-                bt8.setTextColor(Color.BLACK);
-                bt8.setBackgroundColor(color);
+                bt1.setTextColor(Color.WHITE);
+                bt1.setBackgroundColor(Color.BLACK);
 
-                bt9.setTextColor(Color.BLACK);
-                bt9.setBackgroundColor(color);
+                bt2.setTextColor(Color.WHITE);
+                bt2.setBackgroundColor(Color.BLACK);
 
-                bt10.setTextColor(Color.BLACK);
-                bt10.setBackgroundColor(color);
+                bt4.setTextColor(Color.WHITE);
+                bt4.setBackgroundColor(Color.BLACK);
 
-                bt11.setTextColor(Color.BLACK);
-                bt11.setBackgroundColor(color);
+                bt5.setTextColor(Color.WHITE);
+                bt5.setBackgroundColor(Color.BLACK);
 
-                bt12.setTextColor(Color.BLACK);
-                bt12.setBackgroundColor(color);
+                bt6.setTextColor(Color.WHITE);
+                bt6.setBackgroundColor(Color.BLACK);
+
+
+                bt7.setTextColor(Color.WHITE);
+                bt7.setBackgroundColor(Color.BLACK);
+
+                bt8.setTextColor(Color.WHITE);
+                bt8.setBackgroundColor(Color.BLACK);
+
+                bt9.setTextColor(Color.WHITE);
+                bt9.setBackgroundColor(Color.BLACK);
+
+                bt10.setTextColor(Color.WHITE);
+                bt10.setBackgroundColor(Color.BLACK);
+
+                bt11.setTextColor(Color.WHITE);
+                bt11.setBackgroundColor(Color.BLACK);
+
+                bt12.setTextColor(Color.WHITE);
+                bt12.setBackgroundColor(Color.BLACK);
+
+                bt13.setTextColor(Color.WHITE);
+                bt13.setBackgroundColor(Color.BLACK);
+
+                bt14.setTextColor(Color.WHITE);
+                bt14.setBackgroundColor(Color.BLACK);
+
+                bt15.setTextColor(Color.WHITE);
+                bt15.setBackgroundColor(Color.BLACK);
+
+                bt16.setTextColor(Color.WHITE);
+                bt16.setBackgroundColor(Color.BLACK);
+
+                bt17.setTextColor(Color.WHITE);
+                bt17.setBackgroundColor(Color.BLACK);
 
             }
         });
@@ -192,44 +237,59 @@ public class Interests extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                bt4.setTextColor(Color.WHITE);
-                bt4.setBackgroundColor(Color.BLACK);
-
-                int color = ContextCompat.getColor(Interests.this, R.color.white2);
-
-                bt1.setTextColor(Color.BLACK);
-                bt1.setBackgroundColor(color);
-
-                bt2.setTextColor(Color.BLACK);
-                bt2.setBackgroundColor(color);
-
-                bt3.setTextColor(Color.BLACK);
-                bt3.setBackgroundColor(color);
-
-                bt5.setTextColor(Color.BLACK);
-                bt5.setBackgroundColor(color);
-
-                bt6.setTextColor(Color.BLACK);
-                bt6.setBackgroundColor(color);
+                bt4.setTextColor(Color.BLACK);
+                bt4.setBackgroundColor(Color.WHITE);
 
 
-                bt7.setTextColor(Color.BLACK);
-                bt7.setBackgroundColor(color);
 
-                bt8.setTextColor(Color.BLACK);
-                bt8.setBackgroundColor(color);
+                bt1.setTextColor(Color.WHITE);
+                bt1.setBackgroundColor(Color.BLACK);
 
-                bt9.setTextColor(Color.BLACK);
-                bt9.setBackgroundColor(color);
+                bt2.setTextColor(Color.WHITE);
+                bt2.setBackgroundColor(Color.BLACK);
 
-                bt10.setTextColor(Color.BLACK);
-                bt10.setBackgroundColor(color);
+                bt3.setTextColor(Color.WHITE);
+                bt3.setBackgroundColor(Color.BLACK);
 
-                bt11.setTextColor(Color.BLACK);
-                bt11.setBackgroundColor(color);
+                bt5.setTextColor(Color.WHITE);
+                bt5.setBackgroundColor(Color.BLACK);
 
-                bt12.setTextColor(Color.BLACK);
-                bt12.setBackgroundColor(color);
+                bt6.setTextColor(Color.WHITE);
+                bt6.setBackgroundColor(Color.BLACK);
+
+
+                bt7.setTextColor(Color.WHITE);
+                bt7.setBackgroundColor(Color.BLACK);
+
+                bt8.setTextColor(Color.WHITE);
+                bt8.setBackgroundColor(Color.BLACK);
+
+                bt9.setTextColor(Color.WHITE);
+                bt9.setBackgroundColor(Color.BLACK);
+
+                bt10.setTextColor(Color.WHITE);
+                bt10.setBackgroundColor(Color.BLACK);
+
+                bt11.setTextColor(Color.WHITE);
+                bt11.setBackgroundColor(Color.BLACK);
+
+                bt12.setTextColor(Color.WHITE);
+                bt12.setBackgroundColor(Color.BLACK);
+
+                bt13.setTextColor(Color.WHITE);
+                bt13.setBackgroundColor(Color.BLACK);
+
+                bt14.setTextColor(Color.WHITE);
+                bt14.setBackgroundColor(Color.BLACK);
+
+                bt15.setTextColor(Color.WHITE);
+                bt15.setBackgroundColor(Color.BLACK);
+
+                bt16.setTextColor(Color.WHITE);
+                bt16.setBackgroundColor(Color.BLACK);
+
+                bt17.setTextColor(Color.WHITE);
+                bt17.setBackgroundColor(Color.BLACK);
 
             }
         });
@@ -239,44 +299,60 @@ public class Interests extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                bt5.setTextColor(Color.WHITE);
-                bt5.setBackgroundColor(Color.BLACK);
-
-                int color = ContextCompat.getColor(Interests.this, R.color.white2);
-
-                bt1.setTextColor(Color.BLACK);
-                bt1.setBackgroundColor(color);
-
-                bt2.setTextColor(Color.BLACK);
-                bt2.setBackgroundColor(color);
-
-                bt3.setTextColor(Color.BLACK);
-                bt3.setBackgroundColor(color);
-
-                bt4.setTextColor(Color.BLACK);
-                bt4.setBackgroundColor(color);
-
-                bt6.setTextColor(Color.BLACK);
-                bt6.setBackgroundColor(color);
+                bt5.setTextColor(Color.BLACK);
+                bt5.setBackgroundColor(Color.WHITE);
 
 
-                bt7.setTextColor(Color.BLACK);
-                bt7.setBackgroundColor(color);
 
-                bt8.setTextColor(Color.BLACK);
-                bt8.setBackgroundColor(color);
+                bt1.setTextColor(Color.WHITE);
+                bt1.setBackgroundColor(Color.BLACK);
 
-                bt9.setTextColor(Color.BLACK);
-                bt9.setBackgroundColor(color);
+                bt2.setTextColor(Color.WHITE);
+                bt2.setBackgroundColor(Color.BLACK);
 
-                bt10.setTextColor(Color.BLACK);
-                bt10.setBackgroundColor(color);
+                bt3.setTextColor(Color.WHITE);
+                bt3.setBackgroundColor(Color.BLACK);
 
-                bt11.setTextColor(Color.BLACK);
-                bt11.setBackgroundColor(color);
+                bt4.setTextColor(Color.WHITE);
+                bt4.setBackgroundColor(Color.BLACK);
 
-                bt12.setTextColor(Color.BLACK);
-                bt12.setBackgroundColor(color);
+                bt6.setTextColor(Color.WHITE);
+                bt6.setBackgroundColor(Color.BLACK);
+
+
+                bt7.setTextColor(Color.WHITE);
+                bt7.setBackgroundColor(Color.BLACK);
+
+                bt8.setTextColor(Color.WHITE);
+                bt8.setBackgroundColor(Color.BLACK);
+
+                bt9.setTextColor(Color.WHITE);
+                bt9.setBackgroundColor(Color.BLACK);
+
+                bt10.setTextColor(Color.WHITE);
+                bt10.setBackgroundColor(Color.BLACK);
+
+                bt11.setTextColor(Color.WHITE);
+                bt11.setBackgroundColor(Color.BLACK);
+
+                bt12.setTextColor(Color.WHITE);
+                bt12.setBackgroundColor(Color.BLACK);
+
+                bt13.setTextColor(Color.WHITE);
+                bt13.setBackgroundColor(Color.BLACK);
+
+                bt14.setTextColor(Color.WHITE);
+                bt14.setBackgroundColor(Color.BLACK);
+
+                bt15.setTextColor(Color.WHITE);
+                bt15.setBackgroundColor(Color.BLACK);
+
+                bt16.setTextColor(Color.WHITE);
+                bt16.setBackgroundColor(Color.BLACK);
+
+                bt17.setTextColor(Color.WHITE);
+                bt17.setBackgroundColor(Color.BLACK);
+
 
             }
         });
@@ -285,44 +361,58 @@ public class Interests extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                bt6.setTextColor(Color.WHITE);
-                bt6.setBackgroundColor(Color.BLACK);
-
-                int color = ContextCompat.getColor(Interests.this, R.color.white2);
-
-                bt1.setTextColor(Color.BLACK);
-                bt1.setBackgroundColor(color);
-
-                bt2.setTextColor(Color.BLACK);
-                bt2.setBackgroundColor(color);
-
-                bt3.setTextColor(Color.BLACK);
-                bt3.setBackgroundColor(color);
-
-                bt4.setTextColor(Color.BLACK);
-                bt4.setBackgroundColor(color);
-
-                bt5.setTextColor(Color.BLACK);
-                bt5.setBackgroundColor(color);
+                bt6.setTextColor(Color.BLACK);
+                bt6.setBackgroundColor(Color.WHITE);
 
 
-                bt7.setTextColor(Color.BLACK);
-                bt7.setBackgroundColor(color);
+                bt1.setTextColor(Color.WHITE);
+                bt1.setBackgroundColor(Color.BLACK);
 
-                bt8.setTextColor(Color.BLACK);
-                bt8.setBackgroundColor(color);
+                bt2.setTextColor(Color.WHITE);
+                bt2.setBackgroundColor(Color.BLACK);
 
-                bt9.setTextColor(Color.BLACK);
-                bt9.setBackgroundColor(color);
+                bt3.setTextColor(Color.WHITE);
+                bt3.setBackgroundColor(Color.BLACK);
 
-                bt10.setTextColor(Color.BLACK);
-                bt10.setBackgroundColor(color);
+                bt4.setTextColor(Color.WHITE);
+                bt4.setBackgroundColor(Color.BLACK);
 
-                bt11.setTextColor(Color.BLACK);
-                bt11.setBackgroundColor(color);
+                bt5.setTextColor(Color.WHITE);
+                bt5.setBackgroundColor(Color.BLACK);
 
-                bt12.setTextColor(Color.BLACK);
-                bt12.setBackgroundColor(color);
+
+                bt7.setTextColor(Color.WHITE);
+                bt7.setBackgroundColor(Color.BLACK);
+
+                bt8.setTextColor(Color.WHITE);
+                bt8.setBackgroundColor(Color.BLACK);
+
+                bt9.setTextColor(Color.WHITE);
+                bt9.setBackgroundColor(Color.BLACK);
+
+                bt10.setTextColor(Color.WHITE);
+                bt10.setBackgroundColor(Color.BLACK);
+
+                bt11.setTextColor(Color.WHITE);
+                bt11.setBackgroundColor(Color.BLACK);
+
+                bt12.setTextColor(Color.WHITE);
+                bt12.setBackgroundColor(Color.BLACK);
+
+                bt13.setTextColor(Color.WHITE);
+                bt13.setBackgroundColor(Color.BLACK);
+
+                bt14.setTextColor(Color.WHITE);
+                bt14.setBackgroundColor(Color.BLACK);
+
+                bt15.setTextColor(Color.WHITE);
+                bt15.setBackgroundColor(Color.BLACK);
+
+                bt16.setTextColor(Color.WHITE);
+                bt16.setBackgroundColor(Color.BLACK);
+
+                bt17.setTextColor(Color.WHITE);
+                bt17.setBackgroundColor(Color.BLACK);
 
             }
         });

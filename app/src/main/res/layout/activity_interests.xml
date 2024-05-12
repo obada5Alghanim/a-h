@@ -1,48 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/black_background"
-    android:layoutDirection="locale"
+    android:layoutDirection="rtl"
     tools:context=".Interests">
 
 
-    <Button
-        android:id="@+id/selected_btn"
-        android:layout_width="157dp"
-        android:layout_height="58dp"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="57dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#FFFFFF"
-        android:enabled="true"
         android:fontFamily="@font/inter_bold"
-        android:text="تم الاختيار"
-        android:textColor="#000000"
-        android:textColorLink="#FFFFFF"
-        android:textSize="12sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/cancel_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="#009688"
-        app:strokeWidth="2dp" />
-
-    <Button
-        android:id="@+id/cancel_btn"
-        android:layout_width="83dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="84dp"
-        android:backgroundTint="#00A4A4"
-        android:fontFamily="@font/inter_bold"
-        android:text="تخطي"
+        android:text="ما هي التصنيفات التي تهمك ؟"
         android:textColor="#FFFFFF"
-        android:textSize="12sp"
-        android:textStyle="bold|italic"
-        app:cornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
@@ -62,7 +42,8 @@
             android:background="@drawable/interests_frame"
             android:scrollbarSize="5dp"
             android:scrollbarThumbVertical="@drawable/scrollbar"
-            android:verticalScrollbarPosition="right">
+            android:verticalScrollbarPosition="right"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -74,7 +55,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    >
 
 
                     <Button
@@ -82,24 +64,28 @@
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
-                        android:background="@drawable/checkboxes"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
                         android:gravity="center"
-                        android:text="التنمية البشرية"
+                        android:text=" روايات دينية"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp"
-                        android:onClick="change"/>
+                        />
 
                     <Button
                         android:id="@+id/Button2"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
-                        android:background="@drawable/checkboxes"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
                         android:gravity="center"
-                        android:text="التنمية البشرية"
+                        android:text=" روايات مغامرات"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp"
-                        android:onClick="change"/>
+                        />
 
                 </LinearLayout>
 
@@ -115,24 +101,28 @@
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
-                        android:background="@drawable/checkboxes"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
                         android:gravity="center"
-                        android:text="روايات عالمية ومترجمة"
+                        android:text="روايات رعب"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp"
-                        android:onClick="change"/>
+                        />
 
                     <Button
                         android:id="@+id/Button4"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
-                        android:background="@drawable/checkboxes"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
                         android:gravity="center"
-                        android:text="روايات اجنبية مترجمة"
+                        android:onClick="change"
+                        android:text="روايات بوليسية"
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp"
-                        android:onClick="change"/>
+                        android:textSize="10sp" />
 
                 </LinearLayout>
 
@@ -148,9 +138,11 @@
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
-                        android:background="@drawable/checkboxes"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
                         android:gravity="center"
-                        android:text="روايات عالمية ومترجمة"
+                        android:text="أدب انجليزي "
                         android:textColor="#FFFFFF"
                         android:textSize="10sp" />
                     <Button
@@ -158,9 +150,11 @@
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
-                        android:background="@drawable/checkboxes"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
                         android:gravity="center"
-                        android:text="روايات اجنبية مترجمة"
+                        android:text="أدب عربي"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp" />
                 </LinearLayout>
@@ -177,9 +171,11 @@
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
-                        android:background="@drawable/checkboxes"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
                         android:gravity="center"
-                        android:text="روايات عالمية ومترجمة"
+                        android:text="الحضارات القديمة"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp" />
 
@@ -188,9 +184,11 @@
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
-                        android:background="@drawable/checkboxes"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
                         android:gravity="center"
-                        android:text="روايات اجنبية مترجمة"
+                        android:text="أدب روسي"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp" />
                 </LinearLayout>
@@ -207,9 +205,11 @@
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
-                        android:background="@drawable/checkboxes"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
                         android:gravity="center"
-                        android:text="روايات عالمية ومترجمة"
+                        android:text="الشرق الأوسط"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp" />
 
@@ -218,9 +218,11 @@
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
-                        android:background="@drawable/checkboxes"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
                         android:gravity="center"
-                        android:text="روايات اجنبية مترجمة"
+                        android:text="تاريخ أوروبا "
                         android:textColor="#FFFFFF"
                         android:textSize="10sp" />
                 </LinearLayout>
@@ -237,9 +239,11 @@
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
-                        android:background="@drawable/checkboxes"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
                         android:gravity="center"
-                        android:text="روايات عالمية ومترجمة"
+                        android:text="العلوم الشرعية"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp" />
 
@@ -248,29 +252,155 @@
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
-                        android:background="@drawable/checkboxes"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
                         android:gravity="center"
-                        android:text="روايات اجنبية مترجمة"
+                        android:text="السيرة النبوية "
                         android:textColor="#FFFFFF"
                         android:textSize="10sp" />
+
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/Button13"
+                        android:layout_width="170dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="5dp"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
+                        android:gravity="center"
+                        android:text=" الرسل و الأنبياء"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp" />
+
+                    <Button
+                        android:id="@+id/Button14"
+                        android:layout_width="170dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="5dp"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
+                        android:gravity="center"
+                        android:text=" لغات البرمجة "
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/Button15"
+                        android:layout_width="170dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="5dp"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
+                        android:gravity="center"
+                        android:text="  كمبيوتر و انترنت"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp" />
+
+                    <Button
+                        android:id="@+id/Button16"
+                        android:layout_width="170dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="5dp"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
+                        android:gravity="center"
+                        android:text="  سيكولوجيا الجرائم "
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/Button17"
+                        android:layout_width="170dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="5dp"
+                        android:backgroundTint="@color/black"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp"
+                        android:gravity="center"
+                        android:text="  علم النفس التربوي"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp" />
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
         </ScrollView>
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="226dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="168dp"
-        android:layout_marginBottom="12dp"
+
+    <Button
+        android:id="@+id/selected_btn"
+        android:layout_width="157dp"
+        android:layout_height="58dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="116dp"
+        android:layout_marginBottom="138dp"
+        android:backgroundTint="#FFFFFF"
+        android:enabled="true"
         android:fontFamily="@font/inter_bold"
-        android:text="ما هي التصنيفات التي تهمك ؟"
+        android:text="تم الاختيار"
+        android:textColor="#000000"
+        android:textColorLink="#FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/cancel_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#009688"
+        app:strokeWidth="2dp" />
+
+    <Button
+        android:id="@+id/cancel_btn"
+        android:layout_width="83dp"
+        android:layout_height="43dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="156dp"
+        android:layout_marginEnd="173dp"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="#00A4A4"
+        android:fontFamily="@font/inter_bold"
+        android:text="تخطي"
         android:textColor="#FFFFFF"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        android:textSize="12sp"
+        android:textStyle="bold|italic"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
