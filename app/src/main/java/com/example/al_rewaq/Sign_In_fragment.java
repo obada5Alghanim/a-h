@@ -9,6 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -29,7 +32,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Sign_In_fragment extends Fragment {
 
-    FirebaseAuth auth;
+    public  Sign_In_fragment() {
+        // Required empty public constructor
+
+    }
+    private FirebaseAuth mAuth;
     EditText usernameIN,passwordIN;
     TextView txt;
     Button btn;
@@ -47,7 +54,10 @@ public class Sign_In_fragment extends Fragment {
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_sign__in_fragment, container, false);
-        auth = FirebaseAuth.getInstance();
+
+        //firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
         usernameIN = rootView.findViewById(R.id.Edt_userName_singIn);
         passwordIN = rootView.findViewById(R.id.Edt_password_singIn);
         // Find the view by its ID
@@ -104,36 +114,25 @@ public class Sign_In_fragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userNamelogIn = usernameIN.getText().toString();
-                String passwordlogIn = passwordIN.getText().toString();
+                String email = usernameIN.getText().toString();
+                String password = passwordIN.getText().toString();
 
-                if(!userNamelogIn.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(userNamelogIn).matches()){
-                    if (!passwordlogIn.isEmpty()){
-                        auth.signInWithEmailAndPassword(userNamelogIn , passwordlogIn).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                            @Override
-                            public void onSuccess(AuthResult authResult) {
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString(KEY_NAME,usernameIN.getText().toString());
-                                editor.putString(KEY_PASSWORD,passwordIN.getText().toString());
-                                editor.apply();
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(requireActivity(), task -> {
+                            if (task.isSuccessful()) {
+                                // تم تسجيل الدخول بنجاح
+                                FirebaseUser user = mAuth.getCurrentUser();
                                 Intent intent = new Intent(getActivity(),menu_main.class);
                                 startActivity(intent);
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getActivity(), "LogIN failed", Toast.LENGTH_SHORT).show();
+
+                                // إظهار رسالة تأكيد للمستخدم
+                            } else {
+                                // فشلت عملية تسجيل الدخول
+                                // عرض رسالة خطأ للمستخدم
                             }
                         });
-                    }else {
-                        passwordIN.setError("password cannot be empty");
-                    }
-                } else if (userNamelogIn.isEmpty()) {
-                    usernameIN.setError("user Name cannto be empty");
 
-                }else {
-                    usernameIN.setError("enter valid userName");
-                }
+
 
 
             }
@@ -149,6 +148,22 @@ public class Sign_In_fragment extends Fragment {
 
     }
 }
+
+
+
+
+
+
+
+
+/* SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString(KEY_NAME,usernameIN.getText().toString());
+                                editor.putString(KEY_PASSWORD,passwordIN.getText().toString());
+                                editor.apply();
+                                Intent intent = new Intent(getActivity(),menu_main.class);
+                                startActivity(intent);*/
+
+
 
 /* Intent intent = new Intent(getActivity(),menu_main.class);
                 startActivity(intent);*/

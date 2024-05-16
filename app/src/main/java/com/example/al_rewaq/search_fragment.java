@@ -12,17 +12,12 @@ import android.widget.SearchView;
 
 public class search_fragment extends Fragment {
 
-    private RelativeLayout relativeLayout;
-    private SearchView searchView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_search_fragment, container, false);
-        searchView = view.findViewById(R.id.search_bar_fargment);
-        relativeLayout = view.findViewById(R.id.searchRealativelayoutID);
-        searchView.clearFocus();
 
 
         return view;

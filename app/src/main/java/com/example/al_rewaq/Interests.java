@@ -167,7 +167,7 @@ public class Interests extends AppCompatActivity {
                 bt17.setBackgroundColor(Color.BLACK);
 
             }
-       });
+        });
 
         bt3.setOnClickListener(new View.OnClickListener() {
 
@@ -434,7 +434,7 @@ public class Interests extends AppCompatActivity {
             }
         });
 
-}
+    }
 }
 //
 //        bt1.setOnClickListener(new MaterialButton(bt1.getContext()).addOnCheckedChangeListener(){

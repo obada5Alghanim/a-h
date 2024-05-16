@@ -7,21 +7,26 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class menu_main extends AppCompatActivity {
 
-  //  private TextView textViewContent;
-//    private Button buttonSeeMore;
-BottomNavigationView bottomNavigationView;
 
-    @SuppressLint("MissingInflatedId")
+    BottomNavigationView bottomNavigationView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_main);
 
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         bottomNavigationView = findViewById(R.id.navigation_menu_id);
         home_page_fragment homePageFragment = new home_page_fragment();
@@ -30,6 +35,26 @@ BottomNavigationView bottomNavigationView;
         nav_drawer_menu_fragment navDrawerMenuFragment = new nav_drawer_menu_fragment();
         MyLibrary_MainFragment myLibraryMainFragment = new MyLibrary_MainFragment();
         Book_Title_fragment Book_Title_fragment = new Book_Title_fragment();
+   Bundle bun = new Bundle();
+        // استرجاع بيانات المستخدم من Firestore
+        db.collection("users").document(userId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        // الحصول على بيانات المستخدم بنجاح
+                        String firstName = documentSnapshot.getString("First_Name");
+                        String lastName = documentSnapshot.getString("Last_Name");
+                        String email = documentSnapshot.getString("User_name");
+                        // يمكنك استخدام البيانات كما تحتاج
+                       bun.putString("msg",firstName+" "+lastName);
+                       navDrawerMenuFragment.setArguments(bun);
+                    } else {
+                        // لا يوجد بيانات لهذا المستخدم
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    // فشل في استرجاع بيانات المستخدم
+                });
 
         getSupportFragmentManager().beginTransaction().replace(android.R.id.content,homePageFragment).commit();
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

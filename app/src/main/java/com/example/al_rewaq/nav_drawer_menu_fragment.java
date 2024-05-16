@@ -42,7 +42,7 @@ public class nav_drawer_menu_fragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_nav_drawer_menu_fragment, container, false);
-        logOutAuth = FirebaseAuth.getInstance();
+
         TextView textViewLogOut = view.findViewById(R.id.logOutID);
         TextView textViewSetting = view.findViewById(R.id.settingTextClick);
         TextView textViewMyLibrary = view.findViewById(R.id.myLib1);
@@ -53,6 +53,11 @@ public class nav_drawer_menu_fragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         //READING TABLE FOR TEST THE NEW SPEED TEST READING
         TextView textViewReadingTable = view.findViewById(R.id.READINGTABLE);
+
+
+        Bundle readUserName = this.getArguments();
+        String rec = readUserName.getString("msg");
+        textViewUserName.setText(rec);
 
 
        /* DocumentReference documentReference = fStore.collection("Users").document(userId);
@@ -140,14 +145,17 @@ public class nav_drawer_menu_fragment extends Fragment {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.clear();
                 editor.commit();
-                logOutAuth.signOut();
-                Intent intent = new Intent(getActivity(),Sign_In_fragment.class);
+                FirebaseAuth.getInstance().signOut();
+
+                // توجيه المستخدم إلى الـ Activity التي تحوي Fragment الـ SignIn
+                Intent intent = new Intent(getActivity(), Sign.class);
                 startActivity(intent);
+                getActivity().finish(); // اختياري: لإغلاق الـ Activity الحالية بعد التوجيه
 
             }
         });
 
-       // fetchUserData();
+        // fetchUserData();
 
 
 
@@ -200,4 +208,4 @@ public class nav_drawer_menu_fragment extends Fragment {
 
 
 
- }
+}
