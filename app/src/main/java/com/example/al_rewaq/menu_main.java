@@ -48,6 +48,9 @@ public class menu_main extends AppCompatActivity {
                         // يمكنك استخدام البيانات كما تحتاج
                        bun.putString("msg",firstName+" "+lastName);
                        navDrawerMenuFragment.setArguments(bun);
+
+
+
                     } else {
                         // لا يوجد بيانات لهذا المستخدم
                     }

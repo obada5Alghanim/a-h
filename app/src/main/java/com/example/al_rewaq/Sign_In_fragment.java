@@ -117,26 +117,52 @@ public class Sign_In_fragment extends Fragment {
                 String email = usernameIN.getText().toString();
                 String password = passwordIN.getText().toString();
 
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(requireActivity(), task -> {
-                            if (task.isSuccessful()) {
-                                // تم تسجيل الدخول بنجاح
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                Intent intent = new Intent(getActivity(),menu_main.class);
-                                startActivity(intent);
 
-                                // إظهار رسالة تأكيد للمستخدم
-                            } else {
-                                // فشلت عملية تسجيل الدخول
-                                // عرض رسالة خطأ للمستخدم
+                if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                    if (!password.isEmpty()){
+
+                        mAuth.signInWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(requireActivity(), task -> {
+                                    if (task.isSuccessful()) {
+                                        // تم تسجيل الدخول بنجاح
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString(KEY_NAME,usernameIN.getText().toString());
+                                        editor.putString(KEY_PASSWORD,passwordIN.getText().toString());
+                                        editor.apply();
+                                        Intent intent = new Intent(getActivity(),menu_main.class);
+                                        startActivity(intent);
+
+                                        // إظهار رسالة تأكيد للمستخدم
+                                    } else {
+                                        // فشلت عملية تسجيل الدخول
+                                        // عرض رسالة خطأ للمستخدم
+                                    }
+
+                         }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getActivity(), "LogIN failed", Toast.LENGTH_SHORT).show();
                             }
                         });
+                    }else {
+                        passwordIN.setError("password cannot be empty");
+                    }
+                } else if (email.isEmpty()) {
+                    usernameIN.setError("user Name cannto be empty");
 
-
+                }else {
+                    usernameIN.setError("enter valid userName");
+                }
 
 
             }
         });
+
+
+
+
+
 
 
 
