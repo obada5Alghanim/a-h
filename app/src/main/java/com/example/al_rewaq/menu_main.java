@@ -35,7 +35,7 @@ public class menu_main extends AppCompatActivity {
         nav_drawer_menu_fragment navDrawerMenuFragment = new nav_drawer_menu_fragment();
         MyLibrary_MainFragment myLibraryMainFragment = new MyLibrary_MainFragment();
         Book_Title_fragment Book_Title_fragment = new Book_Title_fragment();
-   Bundle bun = new Bundle();
+        Bundle bun = new Bundle();
         // استرجاع بيانات المستخدم من Firestore
         db.collection("users").document(userId)
                 .get()
@@ -46,8 +46,8 @@ public class menu_main extends AppCompatActivity {
                         String lastName = documentSnapshot.getString("Last_Name");
                         String email = documentSnapshot.getString("User_name");
                         // يمكنك استخدام البيانات كما تحتاج
-                       bun.putString("msg",firstName+" "+lastName);
-                       navDrawerMenuFragment.setArguments(bun);
+                        bun.putString("msg",firstName+" "+lastName);
+                        navDrawerMenuFragment.setArguments(bun);
 
 
 
