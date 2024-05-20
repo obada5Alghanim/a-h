@@ -50,7 +50,7 @@ public class Sign_Up_fragment extends Fragment {
     private FirebaseAuth mAuth;
 
     private EditText userName, password , FirstName, LastName ,confirmPassword;
-    TextView txt,Gender , Day1 , month1 , year1,maleTextView,femaleTextView;
+    TextView txt,Gender ,Day ,maleTextView,femaleTextView;
     Button btn;
 
     boolean passwordVisiable;
@@ -74,9 +74,7 @@ public class Sign_Up_fragment extends Fragment {
         Gender = rootView.findViewById(R.id.Edt_signUP_gender);
         maleTextView = rootView.findViewById(R.id.male_genderText);
         femaleTextView = rootView.findViewById(R.id.female_genderText);
-        Day1 = rootView.findViewById(R.id.DOB1);
-        month1 = rootView.findViewById(R.id.DOB2);
-        year1 = rootView.findViewById(R.id.DOB3);
+        Day = rootView.findViewById(R.id.DOB);
         confirmPassword = rootView.findViewById(R.id.confirmPassword);
         // Find the view by its ID
         txt = rootView.findViewById(R.id.signUP_to_sing_click);
@@ -121,7 +119,7 @@ public class Sign_Up_fragment extends Fragment {
             }
         });
 
-        Day1.setOnClickListener(new View.OnClickListener() {
+        Day.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar calendar = Calendar.getInstance();
@@ -129,77 +127,16 @@ public class Sign_Up_fragment extends Fragment {
                 int month  = calendar.get(Calendar.MONTH);
                 int day  = calendar.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
-                        android.R.style.Theme_Holo_Light_Dialog,onDateSetListener,year,month,day);
-
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
-
                 onDateSetListener = new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        Day1.setText(String.valueOf(dayOfMonth));
-                        month1.setText(String.valueOf(month));
-                        year1.setText(String.valueOf(year));
+                        Day.setText(String.valueOf(dayOfMonth +" / "+(month+1)+" / "+year));
                     }
                 };
-
-
-            }
-        });
-
-        month1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendar = Calendar.getInstance();
-                int year  = calendar.get(Calendar.YEAR);
-                int month  = calendar.get(Calendar.MONTH);
-                int day  = calendar.get(Calendar.DAY_OF_MONTH);
-
                 DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
                         android.R.style.Theme_Holo_Light_Dialog,onDateSetListener,year,month,day);
-
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
-
-                onDateSetListener = new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                        Day1.setText(String.valueOf(dayOfMonth));
-                        month1.setText(String.valueOf(month));
-                        year1.setText(String.valueOf(year));
-                    }
-                };
-
-
-            }
-        });
-
-        year1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendar = Calendar.getInstance();
-                int year  = calendar.get(Calendar.YEAR);
-                int month  = calendar.get(Calendar.MONTH);
-                int day  = calendar.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
-                        android.R.style.Theme_Holo_Light_Dialog,onDateSetListener,year,month,day);
-
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
-
-                onDateSetListener = new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        Day1.setText(String.valueOf(dayOfMonth));
-                        month1.setText(String.valueOf(month));
-                        year1.setText(String.valueOf(year));
-                    }
-                };
-
-
             }
         });
 
@@ -270,11 +207,8 @@ public class Sign_Up_fragment extends Fragment {
                 final String lastName = LastName.getText().toString();
                 final String gender  = Gender.getText().toString();
                 //the Day will not be empty we should write a code to it later
-                final String day  = Day1.getText().toString();
-                //the Month will not be empty we should write a code to it later
-                final String month  = month1.getText().toString();
-                //the year will not be empty we should write a code to it later
-                final String year  = year1.getText().toString();
+                final String day  = Day.getText().toString();
+
 
 
                 if (email.isEmpty()) {
@@ -287,16 +221,16 @@ public class Sign_Up_fragment extends Fragment {
                 }if (lastName.isEmpty()){
                     LastName.setError("Last Name cannot be empty ");
                 }if (ConfirmPassword.isEmpty()){
-                    confirmPassword.setError("Confirm Password cannot be empty ");
+                    confirmPassword.setError("Confirm Password cannot be empty");
                 }if (gender.isEmpty()){
                     Gender.setError("Gender cannot be empty");
                 }if (day.isEmpty()){
-                    Day1.setError("day cannot be empty");
-                }if (month.isEmpty()){
-                    month1.setError("day cannot be empty");
-                }if (year.isEmpty()){
-                    year1.setError("day cannot be empty");
+                    Day.setError("day cannot be empty");
                 }
+                if (confirmPassword != (password)){
+                    Toast.makeText(getActivity(), "Passwords Not Similar!", Toast.LENGTH_SHORT).show();
+                }
+
                 else {
                     mAuth.createUserWithEmailAndPassword(email, pass)
                             .addOnCompleteListener(requireActivity(), task -> {
@@ -309,9 +243,9 @@ public class Sign_Up_fragment extends Fragment {
                                     userData.put("Last_Name", LastName.getText().toString());
                                     userData.put("User_name", email);
                                     userData.put(("Gender"),gender);
-                                    userData.put(("Date_of_birth"),day+"/"+month+"/"+year);
+                                    userData.put(("Date_of_birth"),day);
                                     userData.put(("Passowrd"),pass);
-// يمكنك إضافة المزيد من البيانات إلى هذا الكائن
+                                    // يمكنك إضافة المزيد من البيانات إلى هذا الكائن
                                     db.collection("users").document(user.getUid())
                                             .set(userData)
                                             .addOnSuccessListener(documentReference -> {
