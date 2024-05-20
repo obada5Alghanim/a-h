@@ -1,25 +1,13 @@
 package com.example.al_rewaq;
 
-
-
-
-
 import android.content.Intent;
 import android.graphics.Color;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
-
-
 import androidx.appcompat.app.AppCompatActivity;
-
-
 
 public class Interests extends AppCompatActivity {
 
@@ -159,147 +147,3 @@ public class Interests extends AppCompatActivity {
 
     }
 }
-//
-//        bt1.setOnClickListener(new MaterialButton(bt1.getContext()).addOnCheckedChangeListener(){
-//            public void onCheckedStateChangedListener(MaterialButton()  MaterialButton, int i) {
-//                bt1.setOnClickListener(new View.OnClickListener() {
-//                    boolean Clicked1 = false;
-//                    @Override
-//                    public void onClick(View v) {
-//
-//
-//                        if (Clicked1 == false){
-//                            bt1.setTextColor(Color.WHITE);
-//                            bt1.setBackgroundColor(Color.BLACK);
-//                            int color = ContextCompat.getColor(requireContext(), R.color.white2);
-//
-//                            bt2.setTextColor(Color.BLACK);
-//                            bt2.setBackgroundColor(color);
-//
-//                            bt3.setTextColor(Color.BLACK);
-//                            bt3.setBackgroundColor(color);
-//
-//                            bt4.setTextColor(Color.BLACK);
-//                            bt4.setBackgroundColor(color);
-//
-//                            bt5.setTextColor(Color.BLACK);
-//                            bt5.setBackgroundColor(color);
-//
-//                            bt6.setTextColor(Color.BLACK);
-//                            bt6.setBackgroundColor(color);
-//
-//                            Clicked1 = true;}
-//                        else if (Clicked1 == true) {
-//                            bt1.setTextColor(Color.BLACK);
-//                            int color = ContextCompat.getColor(requireContext(), R.color.white2);
-//                            bt1.setBackgroundColor(color);
-//                            Clicked1 = false;}
-//                    }
-//                });
-//}
-//
-//    });
-//            @Override
-//            public void change(View v) {
-//
-//
-//
-//                ch1.setTextColor(Color.WHITE);
-//                ch1.setBackgroundColor(Color.BLACK);
-//                int color = ContextCompat.getColor(requireContext(), R.color.white2);
-//
-//                ch2.setTextColor(Color.BLACK);
-//                ch2.setBackgroundColor(color);
-//
-//                ch3.setTextColor(Color.BLACK);
-//                ch3.setBackgroundColor(color);
-//
-//                ch4.setTextColor(Color.BLACK);
-//                ch4.setBackgroundColor(color);
-//
-//                ch5.setTextColor(Color.BLACK);
-//                ch5.setBackgroundColor(color);
-//
-//                ch6.setTextColor(Color.BLACK);
-//                ch6.setBackgroundColor(color);
-//
-//
-//
-//            }
-//        });
-
-//        ch2.setOnClickListener(new View.OnClickListener() {
-//            boolean Clicked2 = false;
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//                if (Clicked2 == false){
-//                    ch2.setTextColor(Color.WHITE);
-//                    ch2.setBackgroundColor(Color.BLACK);
-//                    int color = ContextCompat.getColor(requireContext(), R.color.white2);
-//
-//                    ch2.setTextColor(Color.BLACK);
-//                    ch2.setBackgroundColor(color);
-//
-//                    ch3.setTextColor(Color.BLACK);
-//                    ch3.setBackgroundColor(color);
-//
-//                    ch4.setTextColor(Color.BLACK);
-//                    ch4.setBackgroundColor(color);
-//
-//                    ch5.setTextColor(Color.BLACK);
-//                    ch5.setBackgroundColor(color);
-//
-//                    ch6.setTextColor(Color.BLACK);
-//                    ch6.setBackgroundColor(color);
-//
-//                    Clicked2 = true;}
-//                else if (Clicked2 == true) {
-//                    ch2.setTextColor(Color.BLACK);
-//                    int color = ContextCompat.getColor(requireContext(), R.color.white2);
-//                    ch2.setBackgroundColor(color);
-//                    Clicked2 = false;}
-//            }
-//        });
-//        ch3.setOnClickListener(new View.OnClickListener() {
-//            boolean Clicked3 = false;
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//                if (Clicked3 == false){
-//                    ch3.setTextColor(Color.WHITE);
-//                    ch3.setBackgroundColor(Color.BLACK);
-//                    int color = ContextCompat.getColor(requireContext(), R.color.white2);
-//
-//                    ch2.setTextColor(Color.BLACK);
-//                    ch2.setBackgroundColor(color);
-//
-//                    ch3.setTextColor(Color.BLACK);
-//                    ch3.setBackgroundColor(color);
-//
-//                    ch4.setTextColor(Color.BLACK);
-//                    ch4.setBackgroundColor(color);
-//
-//                    ch5.setTextColor(Color.BLACK);
-//                    ch5.setBackgroundColor(color);
-//
-//                    ch6.setTextColor(Color.BLACK);
-//                    ch6.setBackgroundColor(color);
-//
-//                    Clicked3 = true;}
-//                else if (Clicked3 == true) {
-//                    ch3.setTextColor(Color.BLACK);
-//                    int color = ContextCompat.getColor(requireContext(), R.color.white2);
-//                    ch3.setBackgroundColor(color);
-//                    Clicked3 = false;}
-//            }
-//        });
-//
-//    }
-
-//    public void change(View view) {
-//        x.setTextColor(getColor(R.color.black));
-//        x.setBackgroundColor(getColor(R.color.white));
-//    }
