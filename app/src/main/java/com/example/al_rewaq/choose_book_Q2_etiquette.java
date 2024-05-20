@@ -36,6 +36,8 @@ public class choose_book_Q2_etiquette extends Fragment {
         choose_book_Q1 choose_book_q1 = new choose_book_Q1();
         choose_book_Q3 chooseBookQ3 = new choose_book_Q3();
 
+        Bundle bundle = new Bundle();
+
         click_answar2_1_e.setOnClickListener(new View.OnClickListener() {
             boolean Clicked1 = false;
             @Override

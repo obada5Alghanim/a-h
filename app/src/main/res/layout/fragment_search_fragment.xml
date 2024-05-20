@@ -21,22 +21,34 @@
       android:textStyle="bold"
      />
 
-  <android.widget.SearchView
+  <!-- RecyclerView for Search Results -->
 
-      android:id="@+id/search_bar_fargment"
+  <EditText
+      android:id="@+id/editText_search"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_below="@+id/textView3"
-      android:layout_margin="8dp"
-      android:layout_marginTop="10dp"
-      android:layout_marginBottom="8dp"
-      android:background="@drawable/frame_1"
-      android:iconifiedByDefault="false"
-      android:layoutDirection="rtl"
-      android:queryHint="ابحث عن كتاب"
+      android:layout_alignParentEnd="true"
+      android:layout_marginHorizontal="16dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="11dp"
+      android:background="@drawable/search_background"
+      android:drawableRight="@drawable/mi_search"
+      android:drawablePadding="3dp"
+      android:hint="ابحث عن كتاب ..."
+      android:singleLine="true"
+      android:imeOptions="actionDone"
+      android:padding="16dp" />
 
-
-      />
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recyclerView_search_results"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/editText_search"
+      android:layout_alignParentBottom="true"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="322dp"
+      android:padding="16dp" />
 
 
 </RelativeLayout>

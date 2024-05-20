@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+
+
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -30,6 +32,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -38,11 +42,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Sign_Up_fragment extends Fragment {
-    private FirebaseAuth auth;
+
+   public Sign_Up_fragment(){
+
+   }
+
+    private FirebaseAuth mAuth;
+
     private EditText userName, password , FirstName, LastName ,confirmPassword;
     TextView txt,Gender , Day1 , month1 , year1,maleTextView,femaleTextView;
     Button btn;
-    FirebaseFirestore Fstore;
+
     boolean passwordVisiable;
     DatePickerDialog.OnDateSetListener onDateSetListener;
 
@@ -52,8 +62,11 @@ public class Sign_Up_fragment extends Fragment {
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_sign__up_fragment, container, false);
-        auth = FirebaseAuth.getInstance();
-        Fstore = FirebaseFirestore.getInstance();
+
+        //
+        mAuth = FirebaseAuth.getInstance();
+
+
         userName = rootView.findViewById(R.id.Edt_signUP_UserName);
         password = rootView.findViewById(R.id.Edt_signUp_password);
         FirstName = rootView.findViewById(R.id.Edt_signUp_firstName);
@@ -195,24 +208,24 @@ public class Sign_Up_fragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 final int Right=2;
                 if (event.getAction()==MotionEvent.ACTION_UP){
-                   if(event.getRawX()>= password.getRight()-password.getCompoundDrawables()[Right].getBounds().width()) {
-                       int selection = password.getSelectionEnd();
-                       if (passwordVisiable) {
-                           //set drawable Image
-                           password.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.outline_lock_24, 0, R.drawable.hide, 0);
-                           password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                           passwordVisiable = false;
-                       } else {
-                           password.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.outline_lock_24, 0, R.drawable.clarity_eye_show_line, 0);
-                           password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                           passwordVisiable = true;
-                       }
-                       password.setSelection(selection);
-                       return true;
-                   }
+                    if(event.getRawX()>= password.getRight()-password.getCompoundDrawables()[Right].getBounds().width()) {
+                        int selection = password.getSelectionEnd();
+                        if (passwordVisiable) {
+                            //set drawable Image
+                            password.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.outline_lock_24, 0, R.drawable.hide, 0);
+                            password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisiable = false;
+                        } else {
+                            password.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.outline_lock_24, 0, R.drawable.clarity_eye_show_line, 0);
+                            password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisiable = true;
+                        }
+                        password.setSelection(selection);
+                        return true;
+                    }
                 }
 
-                    return false;
+                return false;
             }
         });
 
@@ -249,7 +262,7 @@ public class Sign_Up_fragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String user = userName.getText().toString().trim();
+                final String email = userName.getText().toString().trim();
                 final String pass = password.getText().toString().trim();
                 // we need to make password and confirm password  same
                 final String ConfirmPassword = confirmPassword.getText().toString().trim();
@@ -264,7 +277,7 @@ public class Sign_Up_fragment extends Fragment {
                 final String year  = year1.getText().toString();
 
 
-                if (user.isEmpty()) {
+                if (email.isEmpty()) {
                     userName.setError("User name cannot be empty ");
                 }
                 if (pass.isEmpty()) {
@@ -274,7 +287,7 @@ public class Sign_Up_fragment extends Fragment {
                 }if (lastName.isEmpty()){
                     LastName.setError("Last Name cannot be empty ");
                 }if (ConfirmPassword.isEmpty()){
-                    LastName.setError("Confirm Password cannot be empty ");
+                    confirmPassword.setError("Confirm Password cannot be empty ");
                 }if (gender.isEmpty()){
                     Gender.setError("Gender cannot be empty");
                 }if (day.isEmpty()){
@@ -285,39 +298,46 @@ public class Sign_Up_fragment extends Fragment {
                     year1.setError("day cannot be empty");
                 }
                 else {
-                    auth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Add user details to Firestore
-                                Map<String, Object> userTable = new HashMap<>();
-                                userTable.put("First Name", firstName);
-                                userTable.put("Last Name", lastName);
-                                userTable.put(("User Name"),user);
-                                userTable.put(("Gender"),gender);
-                                userTable.put(("Date of Birth"),day + "/"+month+"/"+year );
-                                userTable.put(("Password"),pass);
+                    mAuth.createUserWithEmailAndPassword(email, pass)
+                            .addOnCompleteListener(requireActivity(), task -> {
+                                if (task.isSuccessful()) {
+                                    // تم إنشاء الحساب بنجاح
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                    Map<String, Object> userData = new HashMap<>();
+                                    userData.put("First_Name", FirstName.getText().toString());
+                                    userData.put("Last_Name", LastName.getText().toString());
+                                    userData.put("User_name", email);
+                                    userData.put(("Gender"),gender);
+                                    userData.put(("Date_of_birth"),day+"/"+month+"/"+year);
+                                    userData.put(("Passowrd"),pass);
+// يمكنك إضافة المزيد من البيانات إلى هذا الكائن
+                                    db.collection("users").document(user.getUid())
+                                            .set(userData)
+                                            .addOnSuccessListener(documentReference -> {
+                                                // تم تخزين بيانات المستخدم بنجاح
+                                              Intent intent = new Intent(getActivity(),Interests.class);
+                                              startActivity(intent);
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                // فشلت عملية تخزين بيانات المستخدم
+                                            });
 
 
-                                Fstore.collection("Users").add(userTable).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                                        if (task.isSuccessful()) {
 
-                                            Intent intent = new Intent(getActivity(), Interests.class);
-                                            startActivity(intent);
+                                    // إظهار رسالة تأكيد للمستخدم
+                                } else {
+                                    // فشلت عملية إنشاء الحساب
+                                    // عرض رسالة خطأ للمستخدم
+                                }
+                            });
 
-                                        } else {
-                                            Toast.makeText(getActivity(), "Failed to add user details to Firestore.", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-                            } else {
-                                Toast.makeText(getActivity(), "Failed to create user: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
                 }
+
+
+
+
+
             }
         });
 
@@ -333,4 +353,3 @@ public class Sign_Up_fragment extends Fragment {
 
 
 }
-

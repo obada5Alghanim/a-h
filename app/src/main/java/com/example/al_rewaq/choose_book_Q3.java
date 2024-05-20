@@ -85,6 +85,8 @@ public class choose_book_Q3 extends Fragment {
             }
         });
 
+
+
         return view;
     }
 
@@ -99,6 +101,9 @@ public class choose_book_Q3 extends Fragment {
         }
 
     }
+
+
+
 
 
 }

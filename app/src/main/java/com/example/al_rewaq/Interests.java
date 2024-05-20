@@ -11,6 +11,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+
+
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -18,6 +24,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Interests extends AppCompatActivity {
 
     Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9 ,bt10,bt11,bt12,bt13,bt14,bt15,bt16,bt17,btn1,btn2;
+
+    private ArrayList<String> selectedCategories = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,60 +55,12 @@ public class Interests extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
                 bt1.setTextColor(Color.BLACK);
                 bt1.setBackgroundColor(Color.WHITE);
+                //add the catgory to array
+                selectedCategories.add("روايات دينية");
 
 
-                bt2.setTextColor(Color.WHITE);
-                bt2.setBackgroundColor(Color.BLACK);
-
-                bt3.setTextColor(Color.WHITE);
-                bt3.setBackgroundColor(Color.BLACK);
-
-                bt4.setTextColor(Color.WHITE);
-                bt4.setBackgroundColor(Color.BLACK);
-
-                bt5.setTextColor(Color.WHITE);
-                bt5.setBackgroundColor(Color.BLACK);
-
-                bt6.setTextColor(Color.WHITE);
-                bt6.setBackgroundColor(Color.BLACK);
-
-
-                bt7.setTextColor(Color.WHITE);
-                bt7.setBackgroundColor(Color.BLACK);
-
-                bt8.setTextColor(Color.WHITE);
-                bt8.setBackgroundColor(Color.BLACK);
-
-                bt9.setTextColor(Color.WHITE);
-                bt9.setBackgroundColor(Color.BLACK);
-
-                bt10.setTextColor(Color.WHITE);
-                bt10.setBackgroundColor(Color.BLACK);
-
-                bt11.setTextColor(Color.WHITE);
-                bt11.setBackgroundColor(Color.BLACK);
-
-                bt12.setTextColor(Color.WHITE);
-                bt12.setBackgroundColor(Color.BLACK);
-
-                bt13.setTextColor(Color.WHITE);
-                bt13.setBackgroundColor(Color.BLACK);
-
-                bt14.setTextColor(Color.WHITE);
-                bt14.setBackgroundColor(Color.BLACK);
-
-                bt15.setTextColor(Color.WHITE);
-                bt15.setBackgroundColor(Color.BLACK);
-
-                bt16.setTextColor(Color.WHITE);
-                bt16.setBackgroundColor(Color.BLACK);
-
-                bt17.setTextColor(Color.WHITE);
-                bt17.setBackgroundColor(Color.BLACK);
 
             }
         });
@@ -116,58 +76,11 @@ public class Interests extends AppCompatActivity {
                 bt2.setTextColor(Color.BLACK);
                 bt2.setBackgroundColor(Color.WHITE);
 
+                selectedCategories.add("روايات مغامرات");
 
-                bt1.setTextColor(Color.WHITE);
-                bt1.setBackgroundColor(Color.BLACK);
-
-                bt3.setTextColor(Color.WHITE);
-                bt3.setBackgroundColor(Color.BLACK);
-
-                bt4.setTextColor(Color.WHITE);
-                bt4.setBackgroundColor(Color.BLACK);
-
-                bt5.setTextColor(Color.WHITE);
-                bt5.setBackgroundColor(Color.BLACK);
-
-                bt6.setTextColor(Color.WHITE);
-                bt6.setBackgroundColor(Color.BLACK);
-
-
-                bt7.setTextColor(Color.WHITE);
-                bt7.setBackgroundColor(Color.BLACK);
-
-                bt8.setTextColor(Color.WHITE);
-                bt8.setBackgroundColor(Color.BLACK);
-
-                bt9.setTextColor(Color.WHITE);
-                bt9.setBackgroundColor(Color.BLACK);
-
-                bt10.setTextColor(Color.WHITE);
-                bt10.setBackgroundColor(Color.BLACK);
-
-                bt11.setTextColor(Color.WHITE);
-                bt11.setBackgroundColor(Color.BLACK);
-
-                bt12.setTextColor(Color.WHITE);
-                bt12.setBackgroundColor(Color.BLACK);
-
-                bt13.setTextColor(Color.WHITE);
-                bt13.setBackgroundColor(Color.BLACK);
-
-                bt14.setTextColor(Color.WHITE);
-                bt14.setBackgroundColor(Color.BLACK);
-
-                bt15.setTextColor(Color.WHITE);
-                bt15.setBackgroundColor(Color.BLACK);
-
-                bt16.setTextColor(Color.WHITE);
-                bt16.setBackgroundColor(Color.BLACK);
-
-                bt17.setTextColor(Color.WHITE);
-                bt17.setBackgroundColor(Color.BLACK);
 
             }
-       });
+        });
 
         bt3.setOnClickListener(new View.OnClickListener() {
 
@@ -179,54 +92,6 @@ public class Interests extends AppCompatActivity {
 
 
 
-                bt1.setTextColor(Color.WHITE);
-                bt1.setBackgroundColor(Color.BLACK);
-
-                bt2.setTextColor(Color.WHITE);
-                bt2.setBackgroundColor(Color.BLACK);
-
-                bt4.setTextColor(Color.WHITE);
-                bt4.setBackgroundColor(Color.BLACK);
-
-                bt5.setTextColor(Color.WHITE);
-                bt5.setBackgroundColor(Color.BLACK);
-
-                bt6.setTextColor(Color.WHITE);
-                bt6.setBackgroundColor(Color.BLACK);
-
-
-                bt7.setTextColor(Color.WHITE);
-                bt7.setBackgroundColor(Color.BLACK);
-
-                bt8.setTextColor(Color.WHITE);
-                bt8.setBackgroundColor(Color.BLACK);
-
-                bt9.setTextColor(Color.WHITE);
-                bt9.setBackgroundColor(Color.BLACK);
-
-                bt10.setTextColor(Color.WHITE);
-                bt10.setBackgroundColor(Color.BLACK);
-
-                bt11.setTextColor(Color.WHITE);
-                bt11.setBackgroundColor(Color.BLACK);
-
-                bt12.setTextColor(Color.WHITE);
-                bt12.setBackgroundColor(Color.BLACK);
-
-                bt13.setTextColor(Color.WHITE);
-                bt13.setBackgroundColor(Color.BLACK);
-
-                bt14.setTextColor(Color.WHITE);
-                bt14.setBackgroundColor(Color.BLACK);
-
-                bt15.setTextColor(Color.WHITE);
-                bt15.setBackgroundColor(Color.BLACK);
-
-                bt16.setTextColor(Color.WHITE);
-                bt16.setBackgroundColor(Color.BLACK);
-
-                bt17.setTextColor(Color.WHITE);
-                bt17.setBackgroundColor(Color.BLACK);
 
             }
         });
@@ -242,54 +107,6 @@ public class Interests extends AppCompatActivity {
 
 
 
-                bt1.setTextColor(Color.WHITE);
-                bt1.setBackgroundColor(Color.BLACK);
-
-                bt2.setTextColor(Color.WHITE);
-                bt2.setBackgroundColor(Color.BLACK);
-
-                bt3.setTextColor(Color.WHITE);
-                bt3.setBackgroundColor(Color.BLACK);
-
-                bt5.setTextColor(Color.WHITE);
-                bt5.setBackgroundColor(Color.BLACK);
-
-                bt6.setTextColor(Color.WHITE);
-                bt6.setBackgroundColor(Color.BLACK);
-
-
-                bt7.setTextColor(Color.WHITE);
-                bt7.setBackgroundColor(Color.BLACK);
-
-                bt8.setTextColor(Color.WHITE);
-                bt8.setBackgroundColor(Color.BLACK);
-
-                bt9.setTextColor(Color.WHITE);
-                bt9.setBackgroundColor(Color.BLACK);
-
-                bt10.setTextColor(Color.WHITE);
-                bt10.setBackgroundColor(Color.BLACK);
-
-                bt11.setTextColor(Color.WHITE);
-                bt11.setBackgroundColor(Color.BLACK);
-
-                bt12.setTextColor(Color.WHITE);
-                bt12.setBackgroundColor(Color.BLACK);
-
-                bt13.setTextColor(Color.WHITE);
-                bt13.setBackgroundColor(Color.BLACK);
-
-                bt14.setTextColor(Color.WHITE);
-                bt14.setBackgroundColor(Color.BLACK);
-
-                bt15.setTextColor(Color.WHITE);
-                bt15.setBackgroundColor(Color.BLACK);
-
-                bt16.setTextColor(Color.WHITE);
-                bt16.setBackgroundColor(Color.BLACK);
-
-                bt17.setTextColor(Color.WHITE);
-                bt17.setBackgroundColor(Color.BLACK);
 
             }
         });
@@ -304,54 +121,6 @@ public class Interests extends AppCompatActivity {
 
 
 
-                bt1.setTextColor(Color.WHITE);
-                bt1.setBackgroundColor(Color.BLACK);
-
-                bt2.setTextColor(Color.WHITE);
-                bt2.setBackgroundColor(Color.BLACK);
-
-                bt3.setTextColor(Color.WHITE);
-                bt3.setBackgroundColor(Color.BLACK);
-
-                bt4.setTextColor(Color.WHITE);
-                bt4.setBackgroundColor(Color.BLACK);
-
-                bt6.setTextColor(Color.WHITE);
-                bt6.setBackgroundColor(Color.BLACK);
-
-
-                bt7.setTextColor(Color.WHITE);
-                bt7.setBackgroundColor(Color.BLACK);
-
-                bt8.setTextColor(Color.WHITE);
-                bt8.setBackgroundColor(Color.BLACK);
-
-                bt9.setTextColor(Color.WHITE);
-                bt9.setBackgroundColor(Color.BLACK);
-
-                bt10.setTextColor(Color.WHITE);
-                bt10.setBackgroundColor(Color.BLACK);
-
-                bt11.setTextColor(Color.WHITE);
-                bt11.setBackgroundColor(Color.BLACK);
-
-                bt12.setTextColor(Color.WHITE);
-                bt12.setBackgroundColor(Color.BLACK);
-
-                bt13.setTextColor(Color.WHITE);
-                bt13.setBackgroundColor(Color.BLACK);
-
-                bt14.setTextColor(Color.WHITE);
-                bt14.setBackgroundColor(Color.BLACK);
-
-                bt15.setTextColor(Color.WHITE);
-                bt15.setBackgroundColor(Color.BLACK);
-
-                bt16.setTextColor(Color.WHITE);
-                bt16.setBackgroundColor(Color.BLACK);
-
-                bt17.setTextColor(Color.WHITE);
-                bt17.setBackgroundColor(Color.BLACK);
 
 
             }
@@ -365,54 +134,7 @@ public class Interests extends AppCompatActivity {
                 bt6.setBackgroundColor(Color.WHITE);
 
 
-                bt1.setTextColor(Color.WHITE);
-                bt1.setBackgroundColor(Color.BLACK);
 
-                bt2.setTextColor(Color.WHITE);
-                bt2.setBackgroundColor(Color.BLACK);
-
-                bt3.setTextColor(Color.WHITE);
-                bt3.setBackgroundColor(Color.BLACK);
-
-                bt4.setTextColor(Color.WHITE);
-                bt4.setBackgroundColor(Color.BLACK);
-
-                bt5.setTextColor(Color.WHITE);
-                bt5.setBackgroundColor(Color.BLACK);
-
-
-                bt7.setTextColor(Color.WHITE);
-                bt7.setBackgroundColor(Color.BLACK);
-
-                bt8.setTextColor(Color.WHITE);
-                bt8.setBackgroundColor(Color.BLACK);
-
-                bt9.setTextColor(Color.WHITE);
-                bt9.setBackgroundColor(Color.BLACK);
-
-                bt10.setTextColor(Color.WHITE);
-                bt10.setBackgroundColor(Color.BLACK);
-
-                bt11.setTextColor(Color.WHITE);
-                bt11.setBackgroundColor(Color.BLACK);
-
-                bt12.setTextColor(Color.WHITE);
-                bt12.setBackgroundColor(Color.BLACK);
-
-                bt13.setTextColor(Color.WHITE);
-                bt13.setBackgroundColor(Color.BLACK);
-
-                bt14.setTextColor(Color.WHITE);
-                bt14.setBackgroundColor(Color.BLACK);
-
-                bt15.setTextColor(Color.WHITE);
-                bt15.setBackgroundColor(Color.BLACK);
-
-                bt16.setTextColor(Color.WHITE);
-                bt16.setBackgroundColor(Color.BLACK);
-
-                bt17.setTextColor(Color.WHITE);
-                bt17.setBackgroundColor(Color.BLACK);
 
             }
         });
@@ -422,6 +144,7 @@ public class Interests extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Interests.this,menu_main.class);
+                intent.putStringArrayListExtra("selectedCategories", selectedCategories);
                 startActivity(intent);
             }
         });
@@ -434,7 +157,7 @@ public class Interests extends AppCompatActivity {
             }
         });
 
-}
+    }
 }
 //
 //        bt1.setOnClickListener(new MaterialButton(bt1.getContext()).addOnCheckedChangeListener(){

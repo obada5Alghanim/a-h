@@ -24,73 +24,74 @@
         android:id="@+id/relative2home"
         android:layout_below="@+id/textView3"
         >
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text=" كتاب رقم واحد"
-    android:textSize="20sp"
-    android:textColor="@color/white"
-    android:layout_marginTop="36dp"
-    />
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="697dp"
-        android:layout_marginTop="72dp">
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black2"
-            android:orientation="horizontal">
+            android:text=" كتاب رقم واحد"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="36dp"
+            />
 
-            <Button
-                android:id="@+id/example"
-                android:layout_width="wrap_content"
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:text="Book"
-                android:backgroundTint="@color/green" />
+                android:background="@color/black2"
+                android:orientation="horizontal">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:backgroundTint="@color/blue" />
+                <Button
+                    android:id="@+id/example"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:backgroundTint="@color/green"
+                    android:text="Book" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:backgroundTint="@color/dark_gray" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:backgroundTint="@color/blue" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:backgroundTint="@color/Dark_Blue" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:backgroundTint="@color/dark_gray" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:backgroundTint="@color/white" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:backgroundTint="@color/Dark_Blue" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:backgroundTint="@color/blue" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:backgroundTint="@color/white" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:backgroundTint="@color/dark_gray" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:backgroundTint="@color/blue" />
 
-        </LinearLayout>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:backgroundTint="@color/dark_gray" />
+
+            </LinearLayout>
 
 
-    </HorizontalScrollView>
+        </HorizontalScrollView>
     </RelativeLayout>
 
 </RelativeLayout>

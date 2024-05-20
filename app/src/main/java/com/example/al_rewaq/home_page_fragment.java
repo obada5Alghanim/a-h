@@ -23,7 +23,6 @@ public class home_page_fragment extends Fragment {
             public void onClick(View v) {
                 Book_Title_fragment bookTitleFragment = new Book_Title_fragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(android.R.id.content,bookTitleFragment).commit();
-
             }
         });
         return view;
