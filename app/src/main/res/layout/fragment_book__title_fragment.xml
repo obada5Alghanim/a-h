@@ -60,7 +60,7 @@
             app:layout_constraintHorizontal_bias="0.441"
             app:layout_constraintStart_toEndOf="@+id/bu_menu"
             app:strokeColor="#00A4A4"
-            app:strokeWidth="3dp" />
+            app:strokeWidth="3dp"/>
 
         <Button
             android:id="@+id/bu_reader"
@@ -264,7 +264,6 @@
             android:layout_height="150dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="0dp"
-            android:background="@drawable/unknown_book"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -327,7 +326,6 @@
                     android:ellipsize="end"
                     android:maxLines="3"
                     android:padding="13dp"
-                    android:text="@string/lorem_ipsum"
                     android:textColor="@color/white" />
 
                 <TextView
