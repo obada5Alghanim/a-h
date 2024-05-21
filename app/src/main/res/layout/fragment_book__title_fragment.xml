@@ -15,37 +15,38 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="90dp"
+        android:layout_marginBottom="100dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/bu_menu"
-            android:layout_width="100dp"
+            android:layout_width="60dp"
             android:layout_height="50dp"
             android:layout_gravity="clip_horizontal"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="15dp"
             android:backgroundTint="@color/white"
             android:gravity="center"
             android:textColor="#000000"
             android:textColorLink="#FFFFFF"
             android:textSize="48sp"
             android:textStyle="bold"
-            app:icon="@drawable/vector_menu_o"
+            app:icon="@drawable/menu_d"
             app:iconGravity="textEnd"
-            app:iconSize="40dp"
+            app:iconSize="0dp"
             app:iconTint="#000000"
             app:iconTintMode="src_in"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:strokeColor="#00A4A4"
-            app:strokeWidth="3dp"
-            tools:ignore="SpeakableTextPresentCheck" />
+            app:strokeColor="#000000"
+            app:strokeWidth="2dp"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:paddingRight="29dp" />
 
         <Button
             android:id="@+id/bu_browse"
-            android:layout_width="100dp"
+            android:layout_width="140dp"
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -60,11 +61,11 @@
             app:layout_constraintHorizontal_bias="0.441"
             app:layout_constraintStart_toEndOf="@+id/bu_menu"
             app:strokeColor="#00A4A4"
-            app:strokeWidth="3dp"/>
+            app:strokeWidth="2dp"/>
 
         <Button
             android:id="@+id/bu_reader"
-            android:layout_width="100dp"
+            android:layout_width="140dp"
             android:layout_height="50dp"
             android:layout_marginEnd="20dp"
             android:backgroundTint="#00A4A4"
@@ -76,14 +77,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:strokeColor="#FFFFFF"
-            app:strokeWidth="3dp" />
+            app:strokeWidth="2dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="149dp"
+        android:layout_height="170dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="51dp"
@@ -108,10 +109,10 @@
             <TextView
                 android:id="@+id/Author_Name"
                 android:layout_width="0dp"
-                android:layout_height="24dp"
+                android:layout_height="28dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:background="@drawable/radius2"
+                android:background="@drawable/radius3"
                 android:gravity="center"
                 android:text="اسم المؤلف"
                 android:textSize="18dp"
@@ -123,10 +124,10 @@
             <TextView
                 android:id="@+id/Classification_type"
                 android:layout_width="0dp"
-                android:layout_height="24dp"
+                android:layout_height="28dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:background="@drawable/radius2"
+                android:background="@drawable/radius3"
                 android:gravity="center"
                 android:text="نوع التصنيف"
                 android:textSize="18dp"
@@ -138,10 +139,10 @@
             <TextView
                 android:id="@+id/Datecreated_data"
                 android:layout_width="0dp"
-                android:layout_height="24dp"
+                android:layout_height="28dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:background="@drawable/radius2"
+                android:background="@drawable/radius3"
                 android:gravity="center"
                 android:text="تاريخ الإنشاء"
                 android:textSize="18dp"
@@ -153,10 +154,10 @@
             <TextView
                 android:id="@+id/numberOfPages_data"
                 android:layout_width="0dp"
-                android:layout_height="24dp"
+                android:layout_height="28dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:background="@drawable/radius2"
+                android:background="@drawable/radius3"
                 android:gravity="center"
                 android:text="عدد الصفحات"
                 android:textSize="18dp"
@@ -172,9 +173,9 @@
             android:layout_height="28dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="0dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="0dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="8dp"
             android:layout_toStartOf="@+id/image_Book"
             android:background="@drawable/radius2"
             android:gravity="center"
@@ -202,8 +203,8 @@
             <TextView
                 android:id="@+id/Author"
                 android:layout_width="0dp"
-                android:layout_height="24dp"
-                android:background="@drawable/radius3"
+                android:layout_height="28dp"
+                android:background="@drawable/radius2"
                 android:gravity="center|center_horizontal"
                 android:text="المؤلف :"
                 android:textSize="18dp"
@@ -215,9 +216,9 @@
             <TextView
                 android:id="@+id/Category"
                 android:layout_width="0dp"
-                android:layout_height="25dp"
+                android:layout_height="28dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/radius3"
+                android:background="@drawable/radius2"
                 android:gravity="center|center_horizontal"
                 android:text="التصنيف :"
                 android:textSize="18dp"
@@ -230,9 +231,9 @@
             <TextView
                 android:id="@+id/DateCreated"
                 android:layout_width="0dp"
-                android:layout_height="24dp"
+                android:layout_height="28dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/radius3"
+                android:background="@drawable/radius2"
                 android:gravity="center|center_horizontal"
                 android:text="تاريخ الإنشاء :"
                 android:textSize="18dp"
@@ -244,9 +245,9 @@
             <TextView
                 android:id="@+id/numberOfPages"
                 android:layout_width="0dp"
-                android:layout_height="24dp"
+                android:layout_height="28dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/radius3"
+                android:background="@drawable/radius2"
                 android:gravity="center|center_horizontal"
                 android:text="عدد الصفحات :"
                 android:textSize="18dp"
@@ -261,7 +262,7 @@
         <ImageView
             android:id="@+id/image_Book"
             android:layout_width="127dp"
-            android:layout_height="150dp"
+            android:layout_height="165dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -326,7 +327,7 @@
                     android:ellipsize="end"
                     android:maxLines="3"
                     android:padding="13dp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/textSee"
@@ -335,7 +336,8 @@
                     android:layout_marginRight="20dp"
                     android:text="عرض المزيد"
                     android:textColor="#25E1E1"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingBottom="6dp"/>
             </LinearLayout>
         </ScrollView>
 
