@@ -75,7 +75,9 @@ public class Book_Title_fragment extends Fragment {
         TextView txt5 = view.findViewById(R.id.numberOfPages_data);
         TextView txt6 = view.findViewById(R.id.textViewContent);
 
-        db.collection("Book").document("TC0005B").get().addOnSuccessListener(documentSnapshot -> {
+
+
+        db.collection("Book").document("TC0001B").get().addOnSuccessListener(documentSnapshot -> {
 
                     // الحصول على بيانات المستخدم بنجاح
                     String img1 = documentSnapshot.getString("Image_URL");
