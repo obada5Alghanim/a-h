@@ -7,14 +7,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-
-
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -27,7 +23,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -36,7 +31,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -201,7 +195,6 @@ public class Sign_Up_fragment extends Fragment {
             public void onClick(View v) {
                 final String email = userName.getText().toString().trim();
                 final String pass = password.getText().toString().trim();
-                // we need to make password and confirm password  same
                 final String ConfirmPassword = confirmPassword.getText().toString().trim();
                 final String firstName = FirstName.getText().toString();
                 final String lastName = LastName.getText().toString();
@@ -227,9 +220,9 @@ public class Sign_Up_fragment extends Fragment {
                 }if (day.isEmpty()){
                     Day.setError("day cannot be empty");
                 }
-                if (confirmPassword != (password)){
-                    Toast.makeText(getActivity(), "Passwords Not Similar!", Toast.LENGTH_SHORT).show();
-                }
+//                if (!confirmPassword.equals (password)){
+//                    Toast.makeText(getActivity(), "Passwords Not Similar!", Toast.LENGTH_SHORT).show();
+//                }
 
                 else {
                     mAuth.createUserWithEmailAndPassword(email, pass)
