@@ -77,28 +77,26 @@ public class Book_Title_fragment extends Fragment {
 
 
 
-        db.collection("Book").document("TC0001B").get().addOnSuccessListener(documentSnapshot -> {
 
-                    // الحصول على بيانات المستخدم بنجاح
-                    String img1 = documentSnapshot.getString("Image_URL");
-                    Picasso.get().load(img1).into(img);
-                    String S1 = documentSnapshot.getString("Book_Name");
-                    txt1.setText(S1);
-                    String S2 = documentSnapshot.getString("Author");
-                    txt2.setText(S2);
-                    String S3 = documentSnapshot.getString("Section");
-                    txt3.setText(S3);
-                    String S4 = documentSnapshot.getString("Year");
-                    txt4.setText(S4);
-                    String S5 = documentSnapshot.getString("No_Page");
-                    txt5.setText(S5);
-                    String S6 = documentSnapshot.getString("Description");
-                    txt6.setText(S6);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            String bookTitle = bundle.getString("Book_Name");
+            String bookAuthor = bundle.getString("Author");
+            String section = bundle.getString("Section");
+            String year = bundle.getString("years");
+            String noPage = bundle.getString("NoPage");
+            String bookDescription = bundle.getString("Description");
+            String imageUrl = bundle.getString("Image_URL");
 
-                })
-                .addOnFailureListener(e -> {
-                    // فشل في استرجاع بيانات المستخدم
-                });
+            txt1.setText(bookTitle);
+            txt2.setText(bookAuthor);
+            txt3.setText(section);
+            txt4.setText(year);
+            txt5.setText(noPage);
+            txt6.setText(bookDescription);
+            Picasso.get().load(imageUrl).into(img);
+
+        }
 
             return view;
 

@@ -1,5 +1,6 @@
 package com.example.al_rewaq;
 
+import android.graphics.Outline;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -27,7 +29,7 @@ public class home_page_fragment extends Fragment {
 
     private LinearLayout categoriesContainer;
     private Handler handler = new Handler();
-    private int scrollSpeed = 3000; // سرعة التمرير بالمللي ثانية
+    private int scrollSpeed = 100; // سرعة التمرير بالمللي ثانية
 
 
 
@@ -65,30 +67,93 @@ public class home_page_fragment extends Fragment {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Book").whereEqualTo("Section", category).get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
+                    // إنشاء نص لاسم التصنيف
+                    TextView categoryTitle = new TextView(getContext());
+                    categoryTitle.setText(category);
+                    categoryTitle.setTextSize(20);
+                    categoryTitle.setPadding(16, 16, 16, 16);
+
+                    // إضافة النص إلى container الرئيسي
+                    categoriesContainer.addView(categoryTitle);
+
+                    // إنشاء شريط أفقي للكتب
                     HorizontalScrollView scrollView = new HorizontalScrollView(getContext());
                     LinearLayout booksContainer = new LinearLayout(getContext());
                     booksContainer.setOrientation(LinearLayout.HORIZONTAL);
 
                     for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                        String bookTitle = document.getString("Book_Name");
-                        TextView bookView = new TextView(getContext());
-                        bookView.setText(bookTitle);
-                        bookView.setPadding(16, 16, 16, 16);
-                        booksContainer.addView(bookView);
+                        String imageUrl = document.getString("Image_URL");
+                        ImageView imageView = new ImageView(getContext());
+
+                        // تحميل الصورة باستخدام Picasso
+                        Picasso.get().load(imageUrl).into(imageView);
+
+                        // إعداد الحواف الدائرية للصورة
+                        imageView.setClipToOutline(true);
+                        imageView.setOutlineProvider(new ViewOutlineProvider() {
+                            @Override
+                            public void getOutline(View view, Outline outline) {
+                                outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), 5);
+                            }
+                        });
+
+                        // إعداد التخطيط للصورة
+                        LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(
+                                500,
+                                500
+                        );
+                        imageParams.setMargins(16, 0, 16, 0); // تعديل المسافة بين الصور
+                        imageView.setLayoutParams(imageParams);
+                        imageView.setPadding(0, 0, 0, 0);
+
+                        // إضافة حدث الضغط على الصورة لنقل معلومات الكتاب إلى Fragment آخر
+                        imageView.setOnClickListener(v -> {
+                            // جمع معلومات الكتاب من المستند
+                            String bookTitle = document.getString("Book_Name");
+                            String bookAuthor = document.getString("Author");
+                            String section = document.getString("Section");
+                            String  year  = document.getString("Year");
+                            String  noPage  = document.getString("No_Page");
+                            String bookDescription = document.getString("Description");
+
+                            // نقل البيانات إلى Fragment آخر
+                            Bundle bundle = new Bundle();
+                            bundle.putString("Book_Name", bookTitle);
+                            bundle.putString("Author", bookAuthor);
+                            bundle.putString("Section", section);
+                            bundle.putString("years", year);
+                            bundle.putString("NoPage", noPage);
+                            bundle.putString("Description", bookDescription);
+                            bundle.putString("Image_URL", imageUrl);
+
+                            Book_Title_fragment bookTitleFragment = new Book_Title_fragment();
+                            bookTitleFragment.setArguments(bundle);
+
+                            // تبديل Fragment
+                           getActivity().getSupportFragmentManager().beginTransaction().replace(android.R.id.content,bookTitleFragment ).commit();
+
+                        });
+
+                        booksContainer.addView(imageView);
                     }
 
                     scrollView.addView(booksContainer);
                     categoriesContainer.addView(scrollView);
 
+                    // إعداد التمرير الأفقي التلقائي
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            scrollView.smoothScrollBy(10, 0);
+                            scrollView.smoothScrollBy(-1, 0);
                             handler.postDelayed(this, scrollSpeed);
                         }
                     }, scrollSpeed);
+
                 });
+
     }
+
+
 
     private void loadRandomCategories() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();

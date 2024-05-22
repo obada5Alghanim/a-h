@@ -111,9 +111,11 @@ public class Interests extends AppCompatActivity {
         if (selectedCategories.contains(category)) {
             selectedCategories.remove(category);
             button.setBackgroundColor(Color.BLACK);
+            button.setTextColor(Color.WHITE);
         } else {
             selectedCategories.add(category);
             button.setBackgroundColor(Color.WHITE);
+            button.setTextColor(Color.BLACK);
         }
     }
 
