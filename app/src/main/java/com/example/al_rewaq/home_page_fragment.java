@@ -1,5 +1,6 @@
 package com.example.al_rewaq;
 
+import android.graphics.Color;
 import android.graphics.Outline;
 import android.os.Bundle;
 
@@ -21,6 +22,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.squareup.picasso.Picasso;
 
+import org.jetbrains.annotations.ApiStatus;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +32,7 @@ public class home_page_fragment extends Fragment {
 
     private LinearLayout categoriesContainer;
     private Handler handler = new Handler();
-    private int scrollSpeed = 100; // سرعة التمرير بالمللي ثانية
+    private int scrollSpeed = 12000; // سرعة التمرير بالمللي ثانية
 
 
 
@@ -70,8 +73,10 @@ public class home_page_fragment extends Fragment {
                     // إنشاء نص لاسم التصنيف
                     TextView categoryTitle = new TextView(getContext());
                     categoryTitle.setText(category);
-                    categoryTitle.setTextSize(20);
+                    categoryTitle.setTextSize(22);
                     categoryTitle.setPadding(16, 16, 16, 16);
+                    categoryTitle.setTextColor(Color.WHITE);
+
 
                     // إضافة النص إلى container الرئيسي
                     categoriesContainer.addView(categoryTitle);
@@ -80,6 +85,8 @@ public class home_page_fragment extends Fragment {
                     HorizontalScrollView scrollView = new HorizontalScrollView(getContext());
                     LinearLayout booksContainer = new LinearLayout(getContext());
                     booksContainer.setOrientation(LinearLayout.HORIZONTAL);
+                    scrollView.setHorizontalScrollBarEnabled(false);
+
 
                     for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                         String imageUrl = document.getString("Image_URL");
@@ -99,7 +106,7 @@ public class home_page_fragment extends Fragment {
 
                         // إعداد التخطيط للصورة
                         LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(
-                                500,
+                                300,
                                 500
                         );
                         imageParams.setMargins(16, 0, 16, 0); // تعديل المسافة بين الصور
@@ -144,7 +151,7 @@ public class home_page_fragment extends Fragment {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            scrollView.smoothScrollBy(-1, 0);
+                            scrollView.smoothScrollBy(-200, 0);
                             handler.postDelayed(this, scrollSpeed);
                         }
                     }, scrollSpeed);
@@ -164,7 +171,7 @@ public class home_page_fragment extends Fragment {
                         allCategories.add(document.getId());
                     }
                     Collections.shuffle(allCategories);
-                    List<String> randomCategories = allCategories.subList(0, 3);
+                    List<String> randomCategories = allCategories.subList(1, 3);
                     for (String category : randomCategories) {
                         loadBooks(category);
                     }

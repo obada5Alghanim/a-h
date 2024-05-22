@@ -6,15 +6,19 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="75dp"
     android:layoutDirection="rtl"
+    android:orientation="vertical"
     tools:context=".home_page_fragment">
+
+
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:scrollbars="none">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -34,13 +38,12 @@
             <LinearLayout
                 android:id="@+id/categoriesContainer"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="match_parent"
                 android:layout_below="@+id/textView3"
-                android:layout_marginTop="20dp"
-                android:background="@color/black2"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical" />
 
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
 

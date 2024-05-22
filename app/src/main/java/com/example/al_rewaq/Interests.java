@@ -143,7 +143,7 @@ public class Interests extends AppCompatActivity {
                         allCategories.add(document.getId());
                     }
                     Collections.shuffle(allCategories);
-                    List<String> randomCategories = allCategories.subList(0, 3);
+                    List<String> randomCategories = allCategories.subList(1, 3);
 
                     // حفظ التصنيفات العشوائية في Firestore أو SharedPreferences
                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
