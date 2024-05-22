@@ -227,9 +227,6 @@ public class Sign_Up_fragment extends Fragment {
                 }if (day.isEmpty()){
                     Day.setError("day cannot be empty");
                 }
-                if (confirmPassword != (password)){
-                    Toast.makeText(getActivity(), "Passwords Not Similar!", Toast.LENGTH_SHORT).show();
-                }
 
                 else {
                     mAuth.createUserWithEmailAndPassword(email, pass)

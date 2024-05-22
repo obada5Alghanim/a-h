@@ -9,94 +9,26 @@
     tools:context=".home_page_fragment">
 
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="الصفحة الرئيسية"
-        android:textColor="@color/white"
-        android:textSize="26sp"
-        android:textStyle="bold"/>
-
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/relative2home"
-        android:layout_below="@+id/textView3">
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/bookSection"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:layout_marginTop="36dp"
-            />
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="198dp"
-            android:layout_marginTop="72dp"
-            android:scrollbarThumbHorizontal="@drawable/scrollbar">
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <LinearLayout
+                android:id="@+id/categoriesContainer"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/black2"
-                android:orientation="horizontal">
+                android:layout_height="100dp"
+                android:background="@color/white"
+                android:orientation="vertical" />
 
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="7dp" />
+        </LinearLayout>
+    </ScrollView>
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="7dp"/>
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="7dp"/>
-
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="7dp"/>
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="7dp"/>
-
-            </LinearLayout>
-
-
-        </HorizontalScrollView>
-
-
-    </RelativeLayout>
 
 </RelativeLayout>
