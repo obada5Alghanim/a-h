@@ -27,7 +27,7 @@ public class search_fragment extends Fragment {
     private TextView resultTextView;
     private FirebaseFirestore db;
     ImageView img;
-    RelativeLayout RL,SRLID;
+    RelativeLayout RL, SRLID;
 
     @Nullable
     @Override
@@ -71,10 +71,8 @@ public class search_fragment extends Fragment {
                     StringBuilder result = new StringBuilder();
                     RL.setVisibility(View.VISIBLE);
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        // Get Image_URL from Firestore document
                         String imageUrl = document.getString("Image_URL");
 
-                        // Load image using Picasso
                         if (imageUrl != null) {
                             img.setVisibility(View.VISIBLE);
                             Picasso.get().load(imageUrl).into(img);
@@ -83,7 +81,32 @@ public class search_fragment extends Fragment {
                             RL.setVisibility(View.INVISIBLE);
                         }
                         result.append("").append(document.getString("Book_Name")).append("\n");
+
+                        SRLID.setOnClickListener(v -> {
+                            String bookTitle = document.getString("Book_Name");
+                            String bookAuthor = document.getString("Author");
+                            String section = document.getString("Section");
+                            String year = document.getString("Year");
+                            String noPage = document.getString("No_Page");
+                            String bookDescription = document.getString("Description");
+
+                            Bundle bundle = new Bundle();
+                            bundle.putString("Book_Name", bookTitle);
+                            bundle.putString("Author", bookAuthor);
+                            bundle.putString("Section", section);
+                            bundle.putString("years", year);
+                            bundle.putString("NoPage", noPage);
+                            bundle.putString("Description", bookDescription);
+                            bundle.putString("Image_URL", imageUrl);
+
+                            Book_Title_fragment bookTitleFragment = new Book_Title_fragment();
+                            bookTitleFragment.setArguments(bundle);
+
+                            // تبديل Fragment
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(android.R.id.content, bookTitleFragment).commit();
+                        });
                     }
+
                     if (result.length() == 0) {
                         Toast.makeText(getActivity(), "لا يوجد كتاب بهذا الأسم", Toast.LENGTH_SHORT).show();
                         RL.setVisibility(View.INVISIBLE);
@@ -96,4 +119,5 @@ public class search_fragment extends Fragment {
             }
         });
     }
+
 }

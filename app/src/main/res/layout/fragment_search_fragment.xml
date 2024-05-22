@@ -46,6 +46,7 @@
       android:layout_marginStart="5dp"
       android:layout_marginTop="16dp"
       android:layout_marginBottom="560dp"
+      android:textSize="20dp"
       android:text="بحث" />
 
   <RelativeLayout
