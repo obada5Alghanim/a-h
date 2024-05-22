@@ -95,7 +95,7 @@
         app:strokeWidth="1dp"
         android:textSize="20dp"
         android:fontFamily="@font/inter_bold"
-        android:onClick="start"/>
+        />
 
     <Button
         android:id="@+id/end_btn"
@@ -107,7 +107,6 @@
         android:layout_marginBottom="98dp"
         android:backgroundTint="#BD0E0E"
         android:fontFamily="@font/inter_bold"
-        android:onClick="end"
         android:text="انهاء"
         android:textSize="20dp"
         app:cornerRadius="30dp"

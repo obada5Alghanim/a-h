@@ -119,7 +119,6 @@
                         app:strokeColor="#555555"
                         app:strokeWidth="2dp"
                         android:gravity="center"
-                        android:onClick="change"
                         android:text="روايات بوليسية"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp" />
