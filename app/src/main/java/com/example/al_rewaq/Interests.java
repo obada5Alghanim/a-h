@@ -6,16 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -50,7 +46,6 @@ public class Interests extends AppCompatActivity {
         bt16 = findViewById(R.id.Button16);
         bt17 = findViewById(R.id.Button17);
 
-        ///////////
         buttonCategoryMap.put(bt1, "روايات دينية");
         buttonCategoryMap.put(bt2, "روايات مغامرات");
         buttonCategoryMap.put(bt3, "روايات رعب");
@@ -63,10 +58,10 @@ public class Interests extends AppCompatActivity {
         buttonCategoryMap.put(bt10, "تاريخ أوروبا");
         buttonCategoryMap.put(bt11, "العلوم الشرعية");
         buttonCategoryMap.put(bt12, "السيرة النبوية");
-        buttonCategoryMap.put(bt13, "الرسل و الأنبياء");
+        buttonCategoryMap.put(bt13, "الرسل والأنبياء");
         buttonCategoryMap.put(bt14, "لغات البرمجة");
-        buttonCategoryMap.put(bt15, "كمبيوتر و انترنت");
-        buttonCategoryMap.put(bt16, "سيكولوجية الجرائم");
+        buttonCategoryMap.put(bt15, "كمبيوتر وانترنت");
+        buttonCategoryMap.put(bt16, "سيكولوجيا الجرائم");
         buttonCategoryMap.put(bt17, "علم النفس التربوي");
 
 

@@ -34,6 +34,7 @@ public class search_fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_fragment, container, false);
 
+
         img = view.findViewById(R.id.image_Book1);
         searchField = view.findViewById(R.id.Search_Field);
         searchButton = view.findViewById(R.id.Search_Button);
@@ -42,11 +43,11 @@ public class search_fragment extends Fragment {
         RL = view.findViewById(R.id.RelativeLayout);
         SRLID = view.findViewById(R.id.searchRealativelayoutID);
 
+
         SRLID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RL.setVisibility(View.INVISIBLE);
-
             }
         });
 
@@ -82,7 +83,7 @@ public class search_fragment extends Fragment {
                         }
                         result.append("").append(document.getString("Book_Name")).append("\n");
 
-                        SRLID.setOnClickListener(v -> {
+                        RL.setOnClickListener(v -> {
                             String bookTitle = document.getString("Book_Name");
                             String bookAuthor = document.getString("Author");
                             String section = document.getString("Section");
@@ -112,6 +113,7 @@ public class search_fragment extends Fragment {
                         RL.setVisibility(View.INVISIBLE);
                     } else {
                         resultTextView.setText(result.toString());
+                        searchField.setText("");
                     }
                 } else {
                     resultTextView.setText("Error getting documents: " + task.getException().getMessage());

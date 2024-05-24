@@ -140,20 +140,26 @@ public class home_page_fragment extends Fragment {
                     scrollView.addView(booksContainer);
                     categoriesContainer.addView(scrollView);
 
-                    // إعداد التمرير الأفقي التلقائي
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            scrollView.smoothScrollBy(-200, 0);
-                            handler.postDelayed(this, scrollSpeed);
+                            int currentScrollX = scrollView.getScrollX();
+
+                            if (currentScrollX <= 0) {
+
+                                scrollSpeed = Math.abs(scrollSpeed);
+                            } else if (currentScrollX >= (booksContainer.getWidth() - scrollView.getWidth())) {
+                                scrollSpeed = -Math.abs(scrollSpeed);
+                            }
+
+                            scrollView.smoothScrollBy(scrollSpeed / 200, 0);
+
+                            handler.postDelayed(this, 12000);
                         }
                     }, scrollSpeed);
 
                 });
-
     }
-
-
 
     private void loadRandomCategories() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
