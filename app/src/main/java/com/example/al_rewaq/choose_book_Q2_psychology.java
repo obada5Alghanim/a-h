@@ -33,7 +33,8 @@ public class choose_book_Q2_psychology extends Fragment {
         prev_Q_btn = view.findViewById(R.id.previous_Q);
         choose_book_Q1 choose_book_q1 = new choose_book_Q1();
         choose_book_Q3 chooseBookQ3 = new choose_book_Q3();
-
+        Bundle reciveQ1check = this.getArguments();
+        String justCheck2 = reciveQ1check.getString("Q1check");
         click_answar2_1_p.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -69,16 +70,24 @@ public class choose_book_Q2_psychology extends Fragment {
         });
 
 
+        Bundle sectBun = new Bundle();
+
         next_Q_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if(sum == 1){
                     sum = 0;
+                    sectBun.putString("sect","سيكولوجيا الجرائم");
+                    sectBun.putString("Q2check",justCheck2);
+                    chooseBookQ3.setArguments(sectBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
                     removeFragment();
                 } else if (sum == 2) {
                     sum = 0;
+                    sectBun.putString("sect","علم النفس التربوي");
+                    sectBun.putString("Q2check",justCheck2);
+                    chooseBookQ3.setArguments(sectBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
                     removeFragment();
                 } else{

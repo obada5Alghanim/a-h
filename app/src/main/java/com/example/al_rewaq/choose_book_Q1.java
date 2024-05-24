@@ -226,33 +226,46 @@ public class choose_book_Q1 extends Fragment {
             }
         });
 
+        Bundle justCheck = new Bundle();
     next_Q_btn.setOnClickListener(new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {
             if(sum == 1){
                 sum = 0;
+                justCheck.putString("Q1check","A");
+                chooseBookQ2Novels.setArguments(justCheck);
                getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ2Novels).commit();
                removeFragment();
             } else if (sum == 2) {
                 sum = 0;
+                justCheck.putString("Q1check","B");
+                chooseBookQ2Etiquette.setArguments(justCheck);
                 getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ2Etiquette).commit();
                 removeFragment();
             } else if (sum == 3) {
                 sum = 0;
+                justCheck.putString("Q1check","C");
+                chooseBookQ2Religion.setArguments(justCheck);
                 getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ2Religion).commit();
                 removeFragment();
 
             }else if (sum == 4) {
                 sum = 0;
+                justCheck.putString("Q1check","D");
+                chooseBookQ2Psychology.setArguments(justCheck);
                 getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ2Psychology).commit();
                 removeFragment();
             }else if (sum == 5) {
                 sum = 0;
+                justCheck.putString("Q1check","E");
+                chooseBookQ2History.setArguments(justCheck);
                 getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ2History).commit();
                 removeFragment();
             }else if (sum == 6) {
                 sum = 0;
+                justCheck.putString("Q1check","F");
+                chooseBookQ2Technology.setArguments(justCheck);
                 getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ2Technology).commit();
                 removeFragment();
             }else{

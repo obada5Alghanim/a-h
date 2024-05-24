@@ -35,6 +35,10 @@ public class choose_book_Q4 extends Fragment {
         choose_book_Q3 chooseBookQ3 = new choose_book_Q3();
         choose_book_Q5 chooseBookQ5 = new choose_book_Q5();
 
+        Bundle reciveFromLang = this.getArguments();
+        String fromLang = reciveFromLang.getString("lang");
+        String fromLanglang = reciveFromLang.getString("langlang");
+
         click_answar4_1.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -71,17 +75,23 @@ public class choose_book_Q4 extends Fragment {
             }
         });
 
-
+Bundle yearBun = new Bundle();
         next_Q_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if(sum == 1){
                     sum = 0;
+                    yearBun.putString("year",fromLang);
+                    yearBun.putString("yearyear",fromLanglang);
+                    chooseBookQ5.setArguments(yearBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ5).commit();
                     removeFragment();
                 } else if (sum == 2) {
                     sum = 0;
+                    yearBun.putString("year",fromLang);
+                    yearBun.putString("yearyear",fromLanglang);
+                    chooseBookQ5.setArguments(yearBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ5).commit();
                     removeFragment();
                 } else{

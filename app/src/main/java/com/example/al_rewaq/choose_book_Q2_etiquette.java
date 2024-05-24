@@ -36,10 +36,11 @@ public class choose_book_Q2_etiquette extends Fragment {
         choose_book_Q1 choose_book_q1 = new choose_book_Q1();
         choose_book_Q3 chooseBookQ3 = new choose_book_Q3();
 
-        Bundle bundle = new Bundle();
+        Bundle reciveQ1check = this.getArguments();
+        String justCheck2 = reciveQ1check.getString("Q1check");
 
         click_answar2_1_e.setOnClickListener(new View.OnClickListener() {
-            boolean Clicked1 = false;
+
             @Override
             public void onClick(View v) {
 
@@ -99,21 +100,31 @@ public class choose_book_Q2_etiquette extends Fragment {
                     }
 
         });
-
+        Bundle sectBun = new Bundle();
         next_Q_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if(sum == 1){
                     sum = 0;
+                    sectBun.putString("sect","أدب انجليزي");
+                    sectBun.putString("Q2check",justCheck2);
+                    chooseBookQ3.setArguments(sectBun);
+
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
                     removeFragment();
                 } else if (sum == 2) {
                     sum = 0;
+                    sectBun.putString("sect","أدب عربي");
+                    sectBun.putString("Q2check",justCheck2);
+                    chooseBookQ3.setArguments(sectBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
                     removeFragment();
                 } else if (sum == 3) {
                     sum = 0;
+                    sectBun.putString("sect","أدب روسي");
+                    sectBun.putString("Q2check",justCheck2);
+                    chooseBookQ3.setArguments(sectBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
                     removeFragment();
 

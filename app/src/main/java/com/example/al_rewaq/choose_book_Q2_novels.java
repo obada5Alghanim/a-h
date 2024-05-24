@@ -19,6 +19,7 @@ public class choose_book_Q2_novels extends Fragment {
     Button click_answar2_1_n, click_answar2_2_n ,click_answar2_3_n, click_answar2_4_n;
     TextView next_Q_btn, prev_Q_btn;
     private  int sum =0;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public class choose_book_Q2_novels extends Fragment {
         prev_Q_btn = view.findViewById(R.id.previous_Q);
         choose_book_Q1 choose_book_q1 = new choose_book_Q1();
         choose_book_Q3 chooseBookQ3 = new choose_book_Q3();
+        Bundle reciveQ1check = this.getArguments();
+        String justCheck2 = reciveQ1check.getString("Q1check");
 
         click_answar2_1_n.setOnClickListener(new View.OnClickListener() {
 
@@ -92,7 +95,7 @@ public class choose_book_Q2_novels extends Fragment {
                 sum =3;
                     click_answar2_3_n.setTextColor(Color.WHITE);
                     click_answar2_3_n.setBackgroundColor(Color.BLACK);
-                    int color = ContextCompat.getColor(requireContext(), R.color.white2);
+                     int color = ContextCompat.getColor(requireContext(), R.color.white2);
 
                     click_answar2_1_n.setTextColor(Color.BLACK);
                     click_answar2_1_n.setBackgroundColor(color);
@@ -131,26 +134,38 @@ public class choose_book_Q2_novels extends Fragment {
             }
         });
 
-
+Bundle sectBun = new Bundle();
         next_Q_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if(sum == 1){
                     sum = 0;
+                    sectBun.putString("sect","روايات مغامرات");
+                    sectBun.putString("Q2check",justCheck2);
+                    chooseBookQ3.setArguments(sectBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
                     removeFragment();
                 } else if (sum == 2) {
                     sum = 0;
+                    sectBun.putString("sect","روايات دينية");
+                    sectBun.putString("Q2check",justCheck2);
+                    chooseBookQ3.setArguments(sectBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
                     removeFragment();
                 } else if (sum == 3) {
                     sum = 0;
+                    sectBun.putString("sect","روايات بوليسية");
+                    sectBun.putString("Q2check",justCheck2);
+                    chooseBookQ3.setArguments(sectBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
                     removeFragment();
 
                 }else if (sum == 4) {
                     sum = 0;
+                    sectBun.putString("sect","روايات رعب");
+                    sectBun.putString("Q2check",justCheck2);
+                    chooseBookQ3.setArguments(sectBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
                     removeFragment();
                 }else{
