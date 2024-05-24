@@ -104,16 +104,26 @@ result_Q.setOnClickListener(new View.OnClickListener() {
 
                             // الحصول على بيانات الكتاب العشوائي
                             String bookTitle = randomBook.getString("Book_Name");
-
                             String bookImageUrl = randomBook.getString("Image_URL");
+                            String bookauth = randomBook.getString("Author");
+                            String booksect = randomBook.getString("Section");
+                            String bookyear = randomBook.getString("Year");
+                            String bookdesc = randomBook.getString("Description");
+                            String bookpage = randomBook.getString("No_Page");
+
+
 
                             // تمرير البيانات إلى Fragment
                             Bundle bundle = new Bundle();
-                            bundle.putString("bookTitle", bookTitle);
+                            bundle.putString("Book_Name", bookTitle);
+                            bundle.putString("Author", bookauth);
+                            bundle.putString("Image_URL", bookImageUrl);
+                            bundle.putString("Section", booksect);
+                            bundle.putString("years", bookyear);
+                            bundle.putString("Description", bookdesc);
+                            bundle.putString("NoPage", bookpage);
 
-                            bundle.putString("bookImageUrl", bookImageUrl);
-
-                            chooesBookResulte bookFragment = new chooesBookResulte();
+                            Book_Title_fragment bookFragment = new Book_Title_fragment();
                             bookFragment.setArguments(bundle);
 
                             getActivity().getSupportFragmentManager().beginTransaction().replace(android.R.id.content, bookFragment).commit();
