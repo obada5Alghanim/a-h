@@ -18,7 +18,7 @@ public class choose_book_Q2_psychology extends Fragment {
 
     Button click_answar2_1_p, click_answar2_2_p;
 
-    TextView next_Q_btn, prev_Q_btn;
+    TextView next_Q_btn;
     private  int sum =0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,11 +30,8 @@ public class choose_book_Q2_psychology extends Fragment {
         click_answar2_2_p = view.findViewById(R.id.answar2_2_p);
 
         next_Q_btn = view.findViewById(R.id.next_Q);
-        prev_Q_btn = view.findViewById(R.id.previous_Q);
-        choose_book_Q1 choose_book_q1 = new choose_book_Q1();
         choose_book_Q3 chooseBookQ3 = new choose_book_Q3();
-        Bundle reciveQ1check = this.getArguments();
-        String justCheck2 = reciveQ1check.getString("Q1check");
+
         click_answar2_1_p.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -79,14 +76,12 @@ public class choose_book_Q2_psychology extends Fragment {
                 if(sum == 1){
                     sum = 0;
                     sectBun.putString("sect","سيكولوجيا الجرائم");
-                    sectBun.putString("Q2check",justCheck2);
                     chooseBookQ3.setArguments(sectBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
                     removeFragment();
                 } else if (sum == 2) {
                     sum = 0;
                     sectBun.putString("sect","علم النفس التربوي");
-                    sectBun.putString("Q2check",justCheck2);
                     chooseBookQ3.setArguments(sectBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
                     removeFragment();
@@ -97,15 +92,7 @@ public class choose_book_Q2_psychology extends Fragment {
             }
         });
 
-        prev_Q_btn.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                sum = 0;
-                getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,choose_book_q1).commit();
-                removeFragment();
-            }
-        });
 
         return view;
     }

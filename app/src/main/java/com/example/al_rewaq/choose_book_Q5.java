@@ -30,8 +30,8 @@ public class choose_book_Q5 extends Fragment {
 
     Button click_answar5_1, click_answar5_2;
 
-    TextView result_Q, prev_Q_btn;
-    private  int sum =0;
+    TextView result_Q;
+
     FirebaseFirestore db;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,14 +43,12 @@ public class choose_book_Q5 extends Fragment {
         click_answar5_2 = view.findViewById(R.id.answar5_2);
 
         result_Q = view.findViewById(R.id.next_Q);
-        prev_Q_btn = view.findViewById(R.id.previous_Q);
-        choose_book_Q4 chooseBookQ4 = new choose_book_Q4();
         // add the object of new result Fragmentssss  here
         db = FirebaseFirestore.getInstance();
         Bundle reciveFromYear = this.getArguments();
         String fromYear = reciveFromYear.getString("year");
         String fromYearyear = reciveFromYear.getString("yearyear");
-        int yearInt = reciveFromYear.getInt("IntYear");
+
 
 
 
@@ -136,15 +134,7 @@ result_Q.setOnClickListener(new View.OnClickListener() {
 
     }
 });
-        prev_Q_btn.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                sum = 0 ;
-                getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ4).commit();
-                removeFragment();
-            }
-        });
 
         return view;
     }

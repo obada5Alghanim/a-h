@@ -19,7 +19,7 @@ public class choose_book_Q4 extends Fragment {
     Button click_answar4_1, click_answar4_2;
 
 
-    TextView next_Q_btn, prev_Q_btn;
+    TextView next_Q_btn;
     private  int sum =0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,8 +31,6 @@ public class choose_book_Q4 extends Fragment {
         click_answar4_2 = view.findViewById(R.id.answar4_2);
 
         next_Q_btn = view.findViewById(R.id.next_Q);
-        prev_Q_btn = view.findViewById(R.id.previous_Q);
-        choose_book_Q3 chooseBookQ3 = new choose_book_Q3();
         choose_book_Q5 chooseBookQ5 = new choose_book_Q5();
 
         Bundle reciveFromLang = this.getArguments();
@@ -101,15 +99,6 @@ Bundle yearBun = new Bundle();
             }
         });
 
-        prev_Q_btn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                sum = 0 ;
-                getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ3).commit();
-                removeFragment();
-            }
-        });
 
         return view;
     }
