@@ -3,15 +3,22 @@ package com.example.al_rewaq;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
 public class Categories_fragment extends Fragment {
+
+ Button BTN1;
+
     private TextView Show_Cat1,Show_Cat2,Show_Cat3,Show_Cat4,Show_Cat5,Show_Cat6,
             TextColor1,TextColor2,TextColor3,TextColor4,TextColor5,TextColor6;
 
@@ -21,11 +28,13 @@ public class Categories_fragment extends Fragment {
             ImageBk2,ImageBk4,ImageBk6,ImageBk8,ImageBk10,ImageBk12;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_categories_fragment, container, false);
+
+
+        BTN1=view.findViewById(R.id.button1);
 
         Show_Cat1 = view.findViewById(R.id.Cat1);
         Show_Cat2 = view.findViewById(R.id.Cat2);
@@ -62,6 +71,8 @@ public class Categories_fragment extends Fragment {
         ImageBk8 = view.findViewById(R.id.imageView8);
         ImageBk10 = view.findViewById(R.id.imageView10);
         ImageBk12 = view.findViewById(R.id.imageView12);
+
+
 
         Show_Cat1.setOnClickListener(new View.OnClickListener() {
             int Clicked1 = 0;
@@ -185,6 +196,28 @@ public class Categories_fragment extends Fragment {
 
         });
 
+        BTN1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN1.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
         return view;
     }
+    private void loadBook(String category) {
+//        show_books_fragment showBooksFragment = show_books_fragment.newInstance(category);
+//        FragmentManager fragmentManager = getParentFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.layoutBook, showBooksFragment);
+//        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.commit();
+        show_books_fragment ShowBooksFragment=  show_books_fragment.newInstance(category);
+
+        getActivity().getSupportFragmentManager().beginTransaction().replace(android.R.id.content,ShowBooksFragment).commit();
+
+
+    }
+
 }
