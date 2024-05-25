@@ -2,6 +2,7 @@ package com.example.al_rewaq;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -12,13 +13,25 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 public class reading_speed_test_new extends Fragment {
-
-    private TextView RST_textView, timerTxt , resultTxt , degree , background;
+    FirebaseFirestore db;
+    private TextView RST_textView, timerTxt , resultTxt , degree , background , nameOfParagraph;
     private Button RST_btn, RST_btn_end ;
     private RelativeLayout relativeLayoutResulte;
     private ImageButton closeRuslet;
@@ -53,7 +66,10 @@ public class reading_speed_test_new extends Fragment {
         relativeLayoutResulte = view.findViewById(R.id.showTheResult);
         degree =view.findViewById(R.id.textView8);
         background =view.findViewById(R.id.textView9);
+        nameOfParagraph = view.findViewById(R.id.textView2);
         closeRuslet = view.findViewById(R.id.imageButton3);
+        final ScrollView scrollView  = view.findViewById(R.id.scrollView2);
+        db = FirebaseFirestore.getInstance();
 
 
 
@@ -63,6 +79,44 @@ public class reading_speed_test_new extends Fragment {
 RST_btn.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
+        db.collection("Reading_Speed_Test").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    List<DocumentSnapshot> documents = new ArrayList<>();
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        documents.add(document);
+                        if (!documents.isEmpty()) {
+                            Random rand = new Random();
+                            int randomIndex = rand.nextInt(documents.size());
+                            DocumentSnapshot randomBook = documents.get(randomIndex);
+
+                            // الحصول على بيانات الكتاب العشوائي
+                            String Title = randomBook.getString("PName");
+                            String Paragraph = randomBook.getString("paragraph");
+
+                            RST_textView.setText(Paragraph);
+                            nameOfParagraph.setText(Title);
+
+
+
+
+
+                        } else {
+                            System.out.println("No books found in this category.");
+                        }
+                    }
+                } else {
+                    System.out.println("Error getting documents: " + task.getException());
+                }
+
+
+
+            }
+
+        });
+
+        scrollView.scrollTo(0,0);
 
         startTest();
 
@@ -80,7 +134,7 @@ RST_btn_end.setOnClickListener(new View.OnClickListener() {
        relativeLayoutResulte.setVisibility(View.VISIBLE);
         RST_btn_end.setVisibility(View.GONE);
         RST_btn.setVisibility(View.VISIBLE);
-
+        scrollView.scrollTo(0,0);
 
     }
 });
