@@ -7,7 +7,8 @@
     android:layout_marginBottom="75dp"
     android:layoutDirection="rtl"
     android:orientation="vertical"
-    tools:context=".home_page_fragment">
+    tools:context=".home_page_fragment"
+    android:id="@+id/homeid">
 
 
 

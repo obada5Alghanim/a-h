@@ -126,6 +126,7 @@ result_Q.setOnClickListener(new View.OnClickListener() {
                             Book_Title_fragment bookFragment = new Book_Title_fragment();
                             bookFragment.setArguments(bundle);
 
+
                             getActivity().getSupportFragmentManager().beginTransaction().replace(android.R.id.content, bookFragment).commit();
 
                         } else {
