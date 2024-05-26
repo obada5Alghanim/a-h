@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class Categories_fragment extends Fragment {
 
- Button BTN1;
+ Button BTN1,BTN2,BTN3,BTN4,BTN5,BTN6,BTN7,BTN8,BTN9,BTN10,BTN11,BTN12,BTN13,BTN14,BTN15,BTN16,BTN17;
 
     private TextView Show_Cat1,Show_Cat2,Show_Cat3,Show_Cat4,Show_Cat5,Show_Cat6,
             TextColor1,TextColor2,TextColor3,TextColor4,TextColor5,TextColor6;
@@ -35,6 +35,22 @@ public class Categories_fragment extends Fragment {
 
 
         BTN1=view.findViewById(R.id.button1);
+        BTN2=view.findViewById(R.id.button2);
+        BTN3=view.findViewById(R.id.button3);
+        BTN4=view.findViewById(R.id.button10);
+        BTN5=view.findViewById(R.id.button4);
+        BTN6=view.findViewById(R.id.button5);
+        BTN7=view.findViewById(R.id.button6);
+        BTN8=view.findViewById(R.id.button7);
+        BTN9=view.findViewById(R.id.button8);
+        BTN10=view.findViewById(R.id.button9);
+        BTN11=view.findViewById(R.id.button11);
+        BTN12=view.findViewById(R.id.button12);
+        BTN13=view.findViewById(R.id.button13);
+        BTN14=view.findViewById(R.id.button14);
+        BTN15=view.findViewById(R.id.button15);
+        BTN16=view.findViewById(R.id.button16);
+        BTN17=view.findViewById(R.id.button17);
 
         Show_Cat1 = view.findViewById(R.id.Cat1);
         Show_Cat2 = view.findViewById(R.id.Cat2);
@@ -203,6 +219,139 @@ public class Categories_fragment extends Fragment {
                 loadBook(buttonText);
             }
         });
+
+        BTN2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN2.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+        BTN3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN3.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+        BTN4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN4.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+
+        BTN5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN5.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+        BTN6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN6.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+        BTN7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN7.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+
+        BTN8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN8.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+        BTN9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN9.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+        BTN10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN10.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+        BTN11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN11.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+
+        BTN12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN12.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+        BTN13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN13.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+        BTN14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN14.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+
+        BTN15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN15.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+        BTN16.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN16.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
+        BTN17.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonText = BTN17.getText().toString();
+                loadBook(buttonText);
+            }
+        });
+
 
         return view;
     }
