@@ -1,28 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Reading_in_Progress_Fragment"
-   android:layout_marginBottom="75dp"
-    android:layout_marginTop="125dp">
+    tools:context=".Reading_in_Progress_Fragment">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/blue"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="542dp"
-                android:gravity="center"
-                android:text="أقرأه حاليا"
-                android:textColor="@color/white"
-                android:textSize="36sp" />
-
-        </LinearLayout>
-
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_reading_in_progress"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginTop="150dp"  />
 </RelativeLayout>

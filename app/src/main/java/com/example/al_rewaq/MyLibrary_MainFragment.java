@@ -32,33 +32,47 @@ public class MyLibrary_MainFragment extends Fragment {
 
         getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,readingInProgressFragment).commit();
 
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
 
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            String chr = "A";
         @Override
         public boolean onNavigationItemSelected( MenuItem item) {
             if(item.getItemId() == R.id.readingInProgressID ){
-                getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,readingInProgressFragment).commit();
-                getActivity().getSupportFragmentManager().beginTransaction().remove(readingLaterFragment).commit();
-                getActivity().getSupportFragmentManager().beginTransaction().remove(favoritesFragment).commit();
-                getActivity().getSupportFragmentManager().beginTransaction().remove(readItFragment).commit();
+                if (chr != "A") {
+                    getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content, readingInProgressFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(readingLaterFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(favoritesFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(readItFragment).commit();
+                    chr = "A";
+                }
 
-            } else if (item.getItemId() == R.id.readingLaterID ) {
-                getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,readingLaterFragment).commit();
-                getActivity().getSupportFragmentManager().beginTransaction().remove(readingInProgressFragment).commit();
-                getActivity().getSupportFragmentManager().beginTransaction().remove(favoritesFragment).commit();
-                getActivity().getSupportFragmentManager().beginTransaction().remove(readItFragment).commit();
 
-            } else if (item.getItemId() == R.id.favoritesBookID ) {
-                getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,favoritesFragment).commit();
-                getActivity().getSupportFragmentManager().beginTransaction().remove(readingInProgressFragment).commit();
-                getActivity().getSupportFragmentManager().beginTransaction().remove(readingLaterFragment).commit();
-                getActivity().getSupportFragmentManager().beginTransaction().remove(readItFragment).commit();
+            }  if (item.getItemId() == R.id.readingLaterID ) {
+                if (chr != "B") {
+                    getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content, readingLaterFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(readingInProgressFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(favoritesFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(readItFragment).commit();
+                    chr = "B";
+                }
 
-            } else if (item.getItemId() == R.id.readItID ) {
-                getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,readItFragment).commit();
-                getActivity().getSupportFragmentManager().beginTransaction().remove(readingInProgressFragment).commit();
-                getActivity().getSupportFragmentManager().beginTransaction().remove(readingLaterFragment).commit();
-                getActivity().getSupportFragmentManager().beginTransaction().remove(favoritesFragment).commit();
+            }  if (item.getItemId() == R.id.favoritesBookID ) {
+                if (chr != "C") {
+                    getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content, favoritesFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(readingInProgressFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(readingLaterFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(readItFragment).commit();
+                    chr = "C";
+                }
+
+            }  if (item.getItemId() == R.id.readItID ) {
+                if (chr != "D") {
+                    getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content, readItFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(readingInProgressFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(readingLaterFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(favoritesFragment).commit();
+                    chr = "D";
+                }
 
             }
             return true;

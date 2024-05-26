@@ -32,15 +32,12 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Book_Title_fragment extends Fragment {
 
     private TextView BookName, txt1, add_to_favorite, add_to_inprogress, add_to_want_to_read, add_to_read_it;
     private ArrayList<String> select_favorite = new ArrayList<>();
-    private Map<TextView, String> buttonCategoryMap = new HashMap<>();
     private List<String> Favorite_books_List;
     private FirebaseFirestore db;
     private String userId;
@@ -56,7 +53,6 @@ public class Book_Title_fragment extends Fragment {
         auth = FirebaseAuth.getInstance();
         userId = auth.getCurrentUser().getUid();
         bottom_sheet = view.findViewById(R.id.bottom_sheet_shadow_book_title);
-
 
         add_to_favorite = view.findViewById(R.id.addToFavorat);
         add_to_inprogress = view.findViewById(R.id.add_to_reading_inprogress);
@@ -148,17 +144,17 @@ public class Book_Title_fragment extends Fragment {
             txt6.setText(bookDescription);
             Picasso.get().load(imageUrl).into(img);
 
-            checkIfBookIsFavorite(bookTitle);  // Check if the book is in the favorites list
-            checkIfBookIsInProgress(bookTitle); // Check if the book is in the reading in progress list
-            checkIfBookIsWantToRead(bookTitle); // Check if the book is in the want to read list
-            checkIfBookIsRead(bookTitle); // Check if the book is in the read list
+            checkIfBookIsFavorite(bookTitle);
+            checkIfBookIsInProgress(bookTitle);
+            checkIfBookIsWantToRead(bookTitle);
+            checkIfBookIsRead(bookTitle);
         }
 
         add_to_favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String bookName = txt1.getText().toString();
-                addBookToFavorite(bookName);
+                toggleBookInList(bookName, "Favorite_books", add_to_favorite, Color.RED);
             }
         });
 
@@ -166,7 +162,7 @@ public class Book_Title_fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String bookName = txt1.getText().toString();
-                addBookToInProgress(bookName);
+                toggleBookInList(bookName, "Reading_inprogress", add_to_inprogress, Color.BLUE);
             }
         });
 
@@ -174,7 +170,7 @@ public class Book_Title_fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String bookName = txt1.getText().toString();
-                addBookToWantToRead(bookName);
+                toggleBookInList(bookName, "Want_to_read", add_to_want_to_read, Color.GREEN);
             }
         });
 
@@ -182,7 +178,7 @@ public class Book_Title_fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String bookName = txt1.getText().toString();
-                addBookToReadIt(bookName);
+                toggleBookInList(bookName, "Read_it", add_to_read_it, Color.MAGENTA);
             }
         });
 
@@ -190,155 +186,87 @@ public class Book_Title_fragment extends Fragment {
     }
 
     private void checkIfBookIsFavorite(String bookTitle) {
-        DocumentReference userRef = db.collection("users").document(userId);
-        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    Favorite_books_List = (List<String>) documentSnapshot.get("Favorite_books");
-                    if (Favorite_books_List != null && Favorite_books_List.contains(bookTitle)) {
-                        add_to_favorite.setTextColor(Color.RED);  // Change color to red if the book is in the favorites list
-                    }
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.w("Firestore", "Error fetching favorite books", e);
-            }
-        });
-    }
-
-    private void addBookToFavorite(String bookTitle) {
-        DocumentReference userRef = db.collection("users").document(userId);
-        userRef.update("Favorite_books", FieldValue.arrayUnion(bookTitle))
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        add_to_favorite.setTextColor(Color.RED);  // Change color to red when added to favorites
-                        Toast.makeText(getActivity(), "Added to favorites", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Failed to add to favorites", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        checkIfBookInList(bookTitle, "Favorite_books", add_to_favorite, Color.RED);
     }
 
     private void checkIfBookIsInProgress(String bookTitle) {
-        DocumentReference userRef = db.collection("users").document(userId);
-        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    List<String> inProgress_books_List = (List<String>) documentSnapshot.get("Reading_inprogress");
-                    if (inProgress_books_List != null && inProgress_books_List.contains(bookTitle)) {
-                        add_to_inprogress.setTextColor(Color.BLUE);  // Change color to blue if the book is in the reading in progress list
-                    }
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.w("Firestore", "Error fetching in progress books", e);
-            }
-        });
-    }
-
-    private void addBookToInProgress(String bookTitle) {
-        DocumentReference userRef = db.collection("users").document(userId);
-        userRef.update("Reading_inprogress", FieldValue.arrayUnion(bookTitle))
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        add_to_inprogress.setTextColor(Color.BLUE);  // Change color to blue when added to reading in progress
-                        Toast.makeText(getActivity(), "Added to reading in progress", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Failed to add to reading in progress", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        checkIfBookInList(bookTitle, "Reading_inprogress", add_to_inprogress, Color.BLUE);
     }
 
     private void checkIfBookIsWantToRead(String bookTitle) {
-        DocumentReference userRef = db.collection("users").document(userId);
-        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    List<String> wantToRead_books_List = (List<String>) documentSnapshot.get("Want_to_read");
-                    if (wantToRead_books_List != null && wantToRead_books_List.contains(bookTitle)) {
-                        add_to_want_to_read.setTextColor(Color.GREEN);  // Change color to green if the book is in the want to read list
-                    }
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.w("Firestore", "Error fetching want to read books", e);
-            }
-        });
-    }
-
-    private void addBookToWantToRead(String bookTitle) {
-        DocumentReference userRef = db.collection("users").document(userId);
-        userRef.update("Want_to_read", FieldValue.arrayUnion(bookTitle))
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        add_to_want_to_read.setTextColor(Color.GREEN);  // Change color to green when added to want to read
-                        Toast.makeText(getActivity(), "Added to want to read", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Failed to add to want to read", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        checkIfBookInList(bookTitle, "Want_to_read", add_to_want_to_read, Color.GREEN);
     }
 
     private void checkIfBookIsRead(String bookTitle) {
+        checkIfBookInList(bookTitle, "Read_it", add_to_read_it, Color.MAGENTA);
+    }
+
+    private void checkIfBookInList(String bookTitle, String listName, TextView textView, int color) {
         DocumentReference userRef = db.collection("users").document(userId);
         userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()) {
-                    List<String> read_books_List = (List<String>) documentSnapshot.get("Read_it");
-                    if (read_books_List != null && read_books_List.contains(bookTitle)) {
-                        add_to_read_it.setTextColor(Color.MAGENTA);  // Change color to magenta if the book is in the read list
+                    List<String> bookList = (List<String>) documentSnapshot.get(listName);
+                    if (bookList != null && bookList.contains(bookTitle)) {
+                        textView.setTextColor(color);  // Change color if the book is in the list
                     }
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.w("Firestore", "Error fetching read books", e);
+                Log.w("Firestore", "Error fetching book list", e);
             }
         });
     }
 
-    private void addBookToReadIt(String bookTitle) {
+    private void toggleBookInList(String bookTitle, String listName, TextView textView, int color) {
         DocumentReference userRef = db.collection("users").document(userId);
-        userRef.update("Read_it", FieldValue.arrayUnion(bookTitle))
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        add_to_read_it.setTextColor(Color.MAGENTA);  // Change color to magenta when added to read
-                        Toast.makeText(getActivity(), "Added to read", Toast.LENGTH_SHORT).show();
+        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    List<String> bookList = (List<String>) documentSnapshot.get(listName);
+                    if (bookList != null && bookList.contains(bookTitle)) {
+                        userRef.update(listName, FieldValue.arrayRemove(bookTitle))
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        textView.setTextColor(Color.WHITE);  // Change color back to default when removed from the list
+                                        Toast.makeText(getActivity(), "Removed from " + listName, Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(getActivity(), "Failed to remove from " + listName, Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    } else {
+                        userRef.update(listName, FieldValue.arrayUnion(bookTitle))
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        textView.setTextColor(color);  // Change color when added to the list
+                                        Toast.makeText(getActivity(), "Added to " + listName, Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(getActivity(), "Failed to add to " + listName, Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Failed to add to read", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w("Firestore", "Error fetching book list", e);
+            }
+        });
     }
 
     private void openPdfFromFirestore(String bookName) {
