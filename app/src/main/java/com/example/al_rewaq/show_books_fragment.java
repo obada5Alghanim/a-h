@@ -1,14 +1,18 @@
 package com.example.al_rewaq;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -16,6 +20,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class show_books_fragment extends Fragment {
 
@@ -62,12 +67,20 @@ public class show_books_fragment extends Fragment {
                                 imageUrls.add(imageUrl);
                             }
                         }
-                        displayImages(linearLayout, imageUrls);
+                        displayCategoryNameAndImages(linearLayout, category, imageUrls);
                     }
                 });
     }
 
-    private void displayImages(LinearLayout linearLayout, List<String> imageUrls) {
+    private void displayCategoryNameAndImages(LinearLayout linearLayout, String category, List<String> imageUrls) {
+        TextView categoryTextView = new TextView(getContext());
+        categoryTextView.setText(category);
+        categoryTextView.setTextSize(26);
+        categoryTextView.setTextColor(Color.WHITE);
+        categoryTextView.setGravity(Gravity.CENTER);
+        categoryTextView.setPadding(15, 15, 15, 30);
+        linearLayout.addView(categoryTextView);
+
         LinearLayout currentRow = null;
         int count = 0;
 
@@ -85,12 +98,14 @@ public class show_books_fragment extends Fragment {
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
             float density = getResources().getDisplayMetrics().density;
-            int imageSizeInDp = 130; // حجم الصورة بوحدة dp
-            int imageSizeInPixels = (int) (imageSizeInDp * density); // تحويل dp إلى بكسل
+            int imageWidthInDp = 130; // العرض الحالي للصورة بوحدة dp
+            int imageHeightInDp = 200; // الطول المطلوب للصورة بوحدة dp
+            int imageWidthInPixels = (int) (imageWidthInDp * density); // تحويل العرض من dp إلى بكسل
+            int imageHeightInPixels = (int) (imageHeightInDp * density); // تحويل الطول من dp إلى بكسل
 
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    imageSizeInPixels, imageSizeInPixels);
-            layoutParams.setMargins(15, 0, 15, 30); // تعيين الهوامش بين الصور
+                    imageWidthInPixels, imageHeightInPixels);
+            layoutParams.setMargins(15, 10, 15, 30); // تعيين الهوامش بين الصور
             imageView.setLayoutParams(layoutParams);
 
             if (currentRow != null) {
