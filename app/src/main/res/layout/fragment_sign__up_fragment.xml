@@ -79,7 +79,7 @@
                 android:background="@drawable/frame_1"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="10dp"
-                android:hint="User name"
+                android:hint="enter your gmail"
                 android:padding="10sp"
                 android:textColor="@color/black" />
 
