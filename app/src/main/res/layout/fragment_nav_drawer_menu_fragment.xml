@@ -189,5 +189,88 @@
         </LinearLayout>
 
     </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/are_you_sure_logout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shadow_to_gender_fragment"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="285dp"
+            android:layout_marginEnd="80dp"
+            android:background="@drawable/rst_popup"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="219dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="94dp"
+            android:layout_marginTop="317dp"
+            android:layout_marginEnd="98dp"
+            android:text="تسجيل الخروج من حسابك؟"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
+
+        <Button
+            android:id="@+id/logout_btn"
+            android:layout_width="264dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="364dp"
+            android:layout_marginEnd="80dp"
+            android:backgroundTint="#E1DFDF"
+            android:text="تسجيل الخروج"
+            android:textColor="#D50000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:cornerRadius="0dp"
+            app:strokeColor="#FFFFFF"
+            app:strokeWidth="0.1dp" />
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="400dp"
+            android:layout_marginEnd="80dp"
+            android:backgroundTint="#E1DFDF"
+            android:text="الغاء"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:cornerRadius="0dp"
+            app:strokeColor="#FFFFFF"
+            app:strokeWidth="0.1dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/remove_menu"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="261dp" />
 
 </RelativeLayout>
+
+
