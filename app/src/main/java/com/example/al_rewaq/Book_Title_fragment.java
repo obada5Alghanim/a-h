@@ -1,7 +1,10 @@
 package com.example.al_rewaq;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -155,6 +158,7 @@ public class Book_Title_fragment extends Fragment {
             public void onClick(View v) {
                 String bookName = txt1.getText().toString();
                 toggleBookInList(bookName, "Favorite_books", add_to_favorite, Color.RED);
+
             }
         });
 

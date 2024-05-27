@@ -2,11 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Reading_in_Progress_Fragment">
+    tools:context=".Reading_in_Progress_Fragment"
+    android:layout_marginTop="135dp"
+    android:layout_marginBottom="85dp"
+    android:layoutDirection="rtl">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_reading_in_progress"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_marginTop="150dp"  />
+        android:layout_height="match_parent" />
 </RelativeLayout>

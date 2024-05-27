@@ -2,6 +2,8 @@ package com.example.al_rewaq;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,15 +30,19 @@ public class Favorites_Fragment extends Fragment {
     private String userId;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_favorites_, container, false);
 
         recyclerView = view.findViewById(R.id.recycler_view_favorites);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3)); // Use GridLayoutManager with 3 columns
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 
         favoriteBooks = new ArrayList<>();
-        adapter = new FavoritesAdapter(favoriteBooks);
+        adapter = new FavoritesAdapter(favoriteBooks, new FavoritesAdapter.OnDeleteClickListener() {
+            @Override
+            public void onDeleteClick(int position) {
+                removeBookFromFavorites(position);
+            }
+        });
         recyclerView.setAdapter(adapter);
 
         db = FirebaseFirestore.getInstance();
@@ -79,5 +86,27 @@ public class Favorites_Fragment extends Fragment {
                         }
                     }
                 });
+    }
+
+    private void removeBookFromFavorites(int position) {
+        Book book = favoriteBooks.get(position);
+        DocumentReference userRef = db.collection("users").document(userId);
+        userRef.update("Favorite_books", FieldValue.arrayRemove(book.getBookName()))
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        favoriteBooks.remove(position);
+                        adapter.notifyItemRemoved(position);
+                        reloadFragment();
+                    }
+                });
+    }
+
+    private void reloadFragment() {
+        FragmentManager fragmentManager = getFragmentManager();
+        if (fragmentManager != null) {
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.detach(this).attach(this).commit();
+        }
     }
 }

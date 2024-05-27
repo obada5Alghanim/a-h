@@ -1,25 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Reading_Later_Fragment"
-    android:layout_marginBottom="75dp"
-    android:layout_marginTop="125dp">
+    android:layout_marginTop="135dp"
+    android:layout_marginBottom="85dp"
+    android:layoutDirection="rtl">
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_reading_later"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/green"
-        android:orientation="vertical">
+        android:layout_height="match_parent" />
+</RelativeLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="542dp"
-            android:gravity="center"
-            android:text=" أنوي قراءته"
-            android:textColor="@color/white"
-            android:textSize="36sp" />
 
-    </LinearLayout>
-</FrameLayout>
+
+
+
+
+
