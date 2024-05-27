@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="130dp"
     tools:context=".choose_book_Q2_etiquette">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="اختر لي كتاب"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        />
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"

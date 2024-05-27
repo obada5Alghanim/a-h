@@ -1,5 +1,6 @@
 package com.example.al_rewaq;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -47,6 +48,7 @@ public class Sign_In_fragment extends Fragment {
     private static final String KEY_NAME ="USERNAME";
     private static final String KEY_PASSWORD ="PASSWORDUSER";
 
+    @SuppressLint("ClickableViewAccessibility")
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

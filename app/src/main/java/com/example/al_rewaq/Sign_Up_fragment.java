@@ -2,6 +2,7 @@ package com.example.al_rewaq;
 
 import static android.content.ContentValues.TAG;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -55,6 +56,7 @@ public class Sign_Up_fragment extends Fragment {
 
     boolean passwordVisiable;
     DatePickerDialog.OnDateSetListener onDateSetListener;
+    @SuppressLint("ClickableViewAccessibility")
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

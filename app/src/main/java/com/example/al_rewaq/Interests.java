@@ -116,15 +116,13 @@ public class Interests extends AppCompatActivity {
 
     private void saveSelections() {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-       // استبدل هذه السطر بالحصول على ID المستخدم الحالي
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("users").document(userId)
                 .update("selectedCategories", selectedCategories)
                 .addOnSuccessListener(aVoid -> {
-                    // نجحت العملية
                 })
                 .addOnFailureListener(e -> {
-                    // حدث خطأ
                 });
     }
 
@@ -140,12 +138,11 @@ public class Interests extends AppCompatActivity {
                     Collections.shuffle(allCategories);
                     List<String> randomCategories = allCategories.subList(1, 3);
 
-                    // حفظ التصنيفات العشوائية في Firestore أو SharedPreferences
                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     db.collection("users").document(userId)
                             .update("selectedCategories", randomCategories)
                             .addOnSuccessListener(aVoid -> {
-                                // الانتقال إلى MenuActivity بعد حفظ التصنيفات العشوائية
+
                                 Intent intent = new Intent(Interests.this, menu_main.class);
                                 startActivity(intent);
                                 finish();
@@ -161,92 +158,3 @@ public class Interests extends AppCompatActivity {
 
 
 }
-/*   bt1.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                bt1.setTextColor(Color.BLACK);
-                bt1.setBackgroundColor(Color.WHITE);
-                //add the catgory to array
-                selectedCategories.add("روايات دينية");
-
-
-
-            }
-        });
-
-
-
-        bt2.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-
-                bt2.setTextColor(Color.BLACK);
-                bt2.setBackgroundColor(Color.WHITE);
-
-                selectedCategories.add("روايات مغامرات");
-
-
-            }
-        });
-
-        bt3.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                bt3.setTextColor(Color.BLACK);
-                bt3.setBackgroundColor(Color.WHITE);
-
-
-
-
-            }
-        });
-
-        bt4.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-
-                bt4.setTextColor(Color.BLACK);
-                bt4.setBackgroundColor(Color.WHITE);
-
-
-
-
-            }
-        });
-
-        bt5.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                bt5.setTextColor(Color.BLACK);
-                bt5.setBackgroundColor(Color.WHITE);
-
-
-
-
-
-            }
-        });
-
-        bt6.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                bt6.setTextColor(Color.BLACK);
-                bt6.setBackgroundColor(Color.WHITE);
-
-
-
-
-            }
-        });
-*/
