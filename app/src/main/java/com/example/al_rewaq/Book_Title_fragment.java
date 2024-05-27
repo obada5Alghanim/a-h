@@ -47,6 +47,36 @@ public class Book_Title_fragment extends Fragment {
     private FirebaseAuth auth;
     RelativeLayout bottom_sheet;
 
+    private static final String ARG_IMAGE_URL = "Image_URL";
+    private static final String ARG_SECTION = "Section";
+    private static final String ARG_AUTHOR = "Author";
+    private static final String ARG_DESCRIPTION = "Description";
+    private static final String ARG_TITLE = "Book_Name";
+    private static final String ARG_YEAR = "years";
+    private static final String ARG_NO_PAGE = "NoPage";
+
+    private String imageUrl;
+    private String section;
+    private String author;
+    private String description;
+    private String title;
+    private String year;
+    private String noPage;
+
+    public static Book_Title_fragment newInstance(String imageUrl, String section, String author, String description, String title, String noPage, String year) {
+        Book_Title_fragment fragment = new Book_Title_fragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_IMAGE_URL, imageUrl);
+        args.putString(ARG_SECTION, section);
+        args.putString(ARG_AUTHOR, author);
+        args.putString(ARG_DESCRIPTION, description);
+        args.putString(ARG_TITLE, title);
+        args.putString(ARG_YEAR, year);
+        args.putString(ARG_NO_PAGE, noPage);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
