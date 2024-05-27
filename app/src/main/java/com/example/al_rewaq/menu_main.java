@@ -70,18 +70,21 @@ public class menu_main extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.home_icon1); // Set initial selection
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                if (item.getItemId() == R.id.home_icon1) {
-                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content, homePageFragment).commit();
+            public boolean onNavigationItemSelected( MenuItem item) {
+                if(item.getItemId() == R.id.home_icon1){
+                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content,homePageFragment).commit();
                 } else if (item.getItemId() == R.id.category_icon) {
-                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content, categoriesFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content,categoriesFragment).commit();
                 } else if (item.getItemId() == R.id.search_icon) {
-                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content, searchFragment).commit();
-                } else if (item.getItemId() == R.id.library_icon) {
-                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content, myLibraryMainFragment).commit();
-                } else if (item.getItemId() == R.id.menu_icon) {
-                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content, navDrawerMenuFragment).commit();
+                    getSupportFragmentManager().beginTransaction().add(android.R.id.content,searchFragment).commit();
+                    getSupportFragmentManager().beginTransaction().remove(navDrawerMenuFragment).commit();
+                } if (item.getItemId() == R.id.library_icon) {
+                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content,myLibraryMainFragment ).commit();
+                }if (item.getItemId() == R.id.menu_icon){
+                    getSupportFragmentManager().beginTransaction().add(android.R.id.content,navDrawerMenuFragment).commit();
+                    getSupportFragmentManager().beginTransaction().remove(searchFragment).commit();
                 }
+
                 return true;
             }
         });
