@@ -23,6 +23,7 @@ public class menu_main extends AppCompatActivity {
     private Book_Title_fragment Book_Title_fragment;
 
     private int previousItemId;
+    private boolean isSearchFragmentVisible = false;
 
     @SuppressLint("MissingSuperCall")
     @Override
@@ -80,17 +81,23 @@ public class menu_main extends AppCompatActivity {
                 if (item.getItemId() == R.id.home_icon1) {
                     previousItemId = item.getItemId();
                     getSupportFragmentManager().beginTransaction().replace(android.R.id.content, homePageFragment).commit();
+                    isSearchFragmentVisible = false; // Reset visibility state
                 } else if (item.getItemId() == R.id.category_icon) {
                     previousItemId = item.getItemId();
                     getSupportFragmentManager().beginTransaction().replace(android.R.id.content, categoriesFragment).commit();
+                    isSearchFragmentVisible = false; // Reset visibility state
                 } else if (item.getItemId() == R.id.search_icon) {
-                    previousItemId = item.getItemId();
-                    getSupportFragmentManager().beginTransaction().add(android.R.id.content, searchFragment).commit();
-                    getSupportFragmentManager().beginTransaction().remove(navDrawerMenuFragment).commit();
-
+                    if (isSearchFragmentVisible) {
+                        getSupportFragmentManager().beginTransaction().remove(searchFragment).commit();
+                        isSearchFragmentVisible = false;
+                    } else {
+                        getSupportFragmentManager().beginTransaction().add(android.R.id.content, searchFragment).commit();
+                        isSearchFragmentVisible = true;
+                    }
                 } else if (item.getItemId() == R.id.library_icon) {
                     previousItemId = item.getItemId();
                     getSupportFragmentManager().beginTransaction().replace(android.R.id.content, myLibraryMainFragment).commit();
+                    isSearchFragmentVisible = false; // Reset visibility state
                     // Ensure the navigation view is updated to readingInProgressID
                     bottomNavigationView.post(() -> {
                         BottomNavigationView libraryBottomNavigationView = myLibraryMainFragment.getView().findViewById(R.id.myLibr1);
@@ -101,12 +108,11 @@ public class menu_main extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.menu_icon) {
                     getSupportFragmentManager().beginTransaction().add(android.R.id.content, navDrawerMenuFragment).commit();
                     getSupportFragmentManager().beginTransaction().remove(searchFragment).commit();
-
+                    isSearchFragmentVisible = false;
                 }
 
                 return true;
             }
         });
-
     }
 }
