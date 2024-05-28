@@ -3,12 +3,14 @@ package com.example.al_rewaq;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class menu_main extends AppCompatActivity {
 
@@ -19,6 +21,8 @@ public class menu_main extends AppCompatActivity {
     private nav_drawer_menu_fragment navDrawerMenuFragment;
     private MyLibrary_MainFragment myLibraryMainFragment;
     private Book_Title_fragment Book_Title_fragment;
+
+    private int previousItemId;
 
     @SuppressLint("MissingSuperCall")
     @Override
@@ -68,26 +72,41 @@ public class menu_main extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(android.R.id.content, homePageFragment).commit();
         bottomNavigationView.setSelectedItemId(R.id.home_icon1); // Set initial selection
+        previousItemId = R.id.home_icon1; // Set initial previous item
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected( MenuItem item) {
-                if(item.getItemId() == R.id.home_icon1){
-                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content,homePageFragment).commit();
+            public boolean onNavigationItemSelected(MenuItem item) {
+                if (item.getItemId() == R.id.home_icon1) {
+                    previousItemId = item.getItemId();
+                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content, homePageFragment).commit();
                 } else if (item.getItemId() == R.id.category_icon) {
-                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content,categoriesFragment).commit();
+                    previousItemId = item.getItemId();
+                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content, categoriesFragment).commit();
                 } else if (item.getItemId() == R.id.search_icon) {
-                    getSupportFragmentManager().beginTransaction().add(android.R.id.content,searchFragment).commit();
+                    previousItemId = item.getItemId();
+                    getSupportFragmentManager().beginTransaction().add(android.R.id.content, searchFragment).commit();
                     getSupportFragmentManager().beginTransaction().remove(navDrawerMenuFragment).commit();
-                } if (item.getItemId() == R.id.library_icon) {
-                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content,myLibraryMainFragment ).commit();
-                }if (item.getItemId() == R.id.menu_icon){
-                    getSupportFragmentManager().beginTransaction().add(android.R.id.content,navDrawerMenuFragment).commit();
+
+                } else if (item.getItemId() == R.id.library_icon) {
+                    previousItemId = item.getItemId();
+                    getSupportFragmentManager().beginTransaction().replace(android.R.id.content, myLibraryMainFragment).commit();
+                    // Ensure the navigation view is updated to readingInProgressID
+                    bottomNavigationView.post(() -> {
+                        BottomNavigationView libraryBottomNavigationView = myLibraryMainFragment.getView().findViewById(R.id.myLibr1);
+                        if (libraryBottomNavigationView != null) {
+                            libraryBottomNavigationView.setSelectedItemId(R.id.readingInProgressID);
+                        }
+                    });
+                } else if (item.getItemId() == R.id.menu_icon) {
+                    getSupportFragmentManager().beginTransaction().add(android.R.id.content, navDrawerMenuFragment).commit();
                     getSupportFragmentManager().beginTransaction().remove(searchFragment).commit();
+
                 }
 
                 return true;
             }
         });
+
     }
 }
- 
