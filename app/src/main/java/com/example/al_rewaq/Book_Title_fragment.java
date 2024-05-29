@@ -1,8 +1,10 @@
 package com.example.al_rewaq;
 
-import android.graphics.Color;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,36 +14,34 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.squareup.picasso.Picasso;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
-import android.net.Uri;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import java.util.ArrayList;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
-
-
 
 public class Book_Title_fragment extends Fragment {
 
-    private TextView BookName, txt1, add_to_favorite, add_to_inprogress, add_to_want_to_read, add_to_read_it;
-    private ArrayList<String> select_favorite = new ArrayList<>();
-    private List<String> Favorite_books_List;
     private FirebaseFirestore db;
-    private String userId;
     private FirebaseAuth auth;
-    RelativeLayout bottom_sheet;
+    private String userId;
+    private RelativeLayout bottom_sheet;
+    private TextView add_to_favorite, add_to_inprogress, add_to_want_to_read, add_to_read_it;
+    private TextView BookName, txt1;
 
     private static final String ARG_IMAGE_URL = "Image_URL";
     private static final String ARG_SECTION = "Section";
@@ -50,14 +50,6 @@ public class Book_Title_fragment extends Fragment {
     private static final String ARG_TITLE = "Book_Name";
     private static final String ARG_YEAR = "years";
     private static final String ARG_NO_PAGE = "NoPage";
-
-    private String imageUrl;
-    private String section;
-    private String author;
-    private String description;
-    private String title;
-    private String year;
-    private String noPage;
 
     public static Book_Title_fragment newInstance(String imageUrl, String section, String author, String description, String title, String noPage, String year) {
         Book_Title_fragment fragment = new Book_Title_fragment();
@@ -74,8 +66,7 @@ public class Book_Title_fragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_book__title_fragment, container, false);
 
         db = FirebaseFirestore.getInstance();
@@ -90,11 +81,24 @@ public class Book_Title_fragment extends Fragment {
 
         BookName = view.findViewById(R.id.BookName);
         Button openPdfButton = view.findViewById(R.id.bu_browse);
+        Button PDFAddInprogress = view.findViewById(R.id.bu_reader);
 
         openPdfButton.setOnClickListener(v -> {
             String bookName = BookName.getText().toString().trim();
             if (!bookName.isEmpty()) {
                 openPdfFromFirestore(bookName);
+            } else {
+                Toast.makeText(getActivity(), "Book Name is Empty", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        PDFAddInprogress.setOnClickListener(v -> {
+            String bookName = BookName.getText().toString().trim();
+            if (!bookName.isEmpty()) {
+                String bookName1 = txt1.getText().toString();
+                addBookToReadingInProgress(bookName1, add_to_inprogress, R.drawable.clock2);
+                openPdfFromFirestore(bookName);
+
             } else {
                 Toast.makeText(getActivity(), "Book Name is Empty", Toast.LENGTH_SHORT).show();
             }
@@ -133,19 +137,8 @@ public class Book_Title_fragment extends Fragment {
             }
         });
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottom_sheet.setVisibility(View.VISIBLE);
-            }
-        });
-
-        bottom_sheet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottom_sheet.setVisibility(View.GONE);
-            }
-        });
+        btn.setOnClickListener(v -> bottom_sheet.setVisibility(View.VISIBLE));
+        bottom_sheet.setOnClickListener(v -> bottom_sheet.setVisibility(View.GONE));
 
         ImageView img = view.findViewById(R.id.image_Book);
         txt1 = view.findViewById(R.id.BookName);
@@ -179,59 +172,46 @@ public class Book_Title_fragment extends Fragment {
             checkIfBookIsRead(bookTitle);
         }
 
-        add_to_favorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String bookName = txt1.getText().toString();
-                toggleBookInList(bookName, "Favorite_books", add_to_favorite, Color.RED);
-
-            }
+        add_to_favorite.setOnClickListener(v -> {
+            String bookName = txt1.getText().toString();
+            toggleBookInList(bookName, "Favorite_books", add_to_favorite, R.drawable.vector12_2, R.drawable.vector12);
         });
 
-        add_to_inprogress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String bookName = txt1.getText().toString();
-                toggleBookInList(bookName, "Reading_inprogress", add_to_inprogress, Color.BLUE);
-            }
+        add_to_inprogress.setOnClickListener(v -> {
+            String bookName = txt1.getText().toString();
+            toggleBookInList(bookName, "Reading_inprogress", add_to_inprogress, R.drawable.clock2, R.drawable.clock);
         });
 
-        add_to_want_to_read.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String bookName = txt1.getText().toString();
-                toggleBookInList(bookName, "Want_to_read", add_to_want_to_read, Color.GREEN);
-            }
+        add_to_want_to_read.setOnClickListener(v -> {
+            String bookName = txt1.getText().toString();
+            toggleBookInList(bookName, "Want_to_read", add_to_want_to_read, R.drawable.book2, R.drawable.book);
         });
 
-        add_to_read_it.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String bookName = txt1.getText().toString();
-                toggleBookInList(bookName, "Read_it", add_to_read_it, Color.MAGENTA);
-            }
+        add_to_read_it.setOnClickListener(v -> {
+            String bookName = txt1.getText().toString();
+            toggleBookInList(bookName, "Read_it", add_to_read_it, R.drawable.resource_true2, R.drawable.resource_true);
         });
 
         return view;
     }
 
     private void checkIfBookIsFavorite(String bookTitle) {
-        checkIfBookInList(bookTitle, "Favorite_books", add_to_favorite, Color.RED);
+        checkIfBookInList(bookTitle, "Favorite_books", add_to_favorite, R.drawable.vector12_2);
     }
 
     private void checkIfBookIsInProgress(String bookTitle) {
-        checkIfBookInList(bookTitle, "Reading_inprogress", add_to_inprogress, Color.BLUE);
+        checkIfBookInList(bookTitle, "Reading_inprogress", add_to_inprogress, R.drawable.clock2);
     }
 
     private void checkIfBookIsWantToRead(String bookTitle) {
-        checkIfBookInList(bookTitle, "Want_to_read", add_to_want_to_read, Color.GREEN);
+        checkIfBookInList(bookTitle, "Want_to_read", add_to_want_to_read, R.drawable.book2);
     }
 
     private void checkIfBookIsRead(String bookTitle) {
-        checkIfBookInList(bookTitle, "Read_it", add_to_read_it, Color.MAGENTA);
+        checkIfBookInList(bookTitle, "Read_it", add_to_read_it, R.drawable.resource_true2);
     }
 
-    private void checkIfBookInList(String bookTitle, String listName, TextView textView, int color) {
+    private void checkIfBookInList(String bookTitle, String listName, TextView textView, int drawableResId) {
         DocumentReference userRef = db.collection("users").document(userId);
         userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -239,7 +219,8 @@ public class Book_Title_fragment extends Fragment {
                 if (documentSnapshot.exists()) {
                     List<String> bookList = (List<String>) documentSnapshot.get(listName);
                     if (bookList != null && bookList.contains(bookTitle)) {
-                        textView.setTextColor(color);
+                        Drawable drawable = ContextCompat.getDrawable(getActivity(), drawableResId);
+                        textView.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
                     }
                 }
             }
@@ -251,26 +232,86 @@ public class Book_Title_fragment extends Fragment {
         });
     }
 
-    private void toggleBookInList(String bookTitle, String listName, TextView textView, int color) {
+    private void addBookToReadingInProgress(String bookTitle, TextView textView, int drawableResId) {
         DocumentReference userRef = db.collection("users").document(userId);
         userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()) {
-                    List<String> bookList = (List<String>) documentSnapshot.get(listName);
-                    if (bookList != null && bookList.contains(bookTitle)) {
-                        userRef.update(listName, FieldValue.arrayRemove(bookTitle))
+                    List<String> readingInProgressList = (List<String>) documentSnapshot.get("Reading_inprogress");
+                    if (readingInProgressList == null || !readingInProgressList.contains(bookTitle)) {
+                        userRef.update("Reading_inprogress", FieldValue.arrayUnion(bookTitle))
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        textView.setTextColor(Color.WHITE);  // Change color back to default when removed from the list
-                                        Toast.makeText(getActivity(), "Removed from " + listName, Toast.LENGTH_SHORT).show();
+                                        Drawable drawable = ContextCompat.getDrawable(getActivity(), drawableResId);
+                                        textView.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
+                                        Toast.makeText(getActivity(), "تم الأضافة الى أقرأه حاليا", Toast.LENGTH_SHORT).show();
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(getActivity(), "Failed to remove from " + listName, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getActivity(), "لم يتم الأضافة الى اقرأه حاليا", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    }
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w("Firestore", "Error fetching Reading in Progress list", e);
+            }
+        });
+    }
+
+    private void toggleBookInList(String bookTitle, String listName, TextView textView, int drawableResId, int oldDrawableResId) {
+        DocumentReference userRef = db.collection("users").document(userId);
+        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                if (documentSnapshot.exists()) {
+                    List<String> bookList = (List<String>) documentSnapshot.get(listName);
+                    Drawable drawable = ContextCompat.getDrawable(getActivity(), drawableResId);
+                    Drawable oldDrawable = ContextCompat.getDrawable(getActivity(), oldDrawableResId);
+                    if (bookList != null && bookList.contains(bookTitle)) {
+                        userRef.update(listName, FieldValue.arrayRemove(bookTitle))
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        String erorr = "";
+                                        if (listName=="Favorite_books"){
+                                            erorr = "المفضلة";
+                                        } else if (listName=="Reading_inprogress") {
+                                            erorr = "أقرأه حاليا";
+                                        } else if (listName=="Want_to_read") {
+                                            erorr = "انوي قراءتة";
+                                        } else if (listName=="Read_it") {
+                                            erorr = "قرأتة";
+                                        }
+
+                                        textView.setCompoundDrawablesWithIntrinsicBounds(null, null, oldDrawable, null);
+                                        Toast.makeText(getActivity(), "تمت الأزالة من " + erorr, Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        String erorr = "";
+                                        if (listName=="Favorite_books"){
+                                            erorr = "المفضلة";
+                                        } else if (listName=="Reading_inprogress") {
+                                            erorr = "أقرأه حاليا";
+                                        } else if (listName=="Want_to_read") {
+                                            erorr = "انوي قراءتة";
+                                        } else if (listName=="Read_it") {
+                                            erorr = "قرأتة";
+                                        }
+                                        Toast.makeText(getActivity(), "لم يتم الأزالة من " + erorr, Toast.LENGTH_SHORT).show();
                                     }
                                 });
                     } else {
@@ -278,14 +319,34 @@ public class Book_Title_fragment extends Fragment {
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        textView.setTextColor(color);  // Change color when added to the list
-                                        Toast.makeText(getActivity(), "Added to " + listName, Toast.LENGTH_SHORT).show();
+                                        String sucss = "";
+                                        if (listName=="Favorite_books"){
+                                            sucss = "المفضلة";
+                                        } else if (listName=="Reading_inprogress") {
+                                            sucss = "أقرأه حاليا";
+                                        } else if (listName=="Want_to_read") {
+                                            sucss = "انوي قراءتة";
+                                        } else if (listName=="Read_it") {
+                                            sucss = "قرأتة";
+                                        }
+                                        textView.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
+                                        Toast.makeText(getActivity(), "تم الأضافة الى " + sucss, Toast.LENGTH_SHORT).show();
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(getActivity(), "Failed to add to " + listName, Toast.LENGTH_SHORT).show();
+                                        String sucss = "";
+                                        if (listName=="Favorite_books"){
+                                            sucss = "المفضلة";
+                                        } else if (listName=="Reading_inprogress") {
+                                            sucss = "أقرأه حاليا";
+                                        } else if (listName=="Want_to_read") {
+                                            sucss = "انوي قراءتة";
+                                        } else if (listName=="Read_it") {
+                                            sucss = "قرأتة";
+                                        }
+                                        Toast.makeText(getActivity(), "لم يتم الأضافة الى " + sucss, Toast.LENGTH_SHORT).show();
                                     }
                                 });
                     }

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Favorites_Fragment"
+    android:id="@+id/Favorites_Fragment"
     android:layout_marginTop="135dp"
     android:layout_marginBottom="85dp"
     android:layoutDirection="rtl">

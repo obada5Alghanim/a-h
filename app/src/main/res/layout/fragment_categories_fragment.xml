@@ -48,7 +48,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView"
-            android:layout_marginTop="10dp">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,7 +68,7 @@
 
                     <LinearLayout
                         android:id="@+id/Linear1"
-                        android:layout_width="408dp"
+                        android:layout_width="match_parent"
                         android:layout_height="58dp"
                         android:layout_marginStart="1dp"
                         android:layout_marginTop="0dp"
@@ -172,7 +176,7 @@
 
                 <LinearLayout
                     android:id="@+id/Linear2"
-                    android:layout_width="408dp"
+                    android:layout_width="match_parent"
                     android:layout_height="58dp"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="23dp"
@@ -257,7 +261,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="408dp"
+                    android:layout_width="match_parent"
                     android:layout_height="58dp"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="23dp"
@@ -341,7 +345,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="408dp"
+                    android:layout_width="match_parent"
                     android:layout_height="58dp"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="23dp"
@@ -425,7 +429,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="408dp"
+                    android:layout_width="match_parent"
                     android:layout_height="58dp"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="23dp"
@@ -499,7 +503,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="408dp"
+                    android:layout_width="match_parent"
                     android:layout_height="58dp"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="23dp"
@@ -571,11 +575,11 @@
                         android:textColor="@color/white" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:orientation="vertical"
-                    />
+                    android:orientation="vertical" />
 
             </LinearLayout>
 
