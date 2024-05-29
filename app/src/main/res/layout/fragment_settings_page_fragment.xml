@@ -41,6 +41,7 @@
         android:orientation="vertical"
         android:layout_marginTop="32dp">
         <TextView
+            android:id="@+id/term_of_user_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="  شروط الإستخدام"
@@ -55,6 +56,7 @@
         android:orientation="vertical"
         android:layout_marginTop="32dp">
         <TextView
+            android:id="@+id/privacy_policy_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="  سياسة الخصوصية"
@@ -70,6 +72,7 @@
         android:orientation="vertical"
         android:layout_marginTop="32dp">
         <TextView
+            android:id="@+id/aboutTheAppTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="  حول التطبيق"
