@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class Read_it_Fragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -26,6 +28,8 @@ public class Read_it_Fragment extends Fragment {
     private FirebaseFirestore db;
     private FirebaseAuth auth;
     private String userId;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,7 +40,9 @@ public class Read_it_Fragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3)); // Use GridLayoutManager with 3 columns
 
         readItBooks = new ArrayList<>();
+
         adapter = new FavoritesAdapter(readItBooks, new FavoritesAdapter.OnDeleteClickListener() {
+
             @Override
             public void onDeleteClick(int position) {
                 // Remove the book from Firestore and the fragment here
@@ -45,6 +51,7 @@ public class Read_it_Fragment extends Fragment {
                 adapter.notifyItemRemoved(position);
             }
         });
+
         recyclerView.setAdapter(adapter);
 
         db = FirebaseFirestore.getInstance();
@@ -53,8 +60,12 @@ public class Read_it_Fragment extends Fragment {
 
         loadReadItBooks();
 
+
+
         return view;
     }
+
+
 
     private void loadReadItBooks() {
         DocumentReference userRef = db.collection("users").document(userId);
@@ -100,4 +111,5 @@ public class Read_it_Fragment extends Fragment {
                     }
                 });
     }
+
 }

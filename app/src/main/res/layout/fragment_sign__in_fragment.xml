@@ -44,7 +44,7 @@
                 android:background="@drawable/frame_1"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="10dp"
-                android:hint="enter your email"
+                android:hint="Enter Your Email"
                 android:padding="10dp"
                 android:textColor="@color/black" />
 

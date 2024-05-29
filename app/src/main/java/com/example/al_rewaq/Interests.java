@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+
+
 public class Interests extends AppCompatActivity {
 
     Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt10, bt11, bt12, bt13, bt14, bt15, bt16, bt17, btn1, btn2;
@@ -94,8 +96,6 @@ public class Interests extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadRandomCategoriesAndProceed();
-
-
             }
         });
 
@@ -127,6 +127,7 @@ public class Interests extends AppCompatActivity {
     }
 
 
+
     private void loadRandomCategoriesAndProceed() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Book").get()
@@ -155,6 +156,5 @@ public class Interests extends AppCompatActivity {
                     Toast.makeText(Interests.this, "حدث خطأ أثناء جلب التصنيفات العشوائية", Toast.LENGTH_SHORT).show();
                 });
     }
-
 
 }

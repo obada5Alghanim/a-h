@@ -1,12 +1,8 @@
 package com.example.al_rewaq;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -33,9 +28,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class Book_Title_fragment extends Fragment {
 
@@ -243,7 +239,7 @@ public class Book_Title_fragment extends Fragment {
                 if (documentSnapshot.exists()) {
                     List<String> bookList = (List<String>) documentSnapshot.get(listName);
                     if (bookList != null && bookList.contains(bookTitle)) {
-                        textView.setTextColor(color);  // Change color if the book is in the list
+                        textView.setTextColor(color);
                     }
                 }
             }

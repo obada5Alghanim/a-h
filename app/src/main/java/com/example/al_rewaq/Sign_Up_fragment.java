@@ -1,24 +1,16 @@
 package com.example.al_rewaq;
 
-import static android.content.ContentValues.TAG;
-
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-
-
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,47 +20,41 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
 public class Sign_Up_fragment extends Fragment {
+
 
    public Sign_Up_fragment(){
 
    }
 
-    private FirebaseAuth mAuth;
 
+    private FirebaseAuth mAuth;
     private EditText userName, password , FirstName, LastName ,confirmPassword;
     TextView txt,Gender ,Day ,maleTextView,femaleTextView;
     Button btn;
-
     boolean passwordVisiable;
+
+
     DatePickerDialog.OnDateSetListener onDateSetListener;
+
     @SuppressLint("ClickableViewAccessibility")
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_sign__up_fragment, container, false);
 
-        //
         mAuth = FirebaseAuth.getInstance();
-
-
         userName = rootView.findViewById(R.id.Edt_signUP_UserName);
         password = rootView.findViewById(R.id.Edt_signUp_password);
         FirstName = rootView.findViewById(R.id.Edt_signUp_firstName);
@@ -78,13 +64,12 @@ public class Sign_Up_fragment extends Fragment {
         femaleTextView = rootView.findViewById(R.id.female_genderText);
         Day = rootView.findViewById(R.id.DOB);
         confirmPassword = rootView.findViewById(R.id.confirmPassword);
-        // Find the view by its ID
         txt = rootView.findViewById(R.id.signUP_to_sing_click);
         btn = rootView.findViewById(R.id.signUp_button);
 
 
-        // Set click listener or perform any other operation on the view
         txt.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -94,7 +79,9 @@ public class Sign_Up_fragment extends Fragment {
                 ft.commit();
             }
         });
+
         Gender.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 maleTextView.setVisibility(View.VISIBLE);
@@ -105,16 +92,15 @@ public class Sign_Up_fragment extends Fragment {
                         Gender.setText("Male");
                         maleTextView.setVisibility(View.GONE);
                         femaleTextView.setVisibility(View.GONE);
-
                     }
                 });
+
                 femaleTextView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Gender.setText("Female");
                         maleTextView.setVisibility(View.GONE);
                         femaleTextView.setVisibility(View.GONE);
-
                     }
                 });
 
@@ -135,12 +121,15 @@ public class Sign_Up_fragment extends Fragment {
                         Day.setText(String.valueOf(dayOfMonth +" / "+(month+1)+" / "+year));
                     }
                 };
+
                 DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
                         android.R.style.Theme_Holo_Light_Dialog,onDateSetListener,year,month,day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
             }
         });
+
+
 
         password.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -163,7 +152,6 @@ public class Sign_Up_fragment extends Fragment {
                         return true;
                     }
                 }
-
                 return false;
             }
         });
@@ -189,16 +177,14 @@ public class Sign_Up_fragment extends Fragment {
                         return true;
                     }
                 }
-
                 return false;
             }
         });
 
 
 
-
-
         btn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 final String email = userName.getText().toString().trim();
@@ -212,29 +198,28 @@ public class Sign_Up_fragment extends Fragment {
                 final String day  = Day.getText().toString();
 
 
-
-                if (email.isEmpty()) {
-                    userName.setError("User name cannot be empty ");
-                }
-                if (pass.isEmpty()) {
-                    password.setError("password cannot be empty ");
-                }if (firstName.isEmpty()){
+                if (firstName.isEmpty()){
                     FirstName.setError("First Name cannot be empty ");
-                }if (lastName.isEmpty()){
+                }else if (lastName.isEmpty()){
                     LastName.setError("Last Name cannot be empty ");
-                }if (ConfirmPassword.isEmpty()){
-                    confirmPassword.setError("Confirm Password cannot be empty");
-                }if (gender.isEmpty()){
+                }else if (email.isEmpty()) {
+                    userName.setError("User name cannot be empty ");
+                }else if (gender.isEmpty()){
                     Gender.setError("Gender cannot be empty");
-                }if (day.isEmpty()){
+                }else if (day.isEmpty()){
                     Day.setError("day cannot be empty");
+                }else if (pass.isEmpty()) {
+                    Toast.makeText(getActivity(),"Password cannot be empty", Toast.LENGTH_SHORT).show();
+                }else if (ConfirmPassword.isEmpty()){
+                    Toast.makeText(getActivity(),"Confirm Password cannot be empty", Toast.LENGTH_SHORT).show();
+                }else if (!pass.equals(ConfirmPassword)){
+                    Toast.makeText(getActivity(),"Password don't Match", Toast.LENGTH_SHORT).show();
                 }
 
                 else {
                     mAuth.createUserWithEmailAndPassword(email, pass)
                             .addOnCompleteListener(requireActivity(), task -> {
                                 if (task.isSuccessful()) {
-                                    // تم إنشاء الحساب بنجاح
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                                     Map<String, Object> userData = new HashMap<>();
@@ -244,45 +229,25 @@ public class Sign_Up_fragment extends Fragment {
                                     userData.put(("Gender"),gender);
                                     userData.put(("Date_of_birth"),day);
                                     userData.put(("Passowrd"),pass);
-                                    // يمكنك إضافة المزيد من البيانات إلى هذا الكائن
+
                                     db.collection("users").document(user.getUid())
                                             .set(userData)
                                             .addOnSuccessListener(documentReference -> {
-                                                // تم تخزين بيانات المستخدم بنجاح
                                               Intent intent = new Intent(getActivity(),Interests.class);
                                               startActivity(intent);
                                             })
                                             .addOnFailureListener(e -> {
-                                                // فشلت عملية تخزين بيانات المستخدم
                                             });
-
-
-
-                                    // إظهار رسالة تأكيد للمستخدم
-                                } else {
-                                    // فشلت عملية إنشاء الحساب
-                                    // عرض رسالة خطأ للمستخدم
                                 }
                             });
-
                 }
-
-
-
-
 
             }
         });
 
 
 
-
         return rootView;
     }
-
-
-
-
-
 
 }

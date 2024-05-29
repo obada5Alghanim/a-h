@@ -1,4 +1,3 @@
-// show_books_fragment.java
 package com.example.al_rewaq;
 
 import android.graphics.Color;
@@ -19,11 +18,15 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class show_books_fragment extends Fragment {
 
     private static final String ARG_CATEGORY = "category";
     private FirebaseFirestore db;
     private String category;
+
+
 
     public static show_books_fragment newInstance(String category) {
         show_books_fragment fragment = new show_books_fragment();
@@ -85,6 +88,7 @@ public class show_books_fragment extends Fragment {
         linearLayout.addView(categoryTextView);
 
         LinearLayout currentRow = null;
+
         int count = 0;
 
         for (Book book : books) {
@@ -122,6 +126,7 @@ public class show_books_fragment extends Fragment {
             }
 
             count++;
+
         }
     }
 
@@ -171,5 +176,7 @@ public class show_books_fragment extends Fragment {
         public String getDescription() {
             return bookDescription;
         }
+
     }
+
 }

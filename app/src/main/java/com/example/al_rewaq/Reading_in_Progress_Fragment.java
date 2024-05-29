@@ -22,6 +22,8 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class Reading_in_Progress_Fragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -31,6 +33,8 @@ public class Reading_in_Progress_Fragment extends Fragment {
     private FirebaseAuth auth;
     private String userId;
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reading_in_progress, container, false);
@@ -39,12 +43,15 @@ public class Reading_in_Progress_Fragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 
         readingInProgressBooks = new ArrayList<>();
+
         adapter = new FavoritesAdapter(readingInProgressBooks, new FavoritesAdapter.OnDeleteClickListener() {
+
             @Override
             public void onDeleteClick(int position) {
                 removeBookFromReadingInProgress(position);
             }
         });
+
         recyclerView.setAdapter(adapter);
 
         db = FirebaseFirestore.getInstance();
@@ -53,8 +60,12 @@ public class Reading_in_Progress_Fragment extends Fragment {
 
         loadReadingInProgressBooks();
 
+
+
         return view;
     }
+
+
 
     private void loadReadingInProgressBooks() {
         DocumentReference userRef = db.collection("users").document(userId);
@@ -106,7 +117,6 @@ public class Reading_in_Progress_Fragment extends Fragment {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        // Handle any errors here
                     }
                 });
     }
@@ -116,4 +126,5 @@ public class Reading_in_Progress_Fragment extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.detach(this).attach(this).commit();
     }
+
 }

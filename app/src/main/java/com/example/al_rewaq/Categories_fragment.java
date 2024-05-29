@@ -3,9 +3,6 @@ package com.example.al_rewaq;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+
 public class Categories_fragment extends Fragment {
 
- Button BTN1,BTN2,BTN3,BTN4,BTN5,BTN6,BTN7,BTN8,BTN9,BTN10,BTN11,BTN12,BTN13,BTN14,BTN15,BTN16,BTN17;
-
+    Button BTN1,BTN2,BTN3,BTN4,BTN5,BTN6,BTN7,BTN8,BTN9,BTN10,BTN11,BTN12,BTN13,BTN14,BTN15,BTN16,BTN17;
     private TextView Show_Cat1,Show_Cat2,Show_Cat3,Show_Cat4,Show_Cat5,Show_Cat6,
             TextColor1,TextColor2,TextColor3,TextColor4,TextColor5,TextColor6;
-
     private LinearLayout Show_Button1,Show_Button1_2,Show_Button2,Show_Button3,Show_Button4,Show_Button5,Show_Button6;
-
     private ImageView ImageAr1,ImageAr3,ImageAr5,ImageAr7,ImageAr9,ImageAr11,
             ImageBk2,ImageBk4,ImageBk6,ImageBk8,ImageBk10,ImageBk12;
 
@@ -32,7 +27,6 @@ public class Categories_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_categories_fragment, container, false);
-
 
         BTN1=view.findViewById(R.id.button1);
         BTN2=view.findViewById(R.id.button2);
@@ -356,17 +350,9 @@ public class Categories_fragment extends Fragment {
         return view;
     }
     private void loadBook(String category) {
-//        show_books_fragment showBooksFragment = show_books_fragment.newInstance(category);
-//        FragmentManager fragmentManager = getParentFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.layoutBook, showBooksFragment);
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
+
         show_books_fragment ShowBooksFragment=  show_books_fragment.newInstance(category);
-
         getActivity().getSupportFragmentManager().beginTransaction().replace(android.R.id.content,ShowBooksFragment).commit();
-
-
     }
 
 }

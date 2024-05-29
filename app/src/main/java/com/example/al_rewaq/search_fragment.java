@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.squareup.picasso.Picasso;
 
+
+
 public class search_fragment extends Fragment {
 
     private EditText searchField;
@@ -28,6 +30,8 @@ public class search_fragment extends Fragment {
     private FirebaseFirestore db;
     ImageView img;
     RelativeLayout RL, SRLID;
+
+
 
     @Nullable
     @Override
@@ -59,8 +63,12 @@ public class search_fragment extends Fragment {
             }
         });
 
+
+
         return view;
     }
+
+
 
     private void searchBook() {
         String Book_Name = searchField.getText().toString();
@@ -103,7 +111,6 @@ public class search_fragment extends Fragment {
                             Book_Title_fragment bookTitleFragment = new Book_Title_fragment();
                             bookTitleFragment.setArguments(bundle);
 
-                            // تبديل Fragment
                             getActivity().getSupportFragmentManager().beginTransaction().replace(android.R.id.content, bookTitleFragment).commit();
                         });
                     }
@@ -118,6 +125,7 @@ public class search_fragment extends Fragment {
                 } else {
                     resultTextView.setText("Error getting documents: " + task.getException().getMessage());
                 }
+
             }
         });
     }

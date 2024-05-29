@@ -3,14 +3,14 @@ package com.example.al_rewaq;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+
 
 public class menu_main extends AppCompatActivity {
 
@@ -21,23 +21,23 @@ public class menu_main extends AppCompatActivity {
     private nav_drawer_menu_fragment navDrawerMenuFragment;
     private MyLibrary_MainFragment myLibraryMainFragment;
     private Book_Title_fragment Book_Title_fragment;
-
     private int previousItemId;
     private boolean isSearchFragmentVisible = false;
+
+
 
     @SuppressLint("MissingSuperCall")
     @Override
     public void onBackPressed() {
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(android.R.id.content);
         if (currentFragment instanceof home_page_fragment) {
-            finishAffinity();  // Close the application
+            finishAffinity();
         } else {
-            // Move to home_page_fragment and update the navigation view
             getSupportFragmentManager().beginTransaction().replace(android.R.id.content, homePageFragment).commit();
             bottomNavigationView.setSelectedItemId(R.id.home_icon1);
         }
-        //super.onBackPressed(); // This line is intentionally commented out to avoid the default behavior.
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +68,12 @@ public class menu_main extends AppCompatActivity {
                     }
                 })
                 .addOnFailureListener(e -> {
-                    // Handle failure
+
                 });
 
         getSupportFragmentManager().beginTransaction().replace(android.R.id.content, homePageFragment).commit();
-        bottomNavigationView.setSelectedItemId(R.id.home_icon1); // Set initial selection
-        previousItemId = R.id.home_icon1; // Set initial previous item
+        bottomNavigationView.setSelectedItemId(R.id.home_icon1);
+        previousItemId = R.id.home_icon1;
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -81,11 +81,11 @@ public class menu_main extends AppCompatActivity {
                 if (item.getItemId() == R.id.home_icon1) {
                     previousItemId = item.getItemId();
                     getSupportFragmentManager().beginTransaction().replace(android.R.id.content, homePageFragment).commit();
-                    isSearchFragmentVisible = false; // Reset visibility state
+                    isSearchFragmentVisible = false;
                 } else if (item.getItemId() == R.id.category_icon) {
                     previousItemId = item.getItemId();
                     getSupportFragmentManager().beginTransaction().replace(android.R.id.content, categoriesFragment).commit();
-                    isSearchFragmentVisible = false; // Reset visibility state
+                    isSearchFragmentVisible = false;
                 } else if (item.getItemId() == R.id.search_icon) {
                     if (isSearchFragmentVisible) {
                         getSupportFragmentManager().beginTransaction().remove(searchFragment).commit();
@@ -97,8 +97,7 @@ public class menu_main extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.library_icon) {
                     previousItemId = item.getItemId();
                     getSupportFragmentManager().beginTransaction().replace(android.R.id.content, myLibraryMainFragment).commit();
-                    isSearchFragmentVisible = false; // Reset visibility state
-                    // Ensure the navigation view is updated to readingInProgressID
+                    isSearchFragmentVisible = false;
                     bottomNavigationView.post(() -> {
                         BottomNavigationView libraryBottomNavigationView = myLibraryMainFragment.getView().findViewById(R.id.myLibr1);
                         if (libraryBottomNavigationView != null) {
@@ -110,7 +109,6 @@ public class menu_main extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().remove(searchFragment).commit();
                     isSearchFragmentVisible = false;
                 }
-
                 return true;
             }
         });

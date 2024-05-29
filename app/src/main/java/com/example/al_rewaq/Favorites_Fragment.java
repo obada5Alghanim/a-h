@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class Favorites_Fragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -29,12 +31,14 @@ public class Favorites_Fragment extends Fragment {
     private FirebaseAuth auth;
     private String userId;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_favorites_, container, false);
 
         recyclerView = view.findViewById(R.id.recycler_view_favorites);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+
 
         favoriteBooks = new ArrayList<>();
         adapter = new FavoritesAdapter(favoriteBooks, new FavoritesAdapter.OnDeleteClickListener() {
@@ -43,6 +47,7 @@ public class Favorites_Fragment extends Fragment {
                 removeBookFromFavorites(position);
             }
         });
+
         recyclerView.setAdapter(adapter);
 
         db = FirebaseFirestore.getInstance();
@@ -51,8 +56,12 @@ public class Favorites_Fragment extends Fragment {
 
         loadFavoriteBooks();
 
+
+
         return view;
     }
+
+
 
     private void loadFavoriteBooks() {
         DocumentReference userRef = db.collection("users").document(userId);
@@ -109,4 +118,6 @@ public class Favorites_Fragment extends Fragment {
             fragmentTransaction.detach(this).attach(this).commit();
         }
     }
+
+
 }

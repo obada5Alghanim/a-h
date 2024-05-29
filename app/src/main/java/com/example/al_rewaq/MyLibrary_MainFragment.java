@@ -9,8 +9,13 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+
+
 public class MyLibrary_MainFragment extends Fragment {
+
     BottomNavigationView bottomNavigationView;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -22,11 +27,11 @@ public class MyLibrary_MainFragment extends Fragment {
         Favorites_Fragment favoritesFragment = new Favorites_Fragment();
         Read_it_Fragment readItFragment = new Read_it_Fragment();
 
-        // Set default fragment
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MyLibrary, readingInProgressFragment).commit();
-        bottomNavigationView.setSelectedItemId(R.id.readingInProgressID); // Set the default selected item
+        bottomNavigationView.setSelectedItemId(R.id.readingInProgressID);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+
             String chr = "A";
 
             @Override
@@ -56,6 +61,9 @@ public class MyLibrary_MainFragment extends Fragment {
             }
         });
 
+
+
         return view;
     }
+
 }

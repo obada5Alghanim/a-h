@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
+
 public class home_page_fragment extends Fragment {
 
     private LinearLayout categoriesContainer;
@@ -38,8 +40,12 @@ public class home_page_fragment extends Fragment {
 
         loadUserSelections();
 
+
+
         return view;
     }
+
+
 
     private void loadUserSelections() {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -85,7 +91,6 @@ public class home_page_fragment extends Fragment {
                         String imageUrl = document.getString("Image_URL");
                         ImageView imageView = new ImageView(getContext());
 
-                        // تحميل الصورة باستخدام Picasso
                         Picasso.get().load(imageUrl).into(imageView);
 
                         // إعداد الحواف الدائرية للصورة
@@ -97,7 +102,7 @@ public class home_page_fragment extends Fragment {
                             }
                         });
 
-                        // إعداد التخطيط للصورة
+                        // إعداد حواف للصورة
                         LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(
                                 300,
                                 500
@@ -106,8 +111,9 @@ public class home_page_fragment extends Fragment {
                         imageView.setLayoutParams(imageParams);
                         imageView.setPadding(0, 0, 0, 0);
 
-                        // إضافة حدث الضغط على الصورة لنقل معلومات الكتاب إلى Fragment آخر
+
                         imageView.setOnClickListener(v -> {
+
                             // جمع معلومات الكتاب من المستند
                             String bookTitle = document.getString("Book_Name");
                             String bookAuthor = document.getString("Author");
@@ -129,7 +135,6 @@ public class home_page_fragment extends Fragment {
                             Book_Title_fragment bookTitleFragment = new Book_Title_fragment();
                             bookTitleFragment.setArguments(bundle);
 
-                            // تبديل Fragment
                            getActivity().getSupportFragmentManager().beginTransaction().replace(android.R.id.content,bookTitleFragment ).commit();
 
                         });
@@ -143,6 +148,7 @@ public class home_page_fragment extends Fragment {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
+
                             int currentScrollX = scrollView.getScrollX();
 
                             if (currentScrollX <= 0) {
@@ -176,4 +182,5 @@ public class home_page_fragment extends Fragment {
                     }
                 });
     }
+
 }
