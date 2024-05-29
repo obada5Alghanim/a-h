@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,6 +33,7 @@ public class Favorites_Fragment extends Fragment {
     private FirebaseFirestore db;
     private FirebaseAuth auth;
     private String userId;
+    private RecyclerView.Adapter<RecyclerView.ViewHolder> adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -91,7 +93,7 @@ public class Favorites_Fragment extends Fragment {
     }
 
     private void updateRecyclerView() {
-        recyclerView.setAdapter(new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        adapter = new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             @NonNull
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -110,12 +112,11 @@ public class Favorites_Fragment extends Fragment {
                     Book_Title_fragment bookTitleFragment = Book_Title_fragment.newInstance(
                             book.getImageUrl(), book.getSection(), book.getAuthor(), book.getDescription(), book.getBookName(), book.getnoPage(), book.getYear());
                     getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(android.R.id.content, bookTitleFragment)
-                            .commit();
+                            .replace(android.R.id.content, bookTitleFragment).commit();
                 });
 
                 deleteButton.setOnClickListener(v -> {
-                    removeBookFromFavorites(position);
+                    removeBookFromFavorites(holder.getAdapterPosition());
                 });
             }
 
@@ -123,7 +124,22 @@ public class Favorites_Fragment extends Fragment {
             public int getItemCount() {
                 return favoriteBooks.size();
             }
+        };
+        recyclerView.setAdapter(adapter);
+
+        // Attach ItemTouchHelper to RecyclerView
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.UP) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                removeBookFromFavorites(viewHolder.getAdapterPosition());
+            }
         });
+        itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
     private void removeBookFromFavorites(int position) {
@@ -132,7 +148,7 @@ public class Favorites_Fragment extends Fragment {
         userRef.update("Favorite_books", FieldValue.arrayRemove(book.getBookName()))
                 .addOnSuccessListener(aVoid -> {
                     favoriteBooks.remove(position);
-                    updateRecyclerView();
+                    adapter.notifyItemRemoved(position);
                 })
                 .addOnFailureListener(e -> {
                     // Handle any errors here

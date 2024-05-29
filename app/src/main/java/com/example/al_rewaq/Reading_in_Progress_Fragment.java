@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,6 +33,7 @@ public class Reading_in_Progress_Fragment extends Fragment {
     private FirebaseFirestore db;
     private FirebaseAuth auth;
     private String userId;
+    private RecyclerView.Adapter<RecyclerView.ViewHolder> adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -91,7 +93,7 @@ public class Reading_in_Progress_Fragment extends Fragment {
     }
 
     private void updateRecyclerView() {
-        recyclerView.setAdapter(new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        adapter = new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             @NonNull
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -116,7 +118,7 @@ public class Reading_in_Progress_Fragment extends Fragment {
                 });
 
                 deleteButton.setOnClickListener(v -> {
-                    removeBookFromReadingInProgress(position);
+                    removeBookFromReadingInProgress(holder.getAdapterPosition());
                 });
             }
 
@@ -124,7 +126,22 @@ public class Reading_in_Progress_Fragment extends Fragment {
             public int getItemCount() {
                 return readingInProgressBooks.size();
             }
+        };
+        recyclerView.setAdapter(adapter);
+
+        // Attach ItemTouchHelper to RecyclerView
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.UP) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                removeBookFromReadingInProgress(viewHolder.getAdapterPosition());
+            }
         });
+        itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
     private void removeBookFromReadingInProgress(int position) {
@@ -133,7 +150,7 @@ public class Reading_in_Progress_Fragment extends Fragment {
         userRef.update("Reading_inprogress", FieldValue.arrayRemove(book.getBookName()))
                 .addOnSuccessListener(aVoid -> {
                     readingInProgressBooks.remove(position);
-                    updateRecyclerView();
+                    adapter.notifyItemRemoved(position);
                 })
                 .addOnFailureListener(e -> {
                     // Handle any errors here
