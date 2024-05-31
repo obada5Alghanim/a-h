@@ -6,15 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
@@ -130,30 +130,22 @@ public class Interests extends AppCompatActivity {
 
     private void loadRandomCategoriesAndProceed() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Book").get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    List<String> allCategories = new ArrayList<>();
-                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                        allCategories.add(document.getId());
-                    }
-                    Collections.shuffle(allCategories);
-                    List<String> randomCategories = allCategories.subList(1, 3);
 
-                    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    db.collection("users").document(userId)
-                            .update("selectedCategories", randomCategories)
-                            .addOnSuccessListener(aVoid -> {
 
-                                Intent intent = new Intent(Interests.this, menu_main.class);
-                                startActivity(intent);
-                                finish();
-                            })
-                            .addOnFailureListener(e -> {
-                                Toast.makeText(Interests.this, "حدث خطأ أثناء التخطي", Toast.LENGTH_SHORT).show();
-                            });
+        String uid = FirebaseAuth.getInstance().getUid();
+        if (uid==null ||uid.isEmpty()) {
+            Toast.makeText(Interests.this, "حدث خطأ أثناء التخطي", Toast.LENGTH_SHORT).show();
+        }
+        db.collection("users").document(uid)
+                .update("selectedCategories", null)
+                .addOnSuccessListener(aVoid -> {
+
+                    Intent intent = new Intent(Interests.this, menu_main.class);
+                    startActivity(intent);
+                    finish();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(Interests.this, "حدث خطأ أثناء جلب التصنيفات العشوائية", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Interests.this, "حدث خطأ أثناء التخطي", Toast.LENGTH_SHORT).show();
                 });
     }
 

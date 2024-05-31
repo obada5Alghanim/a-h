@@ -3,7 +3,6 @@ package com.example.al_rewaq;
 import android.graphics.Color;
 import android.graphics.Outline;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +12,16 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
-import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
 
 
@@ -59,7 +62,18 @@ public class home_page_fragment extends Fragment {
                                 loadBooks(category);
                             }
                         } else {
-                            loadRandomCategories();
+//                             List<String> randomCtegories=(List<String>)documentSnapshot.get("randomCtegories");
+//                             for (String cat :randomCtegories){
+//                                 loadBooks(cat);
+//                             }
+                            loadBooks("الرسل والأنبياء");
+                            loadBooks("كمبيوتر وانترنت");
+                            loadBooks("أدب روسي");
+                            loadBooks("الحضارات القديمة");
+                            loadBooks("روايات بوليسية");
+                            loadBooks("علم النفس التربوي");
+
+
                         }
                     }
                 });
@@ -67,9 +81,12 @@ public class home_page_fragment extends Fragment {
 
     private void loadBooks(String category) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Task<QuerySnapshot> querySnapshotTask = db.collection("Book").whereEqualTo("Section", category).get();
+
         db.collection("Book").whereEqualTo("Section", category).get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     // إنشاء نص لاسم التصنيف
+
                     TextView categoryTitle = new TextView(getContext());
                     categoryTitle.setText(category);
                     categoryTitle.setTextSize(22);
@@ -167,20 +184,20 @@ public class home_page_fragment extends Fragment {
                 });
     }
 
-    private void loadRandomCategories() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Book").get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    List<String> allCategories = new ArrayList<>();
-                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                        allCategories.add(document.getId());
-                    }
-                    Collections.shuffle(allCategories);
-                    List<String> randomCategories = allCategories.subList(1, 3);
-                    for (String category : randomCategories) {
-                        loadBooks(category);
-                    }
-                });
-    }
+//    private void loadRandomCategories() {
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        db.collection("Book").get()
+//                .addOnSuccessListener(queryDocumentSnapshots -> {
+//                    List<String> allCategories = new ArrayList<>();
+//                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+//                        allCategories.add(document.getId());
+//                    }
+//                    Collections.shuffle(allCategories);
+//                    List<String> randomCategories = allCategories.subList(1, 3);
+//                    for (String category : randomCategories) {
+//                        loadBooks(category);
+//                    }
+//                });
+//    }
 
 }
