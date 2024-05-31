@@ -16,8 +16,8 @@
         android:layout_height="28dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginBottom="28dp"
         android:fontFamily="@font/inter_bold"
         android:text="ما هي التصنيفات التي تهمك ؟"
         android:textColor="#FFFFFF"
@@ -27,9 +27,12 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="390dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="404dp"
+        android:layout_above="@+id/selected_btn"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="40dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/selected_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,12 +41,11 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="304dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/interests_frame"
             android:scrollbarSize="5dp"
             android:scrollbarThumbVertical="@drawable/scrollbar"
-            android:verticalScrollbarPosition="right"
-            >
+            android:verticalScrollbarPosition="right">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,8 +57,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
 
 
                     <Button
@@ -65,13 +66,12 @@
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text=" روايات دينية"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp"
-                        />
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
 
                     <Button
                         android:id="@+id/Button2"
@@ -79,13 +79,12 @@
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text=" روايات مغامرات"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp"
-                        />
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
 
                 </LinearLayout>
 
@@ -102,13 +101,12 @@
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text="روايات رعب"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp"
-                        />
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
 
                     <Button
                         android:id="@+id/Button4"
@@ -116,12 +114,12 @@
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text="روايات بوليسية"
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
 
                 </LinearLayout>
 
@@ -138,24 +136,25 @@
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text="أدب انجليزي "
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
+
                     <Button
                         android:id="@+id/Button6"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text="أدب عربي"
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -171,12 +170,12 @@
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text="الحضارات القديمة"
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
 
                     <Button
                         android:id="@+id/Button8"
@@ -184,12 +183,12 @@
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text="أدب روسي"
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -205,12 +204,12 @@
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text="الشرق الأوسط"
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
 
                     <Button
                         android:id="@+id/Button10"
@@ -218,12 +217,12 @@
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text="تاريخ أوروبا "
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -239,12 +238,12 @@
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text="العلوم الشرعية"
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
 
                     <Button
                         android:id="@+id/Button12"
@@ -252,14 +251,15 @@
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text="السيرة النبوية "
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -273,12 +273,12 @@
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text=" الرسل و الأنبياء"
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
 
                     <Button
                         android:id="@+id/Button14"
@@ -286,14 +286,15 @@
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text=" لغات البرمجة "
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -307,12 +308,12 @@
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text="  كمبيوتر و انترنت"
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
 
                     <Button
                         android:id="@+id/Button16"
@@ -320,14 +321,15 @@
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text="  سيكولوجيا الجرائم "
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -341,12 +343,12 @@
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
                         android:backgroundTint="@color/black"
-                        app:strokeColor="#555555"
-                        app:strokeWidth="2dp"
                         android:gravity="center"
                         android:text="  علم النفس التربوي"
                         android:textColor="#FFFFFF"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        app:strokeColor="#555555"
+                        app:strokeWidth="2dp" />
 
 
                 </LinearLayout>

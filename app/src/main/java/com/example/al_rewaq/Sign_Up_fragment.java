@@ -2,7 +2,9 @@ package com.example.al_rewaq;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -43,6 +45,12 @@ public class Sign_Up_fragment extends Fragment {
     Button btn;
     boolean passwordVisiable;
 
+    SharedPreferences sharedPreferences;
+    private static final String SHARED_PREF_NAME ="remberMeForAlrewaq";
+    private static final String KEY_NAME ="USERNAME";
+    private static final String KEY_PASSWORD ="PASSWORDUSER";
+
+
 
     DatePickerDialog.OnDateSetListener onDateSetListener;
 
@@ -66,6 +74,8 @@ public class Sign_Up_fragment extends Fragment {
         confirmPassword = rootView.findViewById(R.id.confirmPassword);
         txt = rootView.findViewById(R.id.signUP_to_sing_click);
         btn = rootView.findViewById(R.id.signUp_button);
+        sharedPreferences = getActivity().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
 
 
         txt.setOnClickListener(new View.OnClickListener() {
@@ -181,7 +191,11 @@ public class Sign_Up_fragment extends Fragment {
             }
         });
 
-
+        String checkedPref = sharedPreferences.getString(KEY_NAME,null);
+        if (checkedPref != null){
+            Intent intent = new Intent(getActivity(),menu_main.class);
+            startActivity(intent);
+        }
 
         btn.setOnClickListener(new View.OnClickListener() {
 
@@ -233,6 +247,10 @@ public class Sign_Up_fragment extends Fragment {
                                     db.collection("users").document(user.getUid())
                                             .set(userData)
                                             .addOnSuccessListener(documentReference -> {
+                                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                                editor.putString(KEY_NAME,userName.getText().toString());
+                                                editor.putString(KEY_PASSWORD,password.getText().toString());
+                                                editor.apply();
                                               Intent intent = new Intent(getActivity(),Interests.class);
                                               startActivity(intent);
                                             })
