@@ -12,16 +12,13 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.fragment.app.Fragment;
-
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 
@@ -62,10 +59,7 @@ public class home_page_fragment extends Fragment {
                                 loadBooks(category);
                             }
                         } else {
-//                             List<String> randomCtegories=(List<String>)documentSnapshot.get("randomCtegories");
-//                             for (String cat :randomCtegories){
-//                                 loadBooks(cat);
-//                             }
+
                             loadBooks("الرسل والأنبياء");
                             loadBooks("كمبيوتر وانترنت");
                             loadBooks("أدب روسي");
@@ -73,11 +67,11 @@ public class home_page_fragment extends Fragment {
                             loadBooks("روايات بوليسية");
                             loadBooks("علم النفس التربوي");
 
-
                         }
                     }
                 });
     }
+
 
     private void loadBooks(String category) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -108,7 +102,7 @@ public class home_page_fragment extends Fragment {
                         String imageUrl = document.getString("Image_URL");
                         ImageView imageView = new ImageView(getContext());
 
-                        Picasso.get().load(imageUrl).into(imageView);
+                        Picasso.get().load(imageUrl).resize(330, 500).into(imageView);
 
                         // إعداد الحواف الدائرية للصورة
                         imageView.setClipToOutline(true);
@@ -183,21 +177,5 @@ public class home_page_fragment extends Fragment {
 
                 });
     }
-
-//    private void loadRandomCategories() {
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        db.collection("Book").get()
-//                .addOnSuccessListener(queryDocumentSnapshots -> {
-//                    List<String> allCategories = new ArrayList<>();
-//                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-//                        allCategories.add(document.getId());
-//                    }
-//                    Collections.shuffle(allCategories);
-//                    List<String> randomCategories = allCategories.subList(1, 3);
-//                    for (String category : randomCategories) {
-//                        loadBooks(category);
-//                    }
-//                });
-//    }
 
 }

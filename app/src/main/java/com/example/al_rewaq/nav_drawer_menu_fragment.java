@@ -46,7 +46,6 @@ public class nav_drawer_menu_fragment extends Fragment {
         LinearLayout linearLayout = view.findViewById(R.id.navDrawerMenu2);
         RelativeLayout are_you_sure_logout = view.findViewById(R.id.are_you_sure_logout);
         sharedPreferences = getActivity().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        TextView textViewReadingTable = view.findViewById(R.id.READINGTABLE);
 
         Bundle readUserName = this.getArguments();
         String rec = readUserName.getString("msg");
@@ -88,14 +87,6 @@ public class nav_drawer_menu_fragment extends Fragment {
                 ft.commit();
             }
         });
-
-        textViewReadingTable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
 
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
