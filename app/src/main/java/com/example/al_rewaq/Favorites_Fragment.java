@@ -81,8 +81,10 @@ public class Favorites_Fragment extends Fragment {
                                 String section = documentSnapshot.getString("Section");
                                 String author = documentSnapshot.getString("Author");
                                 String description = documentSnapshot.getString("Description");
-                                String year = documentSnapshot.getString("Year");
-                                String noPage = documentSnapshot.getString("No_Page");
+                                Long year = documentSnapshot.getLong("Year");
+                                Long noPage = documentSnapshot.getLong("No_Page");
+
+
 
                                 favoriteBooks.add(new Book(bookName, imageUrl, section, author, description, year, noPage));
                             }
@@ -110,7 +112,7 @@ public class Favorites_Fragment extends Fragment {
 
                 bookImage.setOnClickListener(v -> {
                     Book_Title_fragment bookTitleFragment = Book_Title_fragment.newInstance(
-                            book.getImageUrl(), book.getSection(), book.getAuthor(), book.getDescription(), book.getBookName(), book.getnoPage(), book.getYear());
+                            book.getImageUrl(), book.getSection(), book.getAuthor(), book.getDescription(), book.getBookName(), book.getnoPage() , book.getYear());
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(android.R.id.content, bookTitleFragment).commit();
                 });
@@ -161,10 +163,10 @@ public class Favorites_Fragment extends Fragment {
         private String section;
         private String author;
         private String description;
-        private String year;
-        private String noPage;
+        private Long year;
+        private Long noPage;
 
-        public Book(String bookName, String imageUrl, String section, String author, String description, String year, String noPage) {
+        public Book(String bookName, String imageUrl, String section, String author, String description, Long year, Long noPage) {
             this.bookName = bookName;
             this.imageUrl = imageUrl;
             this.section = section;
@@ -194,11 +196,11 @@ public class Favorites_Fragment extends Fragment {
             return description;
         }
 
-        public String getYear() {
+        public Long getYear() {
             return year;
         }
 
-        public String getnoPage() {
+        public Long getnoPage() {
             return noPage;
         }
     }

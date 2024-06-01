@@ -51,7 +51,7 @@ public class Book_Title_fragment extends Fragment {
     private static final String ARG_YEAR = "years";
     private static final String ARG_NO_PAGE = "NoPage";
 
-    public static Book_Title_fragment newInstance(String imageUrl, String section, String author, String description, String title, String noPage, String year) {
+    public static Book_Title_fragment newInstance(String imageUrl, String section, String author, String description, String title, Long noPage, Long year) {
         Book_Title_fragment fragment = new Book_Title_fragment();
         Bundle args = new Bundle();
         args.putString(ARG_IMAGE_URL, imageUrl);
@@ -59,8 +59,8 @@ public class Book_Title_fragment extends Fragment {
         args.putString(ARG_AUTHOR, author);
         args.putString(ARG_DESCRIPTION, description);
         args.putString(ARG_TITLE, title);
-        args.putString(ARG_YEAR, year);
-        args.putString(ARG_NO_PAGE, noPage);
+        args.putLong(ARG_YEAR, year);
+        args.putLong(ARG_NO_PAGE, noPage);
         fragment.setArguments(args);
         return fragment;
     }
@@ -153,16 +153,18 @@ public class Book_Title_fragment extends Fragment {
             String bookTitle = bundle.getString("Book_Name");
             String bookAuthor = bundle.getString("Author");
             String section = bundle.getString("Section");
-            String year = bundle.getString("years");
-            String noPage = bundle.getString("NoPage");
+            Long year = bundle.getLong("years");
+            Long noPage = bundle.getLong("NoPage");
             String bookDescription = bundle.getString("Description");
             String imageUrl = bundle.getString("Image_URL");
 
+            String noPage1 = Long.toString(noPage);
+            String year1  = Long.toString(year);
             txt1.setText(bookTitle);
             txt2.setText(bookAuthor);
             txt3.setText(section);
-            txt4.setText(year);
-            txt5.setText(noPage);
+            txt4.setText(year1);
+            txt5.setText(noPage1);
             txt6.setText(bookDescription);
             Picasso.get().load(imageUrl).into(img);
 

@@ -84,6 +84,7 @@ public class choose_book_Q4 extends Fragment {
                     sum = 0;
                     yearBun.putString("year",fromLang);
                     yearBun.putString("yearyear",fromLanglang);
+                    yearBun.putLong("2000year",2000);
                     chooseBookQ5.setArguments(yearBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ5).commit();
                     removeFragment();
@@ -92,6 +93,7 @@ public class choose_book_Q4 extends Fragment {
                     sum = 0;
                     yearBun.putString("year",fromLang);
                     yearBun.putString("yearyear",fromLanglang);
+                    yearBun.putLong("2000year",1999);
                     chooseBookQ5.setArguments(yearBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ5).commit();
                     removeFragment();

@@ -62,7 +62,7 @@ public class home_page_fragment extends Fragment {
 
                             loadBooks("الرسل والأنبياء");
                             loadBooks("كمبيوتر وانترنت");
-                            loadBooks("أدب روسي");
+                            loadBooks("أدب انجليزي");
                             loadBooks("الحضارات القديمة");
                             loadBooks("روايات بوليسية");
                             loadBooks("علم النفس التربوي");
@@ -129,8 +129,8 @@ public class home_page_fragment extends Fragment {
                             String bookTitle = document.getString("Book_Name");
                             String bookAuthor = document.getString("Author");
                             String section = document.getString("Section");
-                            String  year  = document.getString("Year");
-                            String  noPage  = document.getString("No_Page");
+                            Long  year  = document.getLong("Year");
+                            Long  noPage  = document.getLong("No_Page");
                             String bookDescription = document.getString("Description");
 
                             // نقل البيانات إلى Fragment آخر
@@ -138,8 +138,8 @@ public class home_page_fragment extends Fragment {
                             bundle.putString("Book_Name", bookTitle);
                             bundle.putString("Author", bookAuthor);
                             bundle.putString("Section", section);
-                            bundle.putString("years", year);
-                            bundle.putString("NoPage", noPage);
+                            bundle.putLong("years", year);
+                            bundle.putLong("NoPage", noPage);
                             bundle.putString("Description", bookDescription);
                             bundle.putString("Image_URL", imageUrl);
 

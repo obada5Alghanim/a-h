@@ -95,16 +95,16 @@ public class search_fragment extends Fragment {
                             String bookTitle = document.getString("Book_Name");
                             String bookAuthor = document.getString("Author");
                             String section = document.getString("Section");
-                            String year = document.getString("Year");
-                            String noPage = document.getString("No_Page");
+                            Long year = document.getLong("Year");
+                            Long noPage = document.getLong("No_Page");
                             String bookDescription = document.getString("Description");
 
                             Bundle bundle = new Bundle();
                             bundle.putString("Book_Name", bookTitle);
                             bundle.putString("Author", bookAuthor);
                             bundle.putString("Section", section);
-                            bundle.putString("years", year);
-                            bundle.putString("NoPage", noPage);
+                            bundle.putLong("years", year);
+                            bundle.putLong("NoPage", noPage);
                             bundle.putString("Description", bookDescription);
                             bundle.putString("Image_URL", imageUrl);
 

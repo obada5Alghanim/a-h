@@ -66,8 +66,8 @@ public class show_books_fragment extends Fragment {
                             String bookTitle = document.getString("Book_Name");
                             String bookAuthor = document.getString("Author");
                             String section = document.getString("Section");
-                            String year = document.getString("Year");
-                            String noPage = document.getString("No_Page");
+                            Long year = document.getLong("Year");
+                            Long noPage = document.getLong("No_Page");
                             String bookDescription = document.getString("Description");
                             if (imageUrl != null) {
                                 books.add(new Book(imageUrl, section, bookAuthor, bookDescription, year, noPage, bookTitle));
@@ -133,13 +133,13 @@ public class show_books_fragment extends Fragment {
     static class Book {
         private String imageUrl;
         private String section;
-        private String year;
-        private String noPage;
+        private Long year;
+        private Long noPage;
         private String bookTitle;
         private String bookAuthor;
         private String bookDescription;
 
-        public Book(String imageUrl, String section, String author, String description, String year, String noPage, String bookTitle) {
+        public Book(String imageUrl, String section, String author, String description, Long year, Long noPage, String bookTitle) {
             this.imageUrl = imageUrl;
             this.section = section;
             this.bookAuthor = author;
@@ -153,11 +153,11 @@ public class show_books_fragment extends Fragment {
             return imageUrl;
         }
 
-        public String getYear() {
+        public Long getYear() {
             return year;
         }
 
-        public String getnoPage() {
+        public Long getnoPage() {
             return noPage;
         }
 
