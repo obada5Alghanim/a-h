@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +32,7 @@ public class choose_book_Q5 extends Fragment {
     Button click_answar5_1, click_answar5_2;
     TextView result_Q;
     FirebaseFirestore db;
-
+    int sum = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +43,7 @@ public class choose_book_Q5 extends Fragment {
         click_answar5_1 = view.findViewById(R.id.answar5_1);
         click_answar5_2 = view.findViewById(R.id.answar5_2);
         result_Q = view.findViewById(R.id.next_Q);
+
 
         db = FirebaseFirestore.getInstance();
         Bundle reciveFromYear = this.getArguments();
@@ -61,6 +64,7 @@ public class choose_book_Q5 extends Fragment {
 
                     click_answar5_2.setTextColor(Color.BLACK);
                     click_answar5_2.setBackgroundColor(color);
+                    sum =1;
 
             }
         });
@@ -77,6 +81,7 @@ public class choose_book_Q5 extends Fragment {
 
                     click_answar5_1.setTextColor(Color.BLACK);
                     click_answar5_1.setBackgroundColor(color);
+                    sum  = 2;
 
             }
         });
@@ -85,12 +90,19 @@ public class choose_book_Q5 extends Fragment {
             @Override
             public void onClick(View v) {
                 // تحديد الشرط بناءً على السنة
-                Query query;
-                if (q4 >= 2000) {
-                    query = db.collection("Book").whereEqualTo("Section", q3).whereEqualTo("Language", q2).whereGreaterThanOrEqualTo("Year", 2000);
-                } else {
-                    query = db.collection("Book").whereEqualTo("Section", q3).whereEqualTo("Language", q2).whereLessThan("Year", 2000);
+                Query query = null;
+                if (q4 >= 2000 && sum ==1) {
+                    query = db.collection("Book").whereEqualTo("Section", q3).whereEqualTo("Language", q2).whereGreaterThanOrEqualTo("Year", 2000).whereLessThan("No_Page",300);
+                } else if (q4 >= 2000 && sum ==2){
+                    query = db.collection("Book").whereEqualTo("Section", q3).whereEqualTo("Language", q2).whereGreaterThanOrEqualTo("Year", 2000).whereGreaterThanOrEqualTo("No_Page",300);
+                } else if (q4 < 2000 && sum ==1) {
+                    query = db.collection("Book").whereEqualTo("Section", q3).whereEqualTo("Language", q2).whereLessThan("Year", 2000).whereLessThan("No_Page",300);
+
+                } else if (q4 < 2000 && sum ==2) {
+                    query = db.collection("Book").whereEqualTo("Section", q3).whereEqualTo("Language", q2).whereLessThan("Year", 2000).whereGreaterThanOrEqualTo("No_Page",300);
+
                 }
+
 
 
                 query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -125,6 +137,8 @@ public class choose_book_Q5 extends Fragment {
                                 bundle.putLong("years", bookyear);
                                 bundle.putString("Description", bookdesc);
                                 bundle.putLong("NoPage", bookpage);
+                                Log.d("Bundle Values", "Section: " + q3 + ", Language: " + q2 + ", Year: " + q4);
+
 
                                 Book_Title_fragment bookFragment = new Book_Title_fragment();
                                 bookFragment.setArguments(bundle);
