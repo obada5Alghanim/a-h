@@ -20,6 +20,7 @@ public class choose_book_Q4 extends Fragment {
 
 
     private  int sum =0;
+    private long TowTH = 2000;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,7 +85,7 @@ public class choose_book_Q4 extends Fragment {
                     sum = 0;
                     yearBun.putString("year",fromLang);
                     yearBun.putString("yearyear",fromLanglang);
-                    yearBun.putLong("2000year",2000);
+                    yearBun.putLong("2000year", TowTH);
                     chooseBookQ5.setArguments(yearBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ5).commit();
                     removeFragment();
@@ -93,7 +94,7 @@ public class choose_book_Q4 extends Fragment {
                     sum = 0;
                     yearBun.putString("year",fromLang);
                     yearBun.putString("yearyear",fromLanglang);
-                    yearBun.putLong("2000year",1999);
+                    yearBun.putLong("2000year", TowTH -1);
                     chooseBookQ5.setArguments(yearBun);
                     getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content,chooseBookQ5).commit();
                     removeFragment();

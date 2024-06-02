@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -85,7 +87,7 @@ public class choose_book_Q5 extends Fragment {
                 // تحديد الشرط بناءً على السنة
                 Query query;
                 if (q4 >= 2000) {
-                    query = db.collection("Book").whereEqualTo("Section", q3).whereEqualTo("Language", q2).whereEqualTo("Year", 2000);
+                    query = db.collection("Book").whereEqualTo("Section", q3).whereEqualTo("Language", q2).whereGreaterThanOrEqualTo("Year", 2000);
                 } else {
                     query = db.collection("Book").whereEqualTo("Section", q3).whereEqualTo("Language", q2).whereLessThan("Year", 2000);
                 }
@@ -129,10 +131,10 @@ public class choose_book_Q5 extends Fragment {
 
                                 getActivity().getSupportFragmentManager().beginTransaction().replace(android.R.id.content, bookFragment).commit();
                             } else {
-                                System.out.println("No books found in this category.");
+                                Toast.makeText(getActivity(), "الكتاب غير متوفر", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            System.out.println("Error getting documents: " + task.getException());
+                            Toast.makeText(getActivity(), "Error getting documents: "+ task.getException(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
