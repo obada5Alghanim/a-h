@@ -46,7 +46,8 @@
                 android:drawablePadding="10dp"
                 android:hint="Enter Your Email"
                 android:padding="10dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/Edt_password_singIn"
@@ -61,7 +62,8 @@
                 android:inputType="textPassword"
                 android:longClickable="false"
                 android:padding="10dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
 
             <Button
