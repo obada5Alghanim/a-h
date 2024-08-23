@@ -9,7 +9,6 @@
     android:layoutDirection="rtl"
     tools:context=".Interests">
 
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -54,17 +53,17 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
-
                     <Button
                         android:id="@+id/Button1"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text=" روايات دينية"
@@ -75,9 +74,10 @@
 
                     <Button
                         android:id="@+id/Button2"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text=" روايات مغامرات"
@@ -85,21 +85,21 @@
                         android:textSize="10sp"
                         app:strokeColor="#555555"
                         app:strokeWidth="2dp" />
-
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/Button3"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text="روايات رعب"
@@ -110,9 +110,10 @@
 
                     <Button
                         android:id="@+id/Button4"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text="روايات بوليسية"
@@ -120,21 +121,21 @@
                         android:textSize="10sp"
                         app:strokeColor="#555555"
                         app:strokeWidth="2dp" />
-
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/Button5"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text="أدب انجليزي "
@@ -145,9 +146,10 @@
 
                     <Button
                         android:id="@+id/Button6"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text="أدب عربي"
@@ -159,16 +161,17 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/Button7"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text="الحضارات القديمة"
@@ -179,9 +182,10 @@
 
                     <Button
                         android:id="@+id/Button8"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text="أدب روسي"
@@ -193,16 +197,17 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/Button9"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text="الشرق الأوسط"
@@ -213,9 +218,10 @@
 
                     <Button
                         android:id="@+id/Button10"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text="تاريخ أوروبا "
@@ -225,18 +231,20 @@
                         app:strokeWidth="2dp" />
                 </LinearLayout>
 
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/Button11"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text="العلوم الشرعية"
@@ -247,9 +255,10 @@
 
                     <Button
                         android:id="@+id/Button12"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text="السيرة النبوية "
@@ -257,21 +266,21 @@
                         android:textSize="10sp"
                         app:strokeColor="#555555"
                         app:strokeWidth="2dp" />
-
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/Button13"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text=" الرسل و الأنبياء"
@@ -282,9 +291,10 @@
 
                     <Button
                         android:id="@+id/Button14"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text=" لغات البرمجة "
@@ -292,24 +302,26 @@
                         android:textSize="10sp"
                         app:strokeColor="#555555"
                         app:strokeWidth="2dp" />
-
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
+
+
                     <Button
                         android:id="@+id/Button15"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
-                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
-                        android:text="  كمبيوتر و انترنت"
+                        android:text=" كمبيوتر و انترنت"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp"
                         app:strokeColor="#555555"
@@ -317,31 +329,34 @@
 
                     <Button
                         android:id="@+id/Button16"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
-                        android:text="  سيكولوجيا الجرائم "
+                        android:text="سيكولوجيا الجرائم"
                         android:textColor="#FFFFFF"
                         android:textSize="10sp"
                         app:strokeColor="#555555"
                         app:strokeWidth="2dp" />
-
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
+
+
                     <Button
                         android:id="@+id/Button17"
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
-                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:gravity="center"
                         android:text="  علم النفس التربوي"
@@ -349,25 +364,18 @@
                         android:textSize="10sp"
                         app:strokeColor="#555555"
                         app:strokeWidth="2dp" />
-
-
                 </LinearLayout>
-
 
             </LinearLayout>
         </ScrollView>
-
     </LinearLayout>
-
 
     <Button
         android:id="@+id/selected_btn"
-        android:layout_width="157dp"
+        android:layout_width="200dp"
         android:layout_height="58dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="116dp"
-        android:layout_marginBottom="138dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/cancel_btn"
         android:backgroundTint="#FFFFFF"
         android:enabled="true"
         android:fontFamily="@font/inter_bold"
@@ -376,9 +384,6 @@
         android:textColorLink="#FFFFFF"
         android:textSize="12sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/cancel_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="#009688"
         app:strokeWidth="2dp" />
 
@@ -386,11 +391,8 @@
         android:id="@+id/cancel_btn"
         android:layout_width="83dp"
         android:layout_height="43dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="156dp"
-        android:layout_marginEnd="173dp"
         android:layout_marginBottom="80dp"
         android:backgroundTint="#00A4A4"
         android:fontFamily="@font/inter_bold"
@@ -398,10 +400,6 @@
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         android:textStyle="bold|italic"
-        app:cornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:cornerRadius="30dp" />
 
 </RelativeLayout>

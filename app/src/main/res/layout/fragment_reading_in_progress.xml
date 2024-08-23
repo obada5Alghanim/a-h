@@ -10,5 +10,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_reading_in_progress"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:padding="4dp"/>
 </RelativeLayout>

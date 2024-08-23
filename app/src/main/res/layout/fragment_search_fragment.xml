@@ -9,7 +9,6 @@
     tools:context=".search_fragment"
     android:background="@drawable/shadow_background">
 
-
   <TextView
       android:id="@+id/textView3"
       android:layout_width="match_parent"
@@ -18,49 +17,45 @@
       android:text="البحث"
       android:textColor="@color/white"
       android:textSize="26sp"
-      android:textStyle="bold"/>
+      android:textStyle="bold" />
 
-  <EditText
-      android:id="@+id/Search_Field"
-      android:layout_width="277dp"
-      android:layout_height="35dp"
-      android:layout_below="@+id/textView3"
-      android:layout_alignParentEnd="true"
-      android:layout_marginHorizontal="16dp"
-      android:layout_marginTop="23dp"
-      android:layout_marginEnd="11dp"
-      android:background="@drawable/search_background"
-      android:drawableRight="@drawable/mi_search"
-      android:drawablePadding="3dp"
-      android:hint="ابحث عن كتاب ..."
-      android:imeOptions="actionDone"
-      android:padding="6dp"
-      android:singleLine="true" />
-
-  <Button
-      android:id="@+id/Search_Button"
-      android:layout_width="108dp"
+  <LinearLayout
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_below="@+id/textView3"
-      android:layout_alignParentStart="true"
-      android:layout_marginStart="5dp"
       android:layout_marginTop="16dp"
-      android:layout_marginEnd="10dp"
-      android:layout_marginBottom="560dp"
-      android:layout_toStartOf="@+id/Search_Field"
-      android:text="بحث"
-      android:textSize="20dp" />
+      android:orientation="horizontal"
+      android:paddingHorizontal="16dp">
+
+    <EditText
+        android:id="@+id/Search_Field"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_weight="3"
+        android:background="@drawable/search_background"
+        android:drawableRight="@drawable/mi_search"
+        android:drawablePadding="3dp"
+        android:hint="ابحث عن كتاب ..."
+        android:imeOptions="actionDone"
+        android:padding="6dp"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/Search_Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="بحث"
+        android:textSize="20dp"
+        android:layout_marginStart="8dp" />
+
+  </LinearLayout>
 
   <RelativeLayout
       android:id="@+id/RelativeLayout"
       android:layout_width="match_parent"
       android:layout_height="86dp"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentEnd="true"
-      android:layout_marginStart="0dp"
       android:layout_marginTop="121dp"
-      android:layout_marginEnd="0dp"
       android:background="#80000000"
       android:visibility="invisible">
 
@@ -92,6 +87,5 @@
         android:textStyle="bold" />
 
   </RelativeLayout>
-
 
 </RelativeLayout>
