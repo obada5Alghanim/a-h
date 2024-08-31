@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,6 +50,8 @@ public class Sign_Up_fragment extends Fragment {
     private static final String SHARED_PREF_NAME ="remberMeForAlrewaq";
     private static final String KEY_NAME ="USERNAME";
     private static final String KEY_PASSWORD ="PASSWORDUSER";
+    // التشفير
+    private EncryptionUtil encryptionUtil;
 
 
 
@@ -61,6 +64,13 @@ public class Sign_Up_fragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_sign__up_fragment, container, false);
+
+        // start to encryption
+        try {
+            encryptionUtil = new EncryptionUtil(); // إذا كنت ترغب في توليد مفتاح جديد
+        } catch (Exception e) {
+            Log.e("EncryptionError", "Error initializing EncryptionUtil: " + e.getMessage());
+        }//
 
         mAuth = FirebaseAuth.getInstance();
         userName = rootView.findViewById(R.id.Edt_signUP_UserName);
@@ -230,36 +240,44 @@ public class Sign_Up_fragment extends Fragment {
                     Toast.makeText(getActivity(),"Password don't Match", Toast.LENGTH_SHORT).show();
                 }
 
-                else {
+                else { try {
+                    // تشفير البيانات الحساسة
+                    String encryptedEmail = encryptionUtil.encrypt(email);
+                    String encryptedPassword = encryptionUtil.encrypt(pass);
+
+                    // إنشاء المستخدم في Firebase Authentication باستخدام البريد الإلكتروني المشفر
                     mAuth.createUserWithEmailAndPassword(email, pass)
                             .addOnCompleteListener(requireActivity(), task -> {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                                     Map<String, Object> userData = new HashMap<>();
-                                    userData.put("First_Name", FirstName.getText().toString());
-                                    userData.put("Last_Name", LastName.getText().toString());
-                                    userData.put("User_name", email);
-                                    userData.put(("Gender"),gender);
-                                    userData.put(("Date_of_birth"),day);
-                                    userData.put(("Passowrd"),pass);
+                                    userData.put("First_Name", firstName);
+                                    userData.put("Last_Name", lastName);
+                                    userData.put("User_name", encryptedEmail); // تخزين البريد الإلكتروني المشفر
+                                    userData.put("Gender", gender);
+                                    userData.put("Date_of_birth", day);
+                                    userData.put("Password", encryptedPassword); // تخزين كلمة المرور المشفرة
 
                                     db.collection("users").document(user.getUid())
                                             .set(userData)
                                             .addOnSuccessListener(documentReference -> {
                                                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                                                editor.putString(KEY_NAME,userName.getText().toString());
-                                                editor.putString(KEY_PASSWORD,password.getText().toString());
+                                                editor.putString(KEY_NAME, encryptedEmail); // حفظ البريد المشفر
+                                                editor.putString(KEY_PASSWORD, encryptedPassword); // حفظ كلمة المرور المشفرة
                                                 editor.apply();
-                                              Intent intent = new Intent(getActivity(),Interests.class);
-                                              startActivity(intent);
+                                                Intent intent = new Intent(getActivity(), Interests.class);
+                                                startActivity(intent);
                                             })
                                             .addOnFailureListener(e -> {
+                                                Log.e("FirestoreError", "Error adding user data to Firestore: " + e.getMessage());
                                             });
                                 }
                             });
+                } catch (Exception e) {
+                    Log.e("EncryptionError", "Error encrypting data: " + e.getMessage());
                 }
-
+                }
             }
         });
 

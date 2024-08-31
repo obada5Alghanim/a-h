@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -42,6 +43,8 @@ public class Sign_In_fragment extends Fragment {
     private static final String SHARED_PREF_NAME ="remberMeForAlrewaq";
     private static final String KEY_NAME ="USERNAME";
     private static final String KEY_PASSWORD ="PASSWORDUSER";
+    private EncryptionUtil encryptionUtil;
+
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -52,6 +55,11 @@ public class Sign_In_fragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_sign__in_fragment, container, false);
 
+        try {
+            encryptionUtil = new EncryptionUtil(); // إذا كنت ترغب في توليد مفتاح جديد
+        } catch (Exception e) {
+            Log.e("EncryptionError", "Error initializing EncryptionUtil: " + e.getMessage());
+        }
 
         mAuth = FirebaseAuth.getInstance();
         usernameIN = rootView.findViewById(R.id.Edt_userName_singIn);
@@ -115,40 +123,50 @@ public class Sign_In_fragment extends Fragment {
                 String password = passwordIN.getText().toString();
 
 
-                if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                    if (!password.isEmpty()){
+                if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    if (!password.isEmpty()) {
+                        try {
 
-                        mAuth.signInWithEmailAndPassword(email, password)
-                                .addOnCompleteListener(requireActivity(), task -> {
-                                    if (task.isSuccessful()) {
 
-                                        FirebaseUser user = mAuth.getCurrentUser();
-                                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                                        editor.putString(KEY_NAME,usernameIN.getText().toString());
-                                        editor.putString(KEY_PASSWORD,passwordIN.getText().toString());
-                                        editor.apply();
-                                        Intent intent = new Intent(getActivity(),menu_main.class);
-                                        startActivity(intent);
+                            String encryptedEmail = encryptionUtil.encrypt(email);
+                            String encryptedPassword = encryptionUtil.encrypt(password);
 
-                                    }
+                            mAuth.signInWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener(requireActivity(), task -> {
+                                        if (task.isSuccessful()) {
 
-                         }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getActivity(), "LogIN failed", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }else {
-                        passwordIN.setError("password cannot be empty");
+                                            FirebaseUser user = mAuth.getCurrentUser();
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString(KEY_NAME, encryptedEmail);
+                                            editor.putString(KEY_PASSWORD, encryptedPassword);
+                                            editor.apply();
+                                            Intent intent = new Intent(getActivity(), menu_main.class);
+                                            startActivity(intent);
+
+                                        }
+
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(getActivity(), "LogIN failed", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        }
+                        catch (Exception e) {
+                            Log.e("EncryptionError", "Error encrypting data: " + e.getMessage());
+                        }
+                        }else{
+                            passwordIN.setError("password cannot be empty");
+                        }
+                    } else if (email.isEmpty()) {
+                        usernameIN.setError("user Name cannto be empty");
+
+                    } else {
+                        usernameIN.setError("enter valid userName");
                     }
-                } else if (email.isEmpty()) {
-                    usernameIN.setError("user Name cannto be empty");
 
-                }else {
-                    usernameIN.setError("enter valid userName");
                 }
 
-            }
         });
 
 
