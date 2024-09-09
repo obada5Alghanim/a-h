@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             public void onAnimationStart(Animation animation) {
                 // Optional: Perform any action when the animation starts
             }
-
+//
             @Override
             public void onAnimationEnd(Animation animation) {
                 // Delay the start of the next activity by 2 seconds (same as the animation duration)
