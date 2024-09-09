@@ -240,6 +240,7 @@ public class Sign_Up_fragment extends Fragment {
                     Toast.makeText(getActivity(),"Password don't Match", Toast.LENGTH_SHORT).show();
                 }
 
+                //
                 else { try {
                     // تشفير البيانات الحساسة
                     String encryptedEmail = encryptionUtil.encrypt(email);
